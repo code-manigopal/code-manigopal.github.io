@@ -3,95 +3,132 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tobermory Road Trip · May 22–24, 2025</title>
+<title>Tobermory Group Trip · May 22–24, 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root { --white: #fffdf7; --text: #1a1a2e; --text-muted: #555577; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Nunito',sans-serif; background:var(--white); color:var(--text); overflow-x:hidden; }
+  :root { --white:#fffdf7; --text:#1a1a2e; --text-muted:#555577; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Nunito',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
 
-  .hero { background:linear-gradient(160deg,#0077b6 0%,#00b4d8 40%,#48cae4 65%,#ade8f4 100%); padding:60px 24px 80px; text-align:center; position:relative; overflow:hidden; }
-  .hero::before { content:''; position:absolute; bottom:-2px; left:0; right:0; height:60px; background:var(--white); clip-path:ellipse(55% 100% at 50% 100%); }
-  .hero-deco { font-size:52px; margin-bottom:12px; display:block; animation:float 3s ease-in-out infinite; }
-  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-  .hero h1 { font-family:'Pacifico',cursive; font-size:clamp(2rem,6vw,3.6rem); color:#fff; text-shadow:3px 4px 0 rgba(0,50,100,0.25); margin-bottom:8px; line-height:1.2; }
-  .hero-sub { font-size:1.1rem; color:rgba(255,255,255,0.9); font-weight:600; margin-bottom:18px; }
-  .hero-badges { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:16px; }
-  .hero-badge { background:rgba(255,255,255,0.22); border:2px solid rgba(255,255,255,0.5); border-radius:999px; padding:6px 18px; font-size:0.85rem; font-weight:700; color:#fff; letter-spacing:0.03em; }
+  .hero{background:linear-gradient(160deg,#0077b6 0%,#00b4d8 40%,#48cae4 65%,#ade8f4 100%);padding:60px 24px 80px;text-align:center;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;bottom:-2px;left:0;right:0;height:60px;background:var(--white);clip-path:ellipse(55% 100% at 50% 100%);}
+  .hero-deco{font-size:52px;margin-bottom:12px;display:block;animation:float 3s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .hero h1{font-family:'Pacifico',cursive;font-size:clamp(2rem,6vw,3.6rem);color:#fff;text-shadow:3px 4px 0 rgba(0,50,100,0.25);margin-bottom:8px;line-height:1.2;}
+  .hero-sub{font-size:1.1rem;color:rgba(255,255,255,0.9);font-weight:600;margin-bottom:18px;}
+  .hero-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px;}
+  .hero-badge{background:rgba(255,255,255,0.22);border:2px solid rgba(255,255,255,0.5);border-radius:999px;padding:6px 18px;font-size:0.85rem;font-weight:700;color:#fff;letter-spacing:0.03em;}
 
-  .container { max-width:860px; margin:0 auto; padding:0 20px; }
-  .day-section { margin:48px 0; }
-  .day-header { display:flex; align-items:center; gap:16px; margin-bottom:28px; padding:20px 24px; border-radius:20px; position:relative; overflow:hidden; }
-  .day-header::after { content:attr(data-emoji); position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:48px; opacity:0.18; }
-  .day1-header { background:linear-gradient(120deg,#ff6d00,#ffb347); }
-  .day2-header { background:linear-gradient(120deg,#0077b6,#00b4d8); }
-  .day3-header { background:linear-gradient(120deg,#2d6a4f,#52b788); }
-  .day-num { font-family:'Pacifico',cursive; font-size:2.4rem; color:rgba(255,255,255,0.4); line-height:1; min-width:60px; }
-  .day-info h2 { font-size:1.25rem; font-weight:800; color:#fff; text-shadow:1px 2px 0 rgba(0,0,0,0.15); }
-  .day-info p { font-size:0.85rem; color:rgba(255,255,255,0.85); font-weight:600; margin-top:2px; }
+  .container{max-width:880px;margin:0 auto;padding:0 20px;}
+  .day-section{margin:48px 0;}
+  .day-header{display:flex;align-items:center;gap:16px;margin-bottom:28px;padding:20px 24px;border-radius:20px;position:relative;overflow:hidden;}
+  .day-header::after{content:attr(data-emoji);position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:48px;opacity:0.18;}
+  .day1-header{background:linear-gradient(120deg,#ff6d00,#ffb347);}
+  .day2-header{background:linear-gradient(120deg,#0077b6,#00b4d8);}
+  .day3-header{background:linear-gradient(120deg,#2d6a4f,#52b788);}
+  .day-num{font-family:'Pacifico',cursive;font-size:2.4rem;color:rgba(255,255,255,0.4);line-height:1;min-width:60px;}
+  .day-info h2{font-size:1.25rem;font-weight:800;color:#fff;text-shadow:1px 2px 0 rgba(0,0,0,0.15);}
+  .day-info p{font-size:0.85rem;color:rgba(255,255,255,0.85);font-weight:600;margin-top:2px;}
 
-  .stats-row { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin-bottom:24px; }
-  .stat-card { border-radius:14px; padding:12px 14px; text-align:center; border:2px solid transparent; }
-  .stat-card .s-label { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px; }
-  .stat-card .s-val { font-size:1.1rem; font-weight:800; }
-  .day1 .stat-card { background:#fff5e6; border-color:#ffd59e; }
-  .day1 .stat-card .s-label { color:#b45309; }
-  .day1 .stat-card .s-val { color:#92400e; }
-  .day2 .stat-card { background:#e0f4ff; border-color:#90d5f5; }
-  .day2 .stat-card .s-label { color:#075985; }
-  .day2 .stat-card .s-val { color:#0c4a6e; }
-  .day3 .stat-card { background:#dcfce7; border-color:#86efac; }
-  .day3 .stat-card .s-label { color:#166534; }
-  .day3 .stat-card .s-val { color:#14532d; }
+  .route-banner{border-radius:14px;padding:14px 18px;margin-bottom:24px;font-size:0.82rem;font-weight:700;line-height:1.8;}
+  .route-banner span{opacity:0.7;font-weight:600;}
+  .day1 .route-banner{background:#fff5e6;color:#92400e;border:2px solid #ffd59e;}
+  .day3 .route-banner{background:#dcfce7;color:#14532d;border:2px solid #86efac;}
 
-  .timeline { position:relative; padding-left:28px; }
-  .timeline::before { content:''; position:absolute; left:18px; top:0; bottom:0; width:3px; border-radius:2px; }
-  .day1 .timeline::before { background:linear-gradient(to bottom,#ff6d00,#ffb347); }
-  .day2 .timeline::before { background:linear-gradient(to bottom,#0077b6,#00b4d8); }
-  .day3 .timeline::before { background:linear-gradient(to bottom,#2d6a4f,#52b788); }
-  .stop-item { display:flex; gap:16px; margin-bottom:6px; position:relative; }
-  .stop-dot { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; margin-left:-46px; position:relative; z-index:2; border:3px solid white; box-shadow:0 2px 8px rgba(0,0,0,0.12); }
-  .stop-card { flex:1; background:#fff; border-radius:16px; padding:16px 18px; margin-bottom:16px; border:2px solid transparent; box-shadow:0 2px 12px rgba(0,0,0,0.06); transition:transform 0.2s,box-shadow 0.2s; }
-  .stop-card:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,0.1); }
-  .day1 .stop-card { border-color:#fde68a; }
-  .day2 .stop-card { border-color:#bae6fd; }
-  .day3 .stop-card { border-color:#bbf7d0; }
-  .stop-time-label { font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:3px; }
-  .day1 .stop-time-label { color:#b45309; }
-  .day2 .stop-time-label { color:#0369a1; }
-  .day3 .stop-time-label { color:#15803d; }
-  .stop-name { font-size:1rem; font-weight:800; color:var(--text); margin-bottom:6px; }
-  .badge-row { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px; }
-  .tag { font-size:0.72rem; font-weight:700; padding:3px 10px; border-radius:999px; }
-  .tag-dur { background:#fef9c3; color:#854d0e; }
-  .tag-swim { background:#dbeafe; color:#1e40af; }
-  .tag-hike { background:#dcfce7; color:#166534; }
-  .tag-photo { background:#f3e8ff; color:#6b21a8; }
-  .tag-warn { background:#ffedd5; color:#c2410c; }
-  .tag-camp { background:#d1fae5; color:#065f46; }
-  .tag-drive { background:#f1f5f9; color:#475569; }
-  .tag-view { background:#ede9fe; color:#5b21b6; }
-  .tag-lunch { background:#fef3c7; color:#92400e; }
-  .stop-notes { font-size:0.82rem; color:var(--text-muted); line-height:1.65; padding-left:14px; }
-  .stop-notes li { margin:2px 0; }
+  .stats-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:24px;}
+  .stat-card{border-radius:14px;padding:12px 14px;text-align:center;border:2px solid transparent;}
+  .stat-card .s-label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;}
+  .stat-card .s-val{font-size:1.1rem;font-weight:800;}
+  .day1 .stat-card{background:#fff5e6;border-color:#ffd59e;}
+  .day1 .stat-card .s-label{color:#b45309;}
+  .day1 .stat-card .s-val{color:#92400e;}
+  .day2 .stat-card{background:#e0f4ff;border-color:#90d5f5;}
+  .day2 .stat-card .s-label{color:#075985;}
+  .day2 .stat-card .s-val{color:#0c4a6e;}
+  .day3 .stat-card{background:#dcfce7;border-color:#86efac;}
+  .day3 .stat-card .s-label{color:#166534;}
+  .day3 .stat-card .s-val{color:#14532d;}
 
-  .drive-connector { display:flex; align-items:center; gap:10px; margin:0 0 16px 0; padding-left:4px; }
-  .drive-connector .dc-icon { font-size:14px; opacity:0.5; }
-  .drive-connector .dc-label { font-size:0.75rem; font-weight:700; color:#94a3b8; background:#f8fafc; border:1.5px dashed #cbd5e1; border-radius:999px; padding:3px 12px; }
+  .timeline{position:relative;padding-left:28px;}
+  .timeline::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:3px;border-radius:2px;}
+  .day1 .timeline::before{background:linear-gradient(to bottom,#ff6d00,#ffb347);}
+  .day2 .timeline::before{background:linear-gradient(to bottom,#0077b6,#00b4d8);}
+  .day3 .timeline::before{background:linear-gradient(to bottom,#2d6a4f,#52b788);}
 
-  .day-divider { text-align:center; margin:40px 0; position:relative; }
-  .day-divider::before { content:''; position:absolute; left:0; right:0; top:50%; height:2px; background:linear-gradient(to right,transparent,#fcd34d,#fb7185,#60a5fa,transparent); }
-  .day-divider span { position:relative; background:var(--white); padding:0 16px; font-size:1.4rem; }
+  .stop-item{display:flex;gap:16px;margin-bottom:6px;position:relative;}
+  .stop-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;margin-left:-46px;position:relative;z-index:2;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.12);}
+  .stop-card{flex:1;background:#fff;border-radius:16px;padding:16px 18px;margin-bottom:16px;border:2px solid transparent;box-shadow:0 2px 12px rgba(0,0,0,0.06);transition:transform 0.2s,box-shadow 0.2s;}
+  .stop-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.1);}
+  .day1 .stop-card{border-color:#fde68a;}
+  .day2 .stop-card{border-color:#bae6fd;}
+  .day3 .stop-card{border-color:#bbf7d0;}
 
-  footer { background:linear-gradient(135deg,#0077b6,#7b2d8b); color:#fff; text-align:center; padding:36px 24px; margin-top:48px; }
-  footer .ft-emoji { font-size:2rem; margin-bottom:8px; display:block; }
-  footer h3 { font-family:'Pacifico',cursive; font-size:1.4rem; margin-bottom:6px; }
-  footer p { font-size:0.85rem; opacity:0.8; }
+  /* Service stop card — Tim Hortons / Gas */
+  .service-card{flex:1;background:#fffbf0;border-radius:16px;padding:12px 16px;margin-bottom:16px;border:2px solid #fde68a;box-shadow:0 2px 8px rgba(0,0,0,0.05);}
+  .day3 .service-card{background:#f0fdf4;border-color:#bbf7d0;}
+  .service-row{display:flex;gap:12px;flex-wrap:wrap;}
+  .service-item{display:flex;align-items:flex-start;gap:8px;background:#fff;border-radius:10px;padding:8px 12px;border:1.5px solid #e2e8f0;flex:1;min-width:200px;}
+  .service-item .si-icon{font-size:18px;flex-shrink:0;margin-top:1px;}
+  .service-item .si-info{}
+  .service-item .si-name{font-size:0.82rem;font-weight:800;color:var(--text);}
+  .service-item .si-addr{font-size:0.72rem;color:var(--text-muted);margin-top:1px;}
+  .service-item .si-note{font-size:0.7rem;color:#0369a1;font-weight:700;margin-top:2px;}
 
-  @media (max-width:480px) {
-    .stats-row { grid-template-columns:repeat(2,1fr); }
-    .hero h1 { font-size:1.9rem; }
-    .day-num { font-size:1.8rem; min-width:44px; }
+  .stop-time-label{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px;}
+  .day1 .stop-time-label{color:#b45309;}
+  .day2 .stop-time-label{color:#0369a1;}
+  .day3 .stop-time-label{color:#15803d;}
+  .stop-name{font-size:1rem;font-weight:800;color:var(--text);margin-bottom:6px;}
+  .service-label{font-size:0.78rem;font-weight:800;color:#92400e;margin-bottom:8px;}
+  .day3 .service-label{color:#166534;}
+
+  .badge-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
+  .tag{font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:999px;}
+  .tag-dur{background:#fef9c3;color:#854d0e;}
+  .tag-swim{background:#dbeafe;color:#1e40af;}
+  .tag-hike{background:#dcfce7;color:#166534;}
+  .tag-warn{background:#ffedd5;color:#c2410c;}
+  .tag-camp{background:#d1fae5;color:#065f46;}
+  .tag-drive{background:#f1f5f9;color:#475569;}
+  .tag-view{background:#ede9fe;color:#5b21b6;}
+  .tag-lunch{background:#fef3c7;color:#92400e;}
+  .tag-kids{background:#fce7f3;color:#9d174d;}
+  .tag-all{background:#ecfdf5;color:#065f46;}
+  .tag-gas{background:#fef3c7;color:#92400e;}
+  .tag-tims{background:#fee2e2;color:#991b1b;}
+
+  .stop-notes{font-size:0.82rem;color:var(--text-muted);line-height:1.65;padding-left:14px;}
+  .stop-notes li{margin:2px 0;}
+
+  .split-card{flex:1;background:#fff;border-radius:16px;margin-bottom:16px;border:2px solid #bae6fd;box-shadow:0 2px 12px rgba(0,0,0,0.06);overflow:hidden;}
+  .split-header{background:#e0f4ff;padding:8px 18px;font-size:0.75rem;font-weight:800;color:#0369a1;text-transform:uppercase;letter-spacing:0.06em;}
+  .split-body{display:grid;grid-template-columns:1fr 1fr;}
+  .split-col{padding:14px 16px;border-right:1.5px solid #e0f4ff;}
+  .split-col:last-child{border-right:none;}
+  .split-col-title{font-size:0.85rem;font-weight:800;color:var(--text);margin-bottom:4px;}
+  .split-col-sub{font-size:0.72rem;color:#0369a1;font-weight:700;margin-bottom:6px;}
+  .split-col ul{font-size:0.78rem;color:var(--text-muted);line-height:1.6;padding-left:12px;}
+  .split-col ul li{margin:2px 0;}
+  @media(max-width:520px){.split-body{grid-template-columns:1fr;}.split-col{border-right:none;border-bottom:1.5px solid #e0f4ff;}.split-col:last-child{border-bottom:none;}}
+
+  .drive-connector{display:flex;align-items:center;gap:10px;margin:0 0 16px 0;padding-left:4px;}
+  .drive-connector .dc-icon{font-size:14px;opacity:0.5;}
+  .drive-connector .dc-label{font-size:0.75rem;font-weight:700;color:#94a3b8;background:#f8fafc;border:1.5px dashed #cbd5e1;border-radius:999px;padding:3px 12px;}
+
+  .day-divider{text-align:center;margin:40px 0;position:relative;}
+  .day-divider::before{content:'';position:absolute;left:0;right:0;top:50%;height:2px;background:linear-gradient(to right,transparent,#fcd34d,#fb7185,#60a5fa,transparent);}
+  .day-divider span{position:relative;background:var(--white);padding:0 16px;font-size:1.4rem;}
+
+  footer{background:linear-gradient(135deg,#0077b6,#7b2d8b);color:#fff;text-align:center;padding:36px 24px;margin-top:48px;}
+  footer .ft-emoji{font-size:2rem;margin-bottom:8px;display:block;}
+  footer h3{font-family:'Pacifico',cursive;font-size:1.4rem;margin-bottom:6px;}
+  footer p{font-size:0.85rem;opacity:0.8;}
+
+  @media(max-width:480px){
+    .stats-row{grid-template-columns:repeat(2,1fr);}
+    .hero h1{font-size:1.9rem;}
+    .day-num{font-size:1.8rem;min-width:44px;}
+    .service-item{min-width:140px;}
   }
 </style>
 </head>
@@ -99,77 +136,202 @@
 
 <div class="hero">
   <span class="hero-deco">🌺</span>
-  <h1>Tobermory Road Trip</h1>
-  <div class="hero-sub">Windsor → Bruce Peninsula → Back Home</div>
+  <h1>Tobermory Group Trip</h1>
+  <div class="hero-sub">~10 Families · Windsor → Bruce Peninsula → Back Home</div>
   <div class="hero-badges">
-    <span class="hero-badge">📅 May 22–24, 2025</span>
+    <span class="hero-badge">📅 May 22–24, 2026</span>
     <span class="hero-badge">🚗 3 Days</span>
     <span class="hero-badge">📍 Windsor, ON</span>
-    <span class="hero-badge">⛺ Camping</span>
+    <span class="hero-badge">🏡 Cabins & Pods</span>
+    <span class="hero-badge">👨‍👩‍👧‍👦 ~10 Families</span>
   </div>
 </div>
 
 <div class="container">
 
-  <!-- DAY 1 -->
+  <!-- ===== DAY 1 ===== -->
   <div class="day-section day1">
     <div class="day-header day1-header" data-emoji="🚗">
       <div class="day-num">01</div>
       <div class="day-info">
         <h2>Windsor → Tobermory</h2>
-        <p>Thursday, May 22 · 3:30 PM departure · Pure drive day · Arrive camp ~9:00 PM</p>
+        <p>Thursday, May 22 · 3:30 PM departure · Lake Huron coastal route · Arrive ~9:00 PM</p>
       </div>
     </div>
+
+    <div class="route-banner">
+      🗺️ Route: Windsor → <span>Hwy 401 E →</span> Hwy 21 N <span>(Lake Huron coast)</span> → Goderich → Southampton → Bruce Rd 13 → Hwy 6 N → Tobermory
+      <br>⏱ ~5.5 hrs driving · 📏 ~471 km · ⛽ Gas up in Windsor + Goderich + Southampton
+    </div>
+
     <div class="stats-row">
       <div class="stat-card"><div class="s-label">Depart</div><div class="s-val">3:30 PM</div></div>
       <div class="stat-card"><div class="s-label">Driving</div><div class="s-val">~5.5 hrs</div></div>
-      <div class="stat-card"><div class="s-label">Stops</div><div class="s-val">Drive only</div></div>
-      <div class="stat-card"><div class="s-label">Camp In</div><div class="s-val">~9:00 PM</div></div>
+      <div class="stat-card"><div class="s-label">Breaks</div><div class="s-val">3</div></div>
+      <div class="stat-card"><div class="s-label">Arrive</div><div class="s-val">~9:00 PM</div></div>
     </div>
+
     <div class="timeline">
 
       <div class="stop-item">
         <div class="stop-dot" style="background:#fff7ed;">🏙️</div>
         <div class="stop-card">
           <div class="stop-time-label">3:30 PM · Depart</div>
-          <div class="stop-name">Windsor — Hit the Road</div>
-          <div class="badge-row"><span class="tag tag-drive">Start here</span></div>
+          <div class="stop-name">Windsor — Convoy Rolls Out</div>
+          <div class="badge-row"><span class="tag tag-drive">All cars depart together</span><span class="tag tag-gas">Fill up before leaving Windsor</span></div>
           <ul class="stop-notes">
-            <li>Fill up gas before leaving — stations thin out past Owen Sound</li>
-            <li>Route: Windsor → Hwy 401 E → Hwy 10 N → Owen Sound → Hwy 6 N</li>
-            <li>Pack snacks, water, and a road trip playlist 🎵</li>
+            <li>Fill ALL cars up before leaving Windsor — next cheap gas is in Sarnia or Goderich</li>
+            <li>Route: Windsor → Hwy 401 E → exit at Lambton County Rd 79 → Hwy 21 N</li>
+            <li>Set up group WhatsApp for convoy coordination and break timing</li>
+            <li>Pack snacks, wipes, kids' activities, and a playlist 🎵</li>
           </ul>
         </div>
       </div>
 
-      <div class="drive-connector"><span class="dc-icon">☕</span><span class="dc-label">Coffee break ~5:00 PM · near Orangeville / Shelburne area</span></div>
+      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">~1 hr 20 min on Hwy 401 E → connect to Hwy 21 N near Sarnia</span></div>
+
+      <!-- BREAK 1: SARNIA -->
+      <div class="stop-item">
+        <div class="stop-dot" style="background:#fef9c3;">☕</div>
+        <div class="service-card">
+          <div class="service-label">☕ Break 1 · ~4:50 PM · Sarnia · 20–25 min</div>
+          <div class="service-row">
+            <div class="service-item">
+              <span class="si-icon">☕</span>
+              <div class="si-info">
+                <div class="si-name">Tim Hortons</div>
+                <div class="si-addr">1258 London Rd, Sarnia, ON</div>
+                <div class="si-note">Right on Hwy 21 corridor · drive-thru available</div>
+              </div>
+            </div>
+            <div class="service-item">
+              <span class="si-icon">⛽</span>
+              <div class="si-info">
+                <div class="si-name">Gas stations — Sarnia</div>
+                <div class="si-addr">Multiple on London Rd / Murphy Rd</div>
+                <div class="si-note">Top up here before heading up Hwy 21 N</div>
+              </div>
+            </div>
+          </div>
+          <ul class="stop-notes" style="margin-top:8px;">
+            <li>Quick washroom · coffee order · kids stretch in the parking lot</li>
+            <li>Last big city before the rural Hwy 21 stretch north</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">~1 hr 20 min up Hwy 21 N along Lake Huron coast → Goderich</span></div>
+
+      <!-- BREAK 2: GODERICH -->
+      <div class="stop-item">
+        <div class="stop-dot" style="background:#fce7f3;">🛝</div>
+        <div class="stop-card">
+          <div class="stop-time-label">~6:30 PM · Break 2 — Goderich · 30–35 min</div>
+          <div class="stop-name">Goderich — Playground Break + Dinner</div>
+          <div class="badge-row">
+            <span class="tag tag-kids">Kids run free</span>
+            <span class="tag tag-lunch">Dinner stop</span>
+            <span class="tag tag-gas">Gas up here</span>
+          </div>
+          <ul class="stop-notes">
+            <li>Goderich Courthouse Square has open green space — kids can run and stretch</li>
+            <li>Grab fast food or drive-thru dinner here — this is the last major town before Tobermory</li>
+            <li>Stock up on any groceries / supplies for the cabins at Goderich Walmart</li>
+          </ul>
+        </div>
+      </div>
 
       <div class="stop-item">
         <div class="stop-dot" style="background:#fef9c3;">☕</div>
+        <div class="service-card">
+          <div class="service-label">☕⛽ Tim Hortons + Gas · Goderich</div>
+          <div class="service-row">
+            <div class="service-item">
+              <span class="si-icon">☕</span>
+              <div class="si-info">
+                <div class="si-name">Tim Hortons</div>
+                <div class="si-addr">35400 Huron Rd (Walmart), Goderich, ON</div>
+                <div class="si-note">Easiest stop — right on Hwy 21 before town</div>
+              </div>
+            </div>
+            <div class="service-item">
+              <span class="si-icon">☕</span>
+              <div class="si-info">
+                <div class="si-name">Tim Hortons (alt)</div>
+                <div class="si-addr">80 Victoria St South, Goderich, ON</div>
+                <div class="si-note">In-town option if stopping at Courthouse Square</div>
+              </div>
+            </div>
+            <div class="service-item">
+              <span class="si-icon">⛽</span>
+              <div class="si-info">
+                <div class="si-name">Gas — Multiple stations</div>
+                <div class="si-addr">Hwy 21 / Walmart area, Goderich</div>
+                <div class="si-note">Fill up here — fewer options north of Goderich</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">~1 hr up Hwy 21 N → Southampton</span></div>
+
+      <!-- BREAK 3: SOUTHAMPTON -->
+      <div class="stop-item">
+        <div class="stop-dot" style="background:#fce7f3;">🛝</div>
         <div class="stop-card">
-          <div class="stop-time-label">~5:00 PM · Break</div>
-          <div class="stop-name">Coffee & Stretch Stop</div>
-          <div class="badge-row"><span class="tag tag-drive">15–20 min</span></div>
+          <div class="stop-time-label">~8:00 PM · Break 3 — Southampton · 15–20 min</div>
+          <div class="stop-name">Southampton — Quick Stretch</div>
+          <div class="badge-row">
+            <span class="tag tag-kids">Quick stretch</span>
+            <span class="tag tag-gas">Last gas before Tobermory</span>
+          </div>
           <ul class="stop-notes">
-            <li>Quick washroom, coffee, stretch · back on the road north</li>
-            <li>Optional second short break near Owen Sound if needed</li>
+            <li>Southampton has a waterfront park — quick stretch for restless toddlers</li>
+            <li><strong>Top up gas here</strong> — this is the last reliable gas station before Tobermory</li>
+            <li>Almost there — Tobermory is just ~1 hr north on Bruce Rd 13 → Hwy 6 N</li>
           </ul>
         </div>
       </div>
 
-      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">~2 hrs remaining · Owen Sound → Hwy 6 N → Tobermory</span></div>
+      <div class="stop-item">
+        <div class="stop-dot" style="background:#fef9c3;">☕</div>
+        <div class="service-card">
+          <div class="service-label">☕⛽ Tim Hortons + Gas · Southampton</div>
+          <div class="service-row">
+            <div class="service-item">
+              <span class="si-icon">☕</span>
+              <div class="si-info">
+                <div class="si-name">Tim Hortons</div>
+                <div class="si-addr">142 Emerald Dr, Southampton, ON</div>
+                <div class="si-note">Last Tim Hortons before Tobermory</div>
+              </div>
+            </div>
+            <div class="service-item">
+              <span class="si-icon">⛽</span>
+              <div class="si-info">
+                <div class="si-name">Esso Circle K</div>
+                <div class="si-addr">145 Albert St S, Southampton, ON</div>
+                <div class="si-note">Last major gas station — fill up all cars here</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">~55 min · Bruce Rd 13 → Hwy 6 N → Tobermory</span></div>
 
       <div class="stop-item">
-        <div class="stop-dot" style="background:#d1fae5;">⛺</div>
+        <div class="stop-dot" style="background:#d1fae5;">🏡</div>
         <div class="stop-card">
           <div class="stop-time-label">~9:00 PM · Check In</div>
-          <div class="stop-name">Tobermory Village Campground</div>
+          <div class="stop-name">Tobermory Campground — Cabins & Pods</div>
           <div class="badge-row"><span class="tag tag-camp">End of Day 1</span></div>
           <ul class="stop-notes">
-            <li>Set up camp — bring a headlamp for tent setup in the dark</li>
-            <li>Confirm late check-in procedure with campground before the trip</li>
-            <li>Grab a snack, relax · lights out by 10:30 PM 🌙</li>
-            <li>Day 2 starts at 7:00 AM — get good rest</li>
+            <li>Check in to cabins and pods — no tent setup, straight to beds for the kids 🙌</li>
+            <li>Coordinate group check-in across all 10 families beforehand</li>
+            <li>Quick group bonfire if energy allows · otherwise rest up</li>
+            <li>Day 2 starts at 7:30 AM — get the kids to bed by 10 PM</li>
           </ul>
         </div>
       </div>
@@ -179,55 +341,66 @@
 
   <div class="day-divider"><span>🌺 🌊 🌴</span></div>
 
-  <!-- DAY 2 -->
+  <!-- ===== DAY 2 ===== -->
   <div class="day-section day2">
     <div class="day-header day2-header" data-emoji="🪨">
       <div class="day-num">02</div>
       <div class="day-info">
-        <h2>The Grotto · Singing Sands · Halfway Log Dump</h2>
-        <p>Friday, May 23 · 7:00 AM start · Back at camp by 4:30 PM · Bonfire night 🔥</p>
+        <h2>Grotto · Cyprus Lake · Singing Sands · Halfway Log Dump</h2>
+        <p>Friday, May 23 · 7:30 AM start · Back at camp by 5:00 PM · Big bonfire night 🔥</p>
       </div>
     </div>
     <div class="stats-row">
       <div class="stat-card"><div class="s-label">Wake Up</div><div class="s-val">7:00 AM</div></div>
       <div class="stat-card"><div class="s-label">Stops</div><div class="s-val">3</div></div>
       <div class="stat-card"><div class="s-label">Driving</div><div class="s-val">~1.5 hrs</div></div>
-      <div class="stat-card"><div class="s-label">Back</div><div class="s-val">4:30 PM</div></div>
+      <div class="stat-card"><div class="s-label">Back</div><div class="s-val">5:00 PM</div></div>
     </div>
     <div class="timeline">
 
       <div class="stop-item">
-        <div class="stop-dot" style="background:#d1fae5;">⛺</div>
+        <div class="stop-dot" style="background:#d1fae5;">🏡</div>
         <div class="stop-card">
-          <div class="stop-time-label">7:00 AM · Camp</div>
-          <div class="stop-name">Tobermory Village Campground</div>
+          <div class="stop-time-label">7:00 AM · Cabins</div>
+          <div class="stop-name">Morning at Camp</div>
           <div class="badge-row"><span class="tag tag-drive">Depart 7:30 AM</span></div>
           <ul class="stop-notes">
-            <li>Breakfast at camp · sunscreen · grip shoes essential for the Grotto</li>
-            <li>Leave early — Grotto parking fills up fast, especially on weekends</li>
+            <li>Breakfast at the cabins · pack day bags · sunscreen for everyone</li>
+            <li>Grip shoes for the Grotto hikers · swim gear for Cyprus Lake & Singing Sands</li>
+            <li>Leave by 7:30 AM — Grotto parking fills fast on weekends</li>
           </ul>
         </div>
       </div>
 
-      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">~15 min to Cyprus Lake trailhead</span></div>
+      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">~15 min to Cyprus Lake / Grotto trailhead</span></div>
 
       <div class="stop-item">
         <div class="stop-dot" style="background:#dbeafe;">🪨</div>
-        <div class="stop-card">
-          <div class="stop-time-label">7:45 AM – 10:30 AM</div>
-          <div class="stop-name">The Grotto — Bruce Peninsula National Park</div>
-          <div class="badge-row">
-            <span class="tag tag-dur">2 hrs 45 min</span>
-            <span class="tag tag-hike">Hike in/out</span>
-            <span class="tag tag-swim">Swim</span>
-            <span class="tag tag-warn">⚠️ Parking reservation req.</span>
+        <div class="split-card">
+          <div class="split-header">7:45 AM – 10:30 AM · Cyprus Lake Area · 2 hrs 45 min · ⚠️ Parking reservation required via Parks Canada</div>
+          <div class="split-body">
+            <div class="split-col">
+              <div class="split-col-title">🪨 The Grotto Hike</div>
+              <div class="split-col-sub">Tweens + older kids with parents</div>
+              <ul>
+                <li>~20 min hike each way on rocky terrain</li>
+                <li>Grip shoes essential — no strollers</li>
+                <li>Swim inside the crystal-clear turquoise cave</li>
+                <li>Indian Head Cove shoreline walk back</li>
+                <li>Not suitable for toddlers or young kids</li>
+              </ul>
+            </div>
+            <div class="split-col">
+              <div class="split-col-title">🏖️ Cyprus Lake Beach</div>
+              <div class="split-col-sub">Toddlers + young kids + parents</div>
+              <ul>
+                <li>Flat sandy beach right at the trailhead</li>
+                <li>Calm shallow water — safe for toddlers</li>
+                <li>Open grassy area for running around</li>
+                <li>Meet back at parking lot when Grotto group returns</li>
+              </ul>
+            </div>
           </div>
-          <ul class="stop-notes">
-            <li>~20 min hike each way on rocky terrain — grip shoes are essential</li>
-            <li>Swim inside the grotto — crystal clear turquoise cave water</li>
-            <li>Indian Head Cove shoreline walk on the way back</li>
-            <li>Book Cyprus Lake parking via Parks Canada before the trip — fills weeks in advance!</li>
-          </ul>
         </div>
       </div>
 
@@ -240,13 +413,14 @@
           <div class="stop-name">Singing Sands Beach</div>
           <div class="badge-row">
             <span class="tag tag-dur">2 hrs 30 min</span>
+            <span class="tag tag-all">✅ All ages</span>
             <span class="tag tag-swim">Best swim beach</span>
-            <span class="tag tag-lunch">Picnic lunch</span>
+            <span class="tag tag-lunch">Group picnic lunch</span>
           </div>
           <ul class="stop-notes">
-            <li>Shallow, warm water — rare for Georgian Bay, perfect for a long relaxed swim</li>
-            <li>Long picnic lunch — no rushing today</li>
-            <li>Boardwalk wetland trail nearby (20 min loop) after lunch</li>
+            <li>Shallow warm water — safe for toddlers, perfect for everyone</li>
+            <li>Huge open beach — plenty of space for 10 families to spread out</li>
+            <li>Group picnic lunch on the sand · boardwalk wetland trail after lunch</li>
           </ul>
         </div>
       </div>
@@ -261,11 +435,12 @@
           <div class="badge-row">
             <span class="tag tag-dur">1 hr</span>
             <span class="tag tag-hike">Bruce Trail</span>
-            <span class="tag tag-photo">Rugged coastline</span>
+            <span class="tag tag-kids">Tweens + older kids</span>
           </div>
           <ul class="stop-notes">
-            <li>Dramatic rocky Bruce Trail shoreline — peaceful and usually crowd-free</li>
-            <li>Short walk to the water's edge · stunning Georgian Bay photo spot</li>
+            <li>Dramatic rocky Bruce Trail shoreline · short walk to water's edge</li>
+            <li>Families with toddlers can hang at the parking area — open space to run</li>
+            <li>Quiet and usually crowd-free · great photos</li>
           </ul>
         </div>
       </div>
@@ -276,12 +451,13 @@
         <div class="stop-dot" style="background:#d1fae5;">⛺</div>
         <div class="stop-card">
           <div class="stop-time-label">4:30 PM – Night 🔥</div>
-          <div class="stop-name">Back at Camp — Full Bonfire Evening</div>
-          <div class="badge-row"><span class="tag tag-camp">End of Day 2</span></div>
+          <div class="stop-name">Back at Camp — Big Group Bonfire Night</div>
+          <div class="badge-row"><span class="tag tag-camp">End of Day 2</span><span class="tag tag-all">✅ All families</span></div>
           <ul class="stop-notes">
-            <li>Cook dinner at camp · long bonfire night under the stars</li>
-            <li>Tobermory has very low light pollution — incredible stargazing 🌌</li>
-            <li>No early start tomorrow — most relaxed evening of the trip</li>
+            <li>Group BBQ / potluck dinner — everyone contributes something</li>
+            <li>Big communal bonfire · kids roast marshmallows 🍡</li>
+            <li>Incredible stargazing — Tobermory has very low light pollution 🌌</li>
+            <li>No early start tomorrow — let kids stay up a bit tonight</li>
           </ul>
         </div>
       </div>
@@ -291,31 +467,39 @@
 
   <div class="day-divider"><span>🌺 🚗 🌴</span></div>
 
-  <!-- DAY 3 -->
+  <!-- ===== DAY 3 ===== -->
   <div class="day-section day3">
     <div class="day-header day3-header" data-emoji="🏡">
       <div class="day-num">03</div>
       <div class="day-info">
         <h2>Fathom Five · Lion's Head · Home</h2>
-        <p>Saturday, May 24 · Relaxed 8:00 AM start · Home by ~9:00 PM</p>
+        <p>Saturday, May 24 · Relaxed 8:00 AM start · Scenic inland return route · Home ~9:00 PM</p>
       </div>
     </div>
+
+    <div class="route-banner">
+      🗺️ Return Route: Lion's Head → <span>Hwy 6 S →</span> Mildmay → <span>County Rd 28 → Perth/Huron back roads →</span> Hwy 23 S → London → <span>Hwy 401 W →</span> Windsor
+      <br>⏱ ~5 hrs driving · 📏 ~418 km · 🌿 Scenic Grey/Bruce farmland — completely different from Day 1 · No GTA · No tolls
+    </div>
+
     <div class="stats-row">
       <div class="stat-card"><div class="s-label">Wake Up</div><div class="s-val">8:00 AM</div></div>
-      <div class="stat-card"><div class="s-label">Stops</div><div class="s-val">2</div></div>
-      <div class="stat-card"><div class="s-label">Driving</div><div class="s-val">~6 hrs</div></div>
+      <div class="stat-card"><div class="s-label">Stops</div><div class="s-val">2 + breaks</div></div>
+      <div class="stat-card"><div class="s-label">Driving</div><div class="s-val">~5 hrs</div></div>
       <div class="stat-card"><div class="s-label">Home</div><div class="s-val">~9 PM</div></div>
     </div>
+
     <div class="timeline">
 
       <div class="stop-item">
-        <div class="stop-dot" style="background:#d1fae5;">⛺</div>
+        <div class="stop-dot" style="background:#d1fae5;">🏡</div>
         <div class="stop-card">
           <div class="stop-time-label">8:00 AM · Check Out</div>
-          <div class="stop-name">Tobermory Village Campground</div>
+          <div class="stop-name">Tobermory Campground — Pack Up</div>
           <div class="badge-row"><span class="tag tag-drive">Relaxed start</span></div>
           <ul class="stop-notes">
-            <li>Leisurely breakfast · pack up · check out by 9:00 AM</li>
+            <li>Leisurely breakfast · pack up cabins and pods · check out by 9:00 AM</li>
+            <li>Coordinate checkout across all 10 families beforehand to avoid delays</li>
           </ul>
         </div>
       </div>
@@ -329,18 +513,19 @@
           <div class="stop-name">Fathom Five National Marine Park</div>
           <div class="badge-row">
             <span class="tag tag-dur">1 hr 45 min</span>
-            <span class="tag tag-view">Glass-bottom boat</span>
-            <span class="tag tag-warn">⚠️ Pre-book boat tour</span>
+            <span class="tag tag-all">✅ All ages</span>
+            <span class="tag tag-kids">Kids love this</span>
+            <span class="tag tag-warn">⚠️ Pre-book group boat tours</span>
           </div>
           <ul class="stop-notes">
-            <li>Glass-bottom boat tour over the shipwrecks — book ahead if possible</li>
-            <li>Lookout and dock area walk if no tour available</li>
-            <li>One of Ontario's most unique natural attractions</li>
+            <li>Glass-bottom boat tour — kids love seeing the shipwrecks below the surface</li>
+            <li>Pre-book for the whole group — tours fill fast in peak season</li>
+            <li>Dock area walk for families who skip the tour</li>
           </ul>
         </div>
       </div>
 
-      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">~1 hr 15 min south to Lion's Head</span></div>
+      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">~1 hr 15 min south on Hwy 6 S to Lion's Head</span></div>
 
       <div class="stop-item">
         <div class="stop-dot" style="background:#ede9fe;">👁️</div>
@@ -349,43 +534,100 @@
           <div class="stop-name">Lion's Head Lookout + Lunch</div>
           <div class="badge-row">
             <span class="tag tag-dur">1 hr 45 min</span>
-            <span class="tag tag-hike">Steep hike</span>
+            <span class="tag tag-hike">Tweens + adults</span>
             <span class="tag tag-lunch">Lunch in village</span>
             <span class="tag tag-view">Best view of the trip</span>
           </div>
           <ul class="stop-notes">
-            <li>Steep but short hike to the top (~15–20 min each way)</li>
+            <li>Steep 15–20 min hike to the top — tweens and fit adults · not for toddlers</li>
+            <li>Families with toddlers: explore Lion's Head village waterfront while others hike</li>
             <li>360° cliffside panorama over Georgian Bay — most spectacular view of the trip</li>
-            <li>Grab lunch in Lion's Head village after the hike · last proper meal stop</li>
-            <li>Back on the road home by 2:00 PM</li>
+            <li>Group lunch in Lion's Head village · last proper meal stop · on road by 2:00 PM</li>
           </ul>
         </div>
       </div>
 
-      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">~5 hrs · Lion's Head → Owen Sound → London → Windsor</span></div>
+      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">~1 hr 30 min · Hwy 6 S → Grey Bruce Line → Bruce Rd 10 → Mildmay</span></div>
 
+      <!-- BREAK 1 RETURN: MILDMAY -->
       <div class="stop-item">
-        <div class="stop-dot" style="background:#fef9c3;">☕</div>
+        <div class="stop-dot" style="background:#fce7f3;">🛝</div>
         <div class="stop-card">
-          <div class="stop-time-label">~5:00 PM · Break</div>
-          <div class="stop-name">Coffee Stop near London</div>
-          <div class="badge-row"><span class="tag tag-drive">15–20 min stretch</span></div>
+          <div class="stop-time-label">~3:30 PM · Break 1 — Mildmay · 20–25 min</div>
+          <div class="stop-name">Mildmay — Stretch & Snack Stop</div>
+          <div class="badge-row"><span class="tag tag-kids">Kids stretch</span><span class="tag tag-drive">Halfway point</span></div>
           <ul class="stop-notes">
-            <li>Quick coffee, washroom, stretch · then final push home to Windsor</li>
+            <li>Small quiet town — open space for kids to run · washroom break for everyone</li>
+            <li>Pick up snacks at a local gas station or convenience store</li>
+            <li>About halfway home from Lion's Head — good morale break for the kids</li>
           </ul>
         </div>
       </div>
 
-      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">~2 hrs to Windsor</span></div>
+      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">~50 min · County Rd 28 → Perth/Huron back roads → Hwy 23 S → London</span></div>
+
+      <!-- BREAK 2 RETURN: LISTOWEL -->
+      <div class="stop-item">
+        <div class="stop-dot" style="background:#d1fae5;">☕</div>
+        <div class="service-card">
+          <div class="service-label">☕ Break 2 · ~4:30 PM · Listowel · 20 min</div>
+          <div class="service-row">
+            <div class="service-item">
+              <span class="si-icon">☕</span>
+              <div class="si-info">
+                <div class="si-name">Tim Hortons</div>
+                <div class="si-addr">836 Wallace Ave N, Listowel, ON</div>
+                <div class="si-note">On the Hwy 23 S corridor · drive-thru available</div>
+              </div>
+            </div>
+            <div class="service-item">
+              <span class="si-icon">☕</span>
+              <div class="si-info">
+                <div class="si-name">Tim Hortons (alt)</div>
+                <div class="si-addr">215 Mitchell Ave S, Listowel, ON</div>
+                <div class="si-note">Second option in same town</div>
+              </div>
+            </div>
+            <div class="service-item">
+              <span class="si-icon">⛽</span>
+              <div class="si-info">
+                <div class="si-name">Gas — Listowel</div>
+                <div class="si-addr">Multiple on Hwy 23 / Wallace Ave</div>
+                <div class="si-note">Top up before London / 401</div>
+              </div>
+            </div>
+          </div>
+          <ul class="stop-notes" style="margin-top:8px;">
+            <li>Coffee refill for the adults · Timbits for the kids · last proper break before Windsor</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">~30 min · Hwy 23 S → London → take Hwy 401 W exit (Highbury Ave N)</span></div>
 
       <div class="stop-item">
-        <div class="stop-dot" style="background:#fce7f3;">🏡</div>
+        <div class="stop-dot" style="background:#fef9c3;">🛝</div>
+        <div class="stop-card">
+          <div class="stop-time-label">~5:30 PM · Optional · London area</div>
+          <div class="stop-name">London — Quick Playground Stop (optional)</div>
+          <div class="badge-row"><span class="tag tag-kids">If needed</span><span class="tag tag-drive">10–15 min only</span></div>
+          <ul class="stop-notes">
+            <li>Only if toddlers are restless — find a park near Highbury Ave before the 401</li>
+            <li>Then merge onto Hwy 401 W for the straight shot home</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">~1 hr 36 min · Hwy 401 W → exit 13 Dougall Pkwy → Windsor</span></div>
+
+      <div class="stop-item">
+        <div class="stop-dot" style="background:#fce7f3;">🏠</div>
         <div class="stop-card">
           <div class="stop-time-label">~8:30 – 9:00 PM · Arrive</div>
-          <div class="stop-name">Windsor — Home!</div>
+          <div class="stop-name">Windsor — Everyone Home!</div>
           <div class="badge-row"><span class="tag tag-camp">End of Trip 🎉</span></div>
           <ul class="stop-notes">
-            <li>Dinner or rest on arrival — you've earned it!</li>
+            <li>Tired kids, happy families — the best kind of ending 🙌</li>
           </ul>
         </div>
       </div>
@@ -397,8 +639,8 @@
 
 <footer>
   <span class="ft-emoji">🌺</span>
-  <h3>Have an amazing trip, Mani!</h3>
-  <p>Windsor → Bruce Peninsula · May 22–24, 2025 · Made with aloha 🤙</p>
+  <h3>Have an amazing trip everyone!</h3>
+  <p>Windsor → Bruce Peninsula · May 22–24, 2026 · ~10 Families · Made with aloha 🤙</p>
 </footer>
 
 </body>
