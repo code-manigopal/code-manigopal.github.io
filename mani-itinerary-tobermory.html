@@ -124,6 +124,14 @@
   .stop-notes{font-size:0.8rem;color:var(--text-muted);line-height:1.65;padding-left:14px;}
   .stop-notes li{margin:2px 0;}
 
+  /* MAPS BUTTON */
+  .maps-btn-wrap{margin-bottom:20px;}
+  .maps-btn{display:inline-flex;align-items:center;gap:8px;background:#fff;border:2px solid #c8eef3;border-radius:12px;padding:10px 18px;font-size:0.82rem;font-weight:700;color:var(--teal-deep);text-decoration:none;box-shadow:0 2px 10px rgba(10,126,140,0.1);transition:all 0.2s;}
+  .maps-btn:hover{background:#e6f7fa;border-color:var(--teal);box-shadow:0 4px 16px rgba(10,126,140,0.18);transform:translateY(-1px);}
+  .maps-btn svg{flex-shrink:0;}
+  .day3 .maps-btn{border-color:#bddfc8;color:#1a3d28;}
+  .day3 .maps-btn:hover{background:#e8f5ec;border-color:#2d5a3d;}
+
   /* SPLIT CARD */
   .split-card{flex:1;background:#fff;border-radius:16px;margin-bottom:14px;border:2px solid #c8eef3;box-shadow:0 2px 12px rgba(10,126,140,0.08);overflow:hidden;}
   .split-header{background:#e0f5fa;padding:8px 16px;font-size:0.72rem;font-weight:800;color:var(--teal-deep);text-transform:uppercase;letter-spacing:0.06em;}
@@ -234,6 +242,13 @@
     <div class="route-banner">
       🗺️ Windsor Crossing → <span>Hwy 401 E → Thamesville ☕ → Hwy 21 N (Lake Huron coast) →</span> Goderich ☕⛽ → Sauble Falls → Bruce's Caves → Corran Ruins → Singing Sands → Driftwood Cove → Lands End Park → Big Tub Lighthouse → Tobermory
       <br>⏱ ~6 hrs 53 min driving · 📏 ~511 km · No GTA · No tolls · 🟢 Arrives 8:18 PM
+    </div>
+
+    <div class="maps-btn-wrap">
+      <a href="https://www.google.com/maps/dir/1555%20Talbot%20Rd%2C%20LaSalle%2C%20ON%20N9H%202N2/32%20Longwoods%20Rd%2C%20Thamesville%2C%20ON%20N0P%202K0/35400%20Huron%20Rd%2C%20Goderich%2C%20ON%20N7A%203X8/1400%20Sauble%20Falls%20Rd%2C%20Wiarton%2C%20ON%20N0H%202T0/Bruce%27s%20Caves%20Conservation%20Area%2C%20Grey%20Rd%201%2C%20Georgian%20Bluffs%2C%20ON/3%208th%20Ave%2C%20Wiarton%2C%20ON%20N0H%202T0/Singing%20Sands%20Beach%2C%20Dorcas%20Bay%20Rd%2C%20Tobermory%2C%20ON/Driftwood%20Cove%2C%20Northern%20Bruce%20Peninsula%2C%20ON%20N0H%202R0/59%20Corey%20Crescent%2C%20Tobermory%2C%20ON/264%20Big%20Tub%20Rd%2C%20Tobermory%2C%20ON%20N0H%202R0/7159%20Hwy%206%2C%20Tobermory%2C%20ON%20N0H%202R0" target="_blank" class="maps-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#0a7e8c"/></svg>
+        Open Day 1 Route in Google Maps · 11 stops
+      </a>
     </div>
 
     <!-- TIMING TABLE -->
@@ -510,6 +525,13 @@
       <div class="stat-card"><div class="s-label">Afternoon</div><div class="s-val">Camp lunch</div></div>
       <div class="stat-card"><div class="s-label">Evening</div><div class="s-val">Fathom Five</div></div>
     </div>
+
+    <div class="maps-btn-wrap">
+      <a href="https://www.google.com/maps/dir/7159%20Hwy%206%2C%20Tobermory%2C%20ON%20N0H%202R0/240%20Little%20Cove%20Rd%2C%20Tobermory%2C%20ON%20N0H%202R0/Bruce%20Peninsula%20National%20Park%20Cyprus%20Lake%2C%20Tobermory%2C%20ON/7159%20Hwy%206%2C%20Tobermory%2C%20ON%20N0H%202R0/Fathom%20Five%20National%20Marine%20Park%2C%20Tobermory%2C%20ON" target="_blank" class="maps-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#0a7e8c"/></svg>
+        Open Day 2 Route in Google Maps · 5 stops
+      </a>
+    </div>
     <div class="timeline">
 
       <div class="stop-item">
@@ -646,6 +668,13 @@
     <div class="route-banner">
       🗺️ Return: Lion's Head → <span>Hwy 6 S → Grey Bruce Line → Bruce Rd 10 →</span> Mildmay → <span>County Rd 28 → Perth/Huron back roads →</span> Grand Bend <span>(Hwy 21 S) →</span> Sarnia → <span>Hwy 402 W →</span> Windsor
       <br>⏱ ~5 hrs driving · 📏 ~430 km · 🌿 Grey/Bruce farmland + Grand Bend · No GTA · No tolls
+    </div>
+
+    <div class="maps-btn-wrap">
+      <a href="https://www.google.com/maps/dir/7159%20Hwy%206%2C%20Tobermory%2C%20ON%20N0H%202R0/Borchardt%20Rd%2C%20Northern%20Bruce%20Peninsula%2C%20ON/Lion%27s%20Head%20Lookout%2C%20Lion%27s%20Head%2C%20ON%20N0H%201W0/836%20Wallace%20Ave%20N%2C%20Listowel%2C%20ON%20N4W%201M4/Grand%20Bend%20Beach%2C%20Grand%20Bend%2C%20ON/Windsor%2C%20ON" target="_blank" class="maps-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#2d5a3d"/></svg>
+        Open Day 3 Route in Google Maps · 6 stops
+      </a>
     </div>
     <div class="stats-row">
       <div class="stat-card"><div class="s-label">Wake Up</div><div class="s-val">8:00 AM</div></div>
