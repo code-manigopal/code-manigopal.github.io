@@ -7,13 +7,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --teal:#0a7e8c;--teal-deep:#064e5a;--teal-light:#1ab8cc;--teal-pale:#d0f0f5;
+    --teal:#0a7e8c;--teal-deep:#064e5a;--teal-light:#1ab8cc;
     --pine:#2d5a3d;--pine-light:#3d7a52;--white:#f4fbfc;--text:#0d2b30;--text-muted:#3a6470;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:'Nunito',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
 
-  /* ===== HERO ===== */
+  /* HERO */
   .hero{position:relative;background:linear-gradient(180deg,#064e5a 0%,#0a7e8c 35%,#1ab8cc 65%,#5dd6e8 85%,#a8ecf5 100%);padding:60px 24px 0;text-align:center;overflow:hidden;min-height:420px;}
   .hero-water{position:absolute;bottom:0;left:0;right:0;height:180px;}
   .wave{position:absolute;width:200%;left:-50%;animation:waveMove 6s ease-in-out infinite;}
@@ -29,9 +29,9 @@
   .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,6vw,4rem);color:#fff;text-shadow:0 3px 20px rgba(0,0,0,0.4);margin-bottom:6px;line-height:1.15;}
   .hero-sub{font-size:1rem;color:rgba(255,255,255,0.88);font-weight:600;margin-bottom:20px;letter-spacing:0.04em;}
   .hero-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
-  .hero-badge{background:rgba(255,255,255,0.18);backdrop-filter:blur(8px);border:1.5px solid rgba(255,255,255,0.4);border-radius:999px;padding:6px 16px;font-size:0.82rem;font-weight:700;color:#fff;letter-spacing:0.02em;}
+  .hero-badge{background:rgba(255,255,255,0.18);backdrop-filter:blur(8px);border:1.5px solid rgba(255,255,255,0.4);border-radius:999px;padding:6px 16px;font-size:0.82rem;font-weight:700;color:#fff;}
 
-  /* ===== LAYOUT ===== */
+  /* LAYOUT */
   .container{max-width:880px;margin:0 auto;padding:0 20px;}
   .day-section{margin:48px 0;}
   .day-header{display:flex;align-items:center;gap:16px;margin-bottom:20px;padding:20px 24px;border-radius:20px;position:relative;overflow:hidden;}
@@ -43,7 +43,7 @@
   .day-info h2{font-size:1.15rem;font-weight:800;color:#fff;text-shadow:1px 2px 0 rgba(0,0,0,0.2);}
   .day-info p{font-size:0.82rem;color:rgba(255,255,255,0.82);font-weight:600;margin-top:2px;}
 
-  /* ===== TIMING TABLE ===== */
+  /* TIMING TABLE */
   .timing-wrap{background:#fff;border-radius:16px;padding:16px;margin-bottom:24px;box-shadow:0 2px 14px rgba(10,126,140,0.08);border:2px solid #c8eef3;}
   .timing-title{font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--teal-deep);margin-bottom:10px;}
   .timing-table{width:100%;border-collapse:collapse;font-size:0.78rem;}
@@ -51,21 +51,22 @@
   .timing-table thead th{padding:7px 10px;text-align:left;font-weight:700;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;color:#fff;}
   .timing-table tbody tr{border-bottom:1px solid #e0f0f5;}
   .timing-table tbody tr:nth-child(even){background:#f5fbfc;}
-  .timing-table tbody tr.tims{background:#fffbf0;}
+  .timing-table tbody tr.tims-row{background:#fffbf0;}
   .timing-table tbody tr.arrive-row{background:#d0f5e8;}
   .timing-table tbody td{padding:7px 10px;color:var(--text-muted);vertical-align:middle;}
-  .timing-table tbody td:first-child{font-weight:700;color:var(--teal-deep);white-space:nowrap;}
+  .timing-table tbody td:first-child{font-weight:700;color:var(--teal-deep);}
   .timing-table .clock{font-weight:800;color:#064e5a;}
   .timing-table .drive-seg{font-size:0.68rem;color:#94a3b8;}
   .timing-table .arrive-row td{font-weight:800;color:#065f46;}
+  .timing-note{font-size:0.72rem;color:var(--teal);margin-top:8px;font-weight:700;}
 
-  /* ===== ROUTE BANNER ===== */
+  /* ROUTE BANNER */
   .route-banner{border-radius:14px;padding:12px 16px;margin-bottom:20px;font-size:0.8rem;font-weight:700;line-height:1.9;border-left:4px solid var(--teal);}
   .route-banner span{opacity:0.65;font-weight:600;}
   .day1 .route-banner{background:#e6f7fa;color:#064e5a;border-color:#0a7e8c;}
   .day3 .route-banner{background:#e8f5ec;color:#1a3d28;border-color:#2d5a3d;}
 
-  /* ===== STATS ===== */
+  /* STATS */
   .stats-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:20px;}
   .stat-card{border-radius:14px;padding:12px 14px;text-align:center;border:2px solid transparent;}
   .stat-card .s-label{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;}
@@ -77,7 +78,7 @@
   .day3 .stat-card .s-label{color:#1a3d28;}
   .day3 .stat-card .s-val{color:#1a3d28;}
 
-  /* ===== TIMELINE ===== */
+  /* TIMELINE */
   .timeline{position:relative;padding-left:28px;}
   .timeline::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:3px;border-radius:2px;}
   .day1 .timeline::before,.day2 .timeline::before{background:linear-gradient(to bottom,#064e5a,#1ab8cc);}
@@ -103,7 +104,7 @@
   .service-label{font-size:0.76rem;font-weight:800;color:var(--teal-deep);margin-bottom:8px;}
   .day3 .service-label{color:#1a3d28;}
 
-  /* ===== TAGS ===== */
+  /* TAGS */
   .badge-row{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:7px;}
   .tag{font-size:0.7rem;font-weight:700;padding:2px 9px;border-radius:999px;}
   .tag-dur{background:#d0f0f5;color:#064e5a;}
@@ -123,7 +124,7 @@
   .stop-notes{font-size:0.8rem;color:var(--text-muted);line-height:1.65;padding-left:14px;}
   .stop-notes li{margin:2px 0;}
 
-  /* ===== SPLIT CARD ===== */
+  /* SPLIT CARD */
   .split-card{flex:1;background:#fff;border-radius:16px;margin-bottom:14px;border:2px solid #c8eef3;box-shadow:0 2px 12px rgba(10,126,140,0.08);overflow:hidden;}
   .split-header{background:#e0f5fa;padding:8px 16px;font-size:0.72rem;font-weight:800;color:var(--teal-deep);text-transform:uppercase;letter-spacing:0.06em;}
   .split-body{display:grid;grid-template-columns:1fr 1fr;}
@@ -135,15 +136,15 @@
   .split-col ul li{margin:2px 0;}
   @media(max-width:520px){.split-body{grid-template-columns:1fr;}.split-col{border-right:none;border-bottom:1.5px solid #d0eff5;}.split-col:last-child{border-bottom:none;}}
 
-  /* ===== DRIVE CONNECTOR ===== */
+  /* DRIVE CONNECTOR */
   .drive-connector{display:flex;align-items:center;gap:10px;margin:0 0 14px;padding-left:2px;}
   .dc-icon{font-size:13px;opacity:0.45;}
   .dc-label{font-size:0.72rem;font-weight:700;color:var(--teal);background:#e6f7fa;border:1.5px dashed #7dcfdb;border-radius:999px;padding:3px 11px;}
 
-  /* ===== DIVIDERS ===== */
+  /* DIVIDERS */
   .day-divider{position:relative;margin:40px 0;height:60px;overflow:hidden;}
 
-  /* ===== FOOTER ===== */
+  /* FOOTER */
   footer{position:relative;overflow:hidden;background:var(--teal-deep);color:#fff;text-align:center;padding:48px 24px 40px;margin-top:48px;}
   .footer-waves{position:absolute;top:0;left:0;right:0;}
   footer h3{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:8px;position:relative;}
@@ -162,7 +163,7 @@
 </head>
 <body>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <div class="hero">
   <div class="hero-content">
     <h1>Mani's Tobermory Trip</h1>
@@ -226,43 +227,44 @@
       <div class="day-num">01</div>
       <div class="day-info">
         <h2>Windsor → Lake Huron Coast → Tobermory</h2>
-        <p>Friday, May 22 · Depart 8:30 AM · 8 stops · Check in 9:30 PM target · Arrive ~7:33 PM ✅</p>
+        <p>Friday, May 22 · Depart 8:30 AM · 9 stops · Arrive 8:18 PM · Check-in by 9:30 PM ✅</p>
       </div>
     </div>
 
     <div class="route-banner">
-      🗺️ Windsor Crossing → <span>Hwy 401 E → Hwy 21 N (Lake Huron coast)</span> → Goderich ☕⛽ → Sauble Falls → Bruce's Caves → Corran Ruins → Singing Sands → Driftwood Cove → Lands End Park → Big Tub Lighthouse → Tobermory
-      <br>⏱ 6 hrs 43 min driving · 📏 511 km · 🌊 Lake Huron all the way up · No GTA · No tolls
+      🗺️ Windsor Crossing → <span>Hwy 401 E → Thamesville ☕ → Hwy 21 N (Lake Huron coast) →</span> Goderich ☕⛽ → Sauble Falls → Bruce's Caves → Corran Ruins → Singing Sands → Driftwood Cove → Lands End Park → Big Tub Lighthouse → Tobermory
+      <br>⏱ ~6 hrs 53 min driving · 📏 ~511 km · No GTA · No tolls · 🟢 Arrives 8:18 PM
     </div>
 
     <!-- TIMING TABLE -->
     <div class="timing-wrap">
-      <div class="timing-title">⏱ Day 1 Timing at a Glance</div>
+      <div class="timing-title">⏱ Day 1 — Full Schedule at a Glance</div>
       <table class="timing-table">
         <thead>
-          <tr><th>Stop</th><th>Drive in</th><th>Time there</th><th>Depart</th></tr>
+          <tr><th>Stop</th><th>Drive in</th><th>Time there</th><th>Arrive</th><th>Depart</th></tr>
         </thead>
         <tbody>
-          <tr><td>🛍️ Windsor Crossing</td><td>—</td><td>—</td><td class="clock">8:30 AM</td></tr>
-          <tr class="tims"><td>☕ Tim Hortons, Goderich</td><td class="drive-seg">~2h50m</td><td>30 min</td><td class="clock">11:50 AM</td></tr>
-          <tr><td>💧 Sauble Falls Provincial Park</td><td class="drive-seg">~1h36m</td><td>45 min</td><td class="clock">2:11 PM</td></tr>
-          <tr><td>🪨 Bruce's Caves Conservation</td><td class="drive-seg">27 min</td><td>35 min</td><td class="clock">3:13 PM</td></tr>
-          <tr><td>🏛️ The Corran Ruins</td><td class="drive-seg">15 min</td><td>20 min</td><td class="clock">3:48 PM</td></tr>
-          <tr><td>🏖️ Singing Sands Beach</td><td class="drive-seg">47 min</td><td>35 min</td><td class="clock">5:10 PM</td></tr>
-          <tr><td>🌊 Driftwood Cove</td><td class="drive-seg">16 min</td><td>45 min</td><td class="clock">6:11 PM</td></tr>
-          <tr><td>🌅 Lands End Park</td><td class="drive-seg">22 min</td><td>20 min</td><td class="clock">6:53 PM</td></tr>
-          <tr><td>🏮 Big Tub Lighthouse</td><td class="drive-seg">8 min</td><td>25 min</td><td class="clock">7:26 PM</td></tr>
-          <tr class="arrive-row"><td>🏡 Tobermory Campground</td><td class="drive-seg">7 min</td><td>—</td><td class="clock">✅ 7:33 PM</td></tr>
+          <tr><td>🛍️ Windsor Crossing, LaSalle</td><td>—</td><td>—</td><td class="clock">—</td><td class="clock">8:30 AM</td></tr>
+          <tr class="tims-row"><td>☕ Tim Hortons, Thamesville</td><td class="drive-seg">1h 06m</td><td>20 min</td><td class="clock">9:36 AM</td><td class="clock">9:56 AM</td></tr>
+          <tr class="tims-row"><td>☕⛽ Tim Hortons + Gas, Goderich</td><td class="drive-seg">1h 48m</td><td>40 min</td><td class="clock">11:44 AM</td><td class="clock">12:24 PM</td></tr>
+          <tr><td>💧 Sauble Falls Provincial Park</td><td class="drive-seg">1h 37m</td><td>50 min</td><td class="clock">2:01 PM</td><td class="clock">2:51 PM</td></tr>
+          <tr><td>🪨 Bruce's Caves Conservation Area</td><td class="drive-seg">27 min</td><td>40 min</td><td class="clock">3:18 PM</td><td class="clock">3:58 PM</td></tr>
+          <tr><td>🏛️ The Corran Ruins, Wiarton</td><td class="drive-seg">15 min</td><td>20 min</td><td class="clock">4:13 PM</td><td class="clock">4:33 PM</td></tr>
+          <tr><td>🏖️ Singing Sands Beach</td><td class="drive-seg">47 min</td><td>30 min</td><td class="clock">5:20 PM</td><td class="clock">5:50 PM</td></tr>
+          <tr><td>🌊 Driftwood Cove</td><td class="drive-seg">16 min</td><td>40 min</td><td class="clock">6:06 PM</td><td class="clock">6:46 PM</td></tr>
+          <tr><td>🌅 Lands End Park</td><td class="drive-seg">22 min</td><td>15 min</td><td class="clock">7:08 PM</td><td class="clock">7:23 PM</td></tr>
+          <tr><td>🏮 Big Tub Lighthouse</td><td class="drive-seg">8 min</td><td>20 min</td><td class="clock">7:31 PM</td><td class="clock">7:51 PM</td></tr>
+          <tr class="arrive-row"><td>🏡 Tobermory Campground</td><td class="drive-seg">7 min</td><td>—</td><td class="clock">✅ 7:58 PM</td><td>—</td></tr>
         </tbody>
       </table>
-      <div style="font-size:0.72rem;color:var(--teal);margin-top:8px;font-weight:700;">🟢 Arrives 7:33 PM — 1h57m buffer before 9:30 PM check-in</div>
+      <div class="timing-note">🟢 Arrives 7:58 PM — 1h32m buffer before 9:30 PM check-in · No rushing at any stop</div>
     </div>
 
     <div class="stats-row">
       <div class="stat-card"><div class="s-label">Depart</div><div class="s-val">8:30 AM</div></div>
-      <div class="stat-card"><div class="s-label">Driving</div><div class="s-val">6h 43m</div></div>
-      <div class="stat-card"><div class="s-label">Stops</div><div class="s-val">8</div></div>
-      <div class="stat-card"><div class="s-label">Arrive</div><div class="s-val">7:33 PM</div></div>
+      <div class="stat-card"><div class="s-label">Driving</div><div class="s-val">~6h 53m</div></div>
+      <div class="stat-card"><div class="s-label">Stops</div><div class="s-val">9</div></div>
+      <div class="stat-card"><div class="s-label">Arrive</div><div class="s-val">7:58 PM</div></div>
     </div>
 
     <div class="timeline">
@@ -276,26 +278,50 @@
           <div class="badge-row"><span class="tag tag-drive">Starting point</span><span class="tag tag-warn">Fill up before leaving Windsor</span></div>
           <ul class="stop-notes">
             <li>1555 Talbot Rd, LaSalle — starting point</li>
-            <li>Fill up the Elantra here — next Tim Hortons is 2h50m away in Goderich</li>
-            <li>Route: Sandwich W Pkwy → ON-3 E → ON-401 E → ON-21 N</li>
+            <li>Fill up the Elantra here before leaving</li>
+            <li>Route: Sandwich W Pkwy → ON-3 E → ON-401 E</li>
           </ul>
         </div>
       </div>
 
-      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">Hwy 401 E → exit Chatham-Kent → Lambton County Rd 79 N → Hwy 21 N → Goderich · ~2h50m</span></div>
+      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">Hwy 401 E → exit 109 Chatham-Kent → Thamesville · ~1h06m (111 km)</span></div>
 
-      <!-- GODERICH TIM HORTONS -->
+      <!-- THAMESVILLE TIM HORTONS -->
       <div class="stop-item">
         <div class="stop-dot" style="background:#ffe8e8;">☕</div>
         <div class="service-card">
-          <div class="service-label">☕⛽ Break · ~11:20 AM · Goderich · 30 min</div>
+          <div class="service-label">☕ Break 1 · 9:36 AM – 9:56 AM · Thamesville · 20 min</div>
+          <div class="service-row">
+            <div class="service-item">
+              <span class="si-icon">☕</span>
+              <div class="si-info">
+                <div class="si-name">Tim Hortons</div>
+                <div class="si-addr">32 Longwoods Rd, Thamesville, ON N0P 2K0</div>
+                <div class="si-note">Right off Hwy 401 exit · first Tim's of the trip</div>
+              </div>
+            </div>
+          </div>
+          <ul class="stop-notes" style="margin-top:8px;">
+            <li>Coffee + Timbits · washroom break · quick stretch after 1h06m of highway driving</li>
+            <li>Then take Longwoods Rd → connect to Lambton County Rd 79 N → Hwy 21 N</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">Longwoods Rd → Lambton County Rd 79 N → Hwy 21 N → Goderich · ~1h48m (146 km)</span></div>
+
+      <!-- GODERICH -->
+      <div class="stop-item">
+        <div class="stop-dot" style="background:#ffe8e8;">☕</div>
+        <div class="service-card">
+          <div class="service-label">☕⛽ Break 2 + Lunch · 11:44 AM – 12:24 PM · Goderich · 40 min</div>
           <div class="service-row">
             <div class="service-item">
               <span class="si-icon">☕</span>
               <div class="si-info">
                 <div class="si-name">Tim Hortons</div>
                 <div class="si-addr">35400 Huron Rd (Walmart), Goderich, ON N7A 3X8</div>
-                <div class="si-note">Right on Hwy 21 · drive-thru available · easiest stop</div>
+                <div class="si-note">Right on Hwy 21 · drive-thru available</div>
               </div>
             </div>
             <div class="service-item">
@@ -308,26 +334,28 @@
             </div>
           </div>
           <ul class="stop-notes" style="margin-top:8px;">
-            <li>Coffee + food break · washroom · stretch after 2h50m of driving</li>
-            <li>Grab lunch here or pack food — next proper town is Wiarton (~1.5 hrs north)</li>
+            <li>Longest break of the drive — coffee, proper lunch, washroom, stretch</li>
+            <li>Grab food here or at the Walmart — next proper town is Wiarton (~1.5 hrs north)</li>
+            <li>Fill up the tank — gas stations become less frequent north of here</li>
           </ul>
         </div>
       </div>
 
-      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">Hwy 21 N → Southampton → Bruce Rd 13 → Sauble Falls Rd · ~1h36m (121 km)</span></div>
+      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">Hwy 21 N → Southampton → Bruce Rd 13 → Sauble Falls Rd · ~1h37m (121 km)</span></div>
 
       <!-- SAUBLE FALLS -->
       <div class="stop-item">
         <div class="stop-dot" style="background:#c8f0f8;">💧</div>
         <div class="stop-card">
-          <div class="stop-time-label">~1:26 PM · Sauble Falls · 45 min</div>
+          <div class="stop-time-label">2:01 PM – 2:51 PM · Sauble Falls · 50 min</div>
           <div class="stop-name">Sauble Falls Provincial Park</div>
-          <div class="badge-row"><span class="tag tag-dur">45 min</span><span class="tag tag-water">Limestone waterfall</span><span class="tag tag-scenic">Sauble River</span></div>
+          <div class="badge-row"><span class="tag tag-dur">50 min</span><span class="tag tag-water">Limestone waterfall</span><span class="tag tag-scenic">Sauble River</span></div>
           <ul class="stop-notes">
             <li>1400 Sauble Falls Rd — cascading limestone waterfall on the Sauble River</li>
             <li>Walking bridge over the top of the falls · short boardwalk along the river</li>
-            <li>Late May: Rainbow Trout and Chinook salmon may be visible jumping upstream 🐟</li>
-            <li>Washroom facilities and picnic tables on site · good leg stretch after the long drive</li>
+            <li>Late May: Rainbow Trout and Chinook salmon may be jumping upstream 🐟</li>
+            <li>Washroom facilities and picnic tables — good to stretch properly here</li>
+            <li>50 min gives you time to walk the full boardwalk and sit by the water</li>
           </ul>
         </div>
       </div>
@@ -338,14 +366,14 @@
       <div class="stop-item">
         <div class="stop-dot" style="background:#ead8f5;">🪨</div>
         <div class="stop-card">
-          <div class="stop-time-label">~2:38 PM · Bruce's Caves · 35 min</div>
+          <div class="stop-time-label">3:18 PM – 3:58 PM · Bruce's Caves · 40 min</div>
           <div class="stop-name">Bruce's Caves Conservation Area</div>
-          <div class="badge-row"><span class="tag tag-dur">35 min</span><span class="tag tag-geo">Ancient limestone caves</span><span class="tag tag-hike">Short trail</span></div>
+          <div class="badge-row"><span class="tag tag-dur">40 min</span><span class="tag tag-geo">Ancient limestone caves</span><span class="tag tag-hike">Short trail</span></div>
           <ul class="stop-notes">
-            <li>QW9H+QF, Grey Rd 1, Georgian Bluffs — unique ancient limestone cave system</li>
-            <li>Short easy trail to a series of interesting cave openings carved by glacial meltwater</li>
-            <li>Dramatic rock faces and overhangs · cool inside the caves even in May</li>
-            <li>Very different feel from the Bruce Peninsula — less crowded, hidden gem</li>
+            <li>QW9H+QF, Grey Rd 1, Georgian Bluffs — unique limestone cave system carved by glacial meltwater</li>
+            <li>Short easy trail to dramatic cave openings and overhangs · cool inside even in May</li>
+            <li>Much less crowded than anything on the Bruce Peninsula — hidden gem</li>
+            <li>40 min gives you time to explore all the cave openings properly</li>
           </ul>
         </div>
       </div>
@@ -356,14 +384,14 @@
       <div class="stop-item">
         <div class="stop-dot" style="background:#fef0cc;">🏛️</div>
         <div class="stop-card">
-          <div class="stop-time-label">~3:28 PM · The Corran Ruins · 20 min</div>
+          <div class="stop-time-label">4:13 PM – 4:33 PM · The Corran Ruins · 20 min</div>
           <div class="stop-name">The Corran Ruins, Wiarton</div>
-          <div class="badge-row"><span class="tag tag-dur">20 min</span><span class="tag tag-hist">Historic ruins</span><span class="tag tag-scenic">Georgian Bay views</span></div>
+          <div class="badge-row"><span class="tag tag-dur">20 min</span><span class="tag tag-hist">19th century estate ruins</span><span class="tag tag-scenic">Georgian Bay backdrop</span></div>
           <ul class="stop-notes">
-            <li>3 8th Ave, Wiarton — ruins of a grand 19th-century Scottish estate on Georgian Bay</li>
-            <li>Stone walls and archways partially reclaimed by nature — beautiful and eerie</li>
-            <li>Quick walk around the ruins · great photos with Georgian Bay in the background</li>
-            <li>Free to visit · very short walk from the roadside</li>
+            <li>3 8th Ave, Wiarton — ruins of a grand Scottish estate on Georgian Bay</li>
+            <li>Stone walls and archways reclaimed by nature — beautiful and atmospheric</li>
+            <li>Free to visit · very short walk from the road · great photos</li>
+            <li>Quick 20 min stop before the final northward push to Tobermory</li>
           </ul>
         </div>
       </div>
@@ -374,13 +402,13 @@
       <div class="stop-item">
         <div class="stop-dot" style="background:#d0f0f5;">🏖️</div>
         <div class="stop-card">
-          <div class="stop-time-label">~4:55 PM · Singing Sands · 35 min</div>
+          <div class="stop-time-label">5:20 PM – 5:50 PM · Singing Sands · 30 min</div>
           <div class="stop-name">Singing Sands Beach</div>
-          <div class="badge-row"><span class="tag tag-dur">35 min</span><span class="tag tag-swim">Shallow warm water</span><span class="tag tag-scenic">Evening Georgian Bay</span></div>
+          <div class="badge-row"><span class="tag tag-dur">30 min</span><span class="tag tag-swim">Shallow warm Georgian Bay</span><span class="tag tag-scenic">Late afternoon light</span></div>
           <ul class="stop-notes">
-            <li>Singing Sands Interpretive Trail, Tobermory — shallow warm Georgian Bay water</li>
-            <li>Quick evening swim · sand between your toes · stunning late afternoon light</li>
-            <li>Boardwalk wetland trail nearby if you want a quick stroll</li>
+            <li>Singing Sands Interpretive Trail, Tobermory — warm shallow Georgian Bay water</li>
+            <li>Quick dip, walk the sand, beautiful late afternoon golden light on the water</li>
+            <li>You'll be back here properly on Day 2 — this is just a preview taste</li>
           </ul>
         </div>
       </div>
@@ -391,15 +419,14 @@
       <div class="stop-item">
         <div class="stop-dot" style="background:#d0eeff;">🌊</div>
         <div class="stop-card">
-          <div class="stop-time-label">~5:46 PM · Driftwood Cove · 45 min</div>
+          <div class="stop-time-label">6:06 PM – 6:46 PM · Driftwood Cove · 40 min</div>
           <div class="stop-name">Driftwood Cove — Bruce Peninsula National Park</div>
-          <div class="badge-row"><span class="tag tag-dur">45 min</span><span class="tag tag-scenic">Secluded cove</span><span class="tag tag-hike">Short Bruce Trail access</span></div>
+          <div class="badge-row"><span class="tag tag-dur">40 min</span><span class="tag tag-scenic">Secluded ancient shoreline</span><span class="tag tag-hike">Bruce Trail access</span></div>
           <ul class="stop-notes">
-            <li>6CR9+65, Northern Bruce Peninsula — access via Hwy 6 N then restricted Bruce Trail road</li>
+            <li>6CR9+65, Northern Bruce Peninsula — access via Hwy 6 N restricted Bruce Trail road</li>
             <li>Driftwood-strewn ancient Georgian Bay limestone shore · globally rare cliff-edge ecosystem</li>
-            <li>Home to some of the oldest trees in eastern North America · 10 species at risk</li>
-            <li>Utterly peaceful and usually deserted at this time of day</li>
-            <li>National Park parking fee applies · bring cash or Parks Canada pass</li>
+            <li>Home to some of the oldest trees in eastern North America · utterly peaceful at dusk</li>
+            <li>National Park parking fee applies · bring Parks Canada pass or cash</li>
           </ul>
         </div>
       </div>
@@ -410,13 +437,12 @@
       <div class="stop-item">
         <div class="stop-dot" style="background:#e8d8f5;">🌅</div>
         <div class="stop-card">
-          <div class="stop-time-label">~6:53 PM · Lands End Park · 20 min</div>
+          <div class="stop-time-label">7:08 PM – 7:23 PM · Lands End Park · 15 min</div>
           <div class="stop-name">Lands End Park, Tobermory</div>
-          <div class="badge-row"><span class="tag tag-dur">20 min</span><span class="tag tag-view">Georgian Bay panorama</span><span class="tag tag-scenic">Cliffside viewpoint</span></div>
+          <div class="badge-row"><span class="tag tag-dur">15 min</span><span class="tag tag-view">Georgian Bay cliffside panorama</span></div>
           <ul class="stop-notes">
-            <li>59 Corey Crescent, Hay Bay Rd — dramatic Georgian Bay cliffside lookout</li>
-            <li>One of the best panoramic views near Tobermory · short walk from parking</li>
-            <li>Golden hour light here is spectacular · perfect photo stop before camp</li>
+            <li>59 Corey Crescent, Hay Bay Rd — dramatic cliffside viewpoint near Tobermory</li>
+            <li>Quick stop for evening panoramic photos · short walk from parking</li>
           </ul>
         </div>
       </div>
@@ -427,13 +453,13 @@
       <div class="stop-item">
         <div class="stop-dot" style="background:#d0eeff;">🏮</div>
         <div class="stop-card">
-          <div class="stop-time-label">~7:13 PM · Big Tub Lighthouse · 25 min</div>
+          <div class="stop-time-label">7:31 PM – 7:51 PM · Big Tub Lighthouse · 20 min</div>
           <div class="stop-name">Big Tub Lighthouse, Tobermory</div>
-          <div class="badge-row"><span class="tag tag-dur">25 min</span><span class="tag tag-view">Shipwrecks visible below</span><span class="tag tag-scenic">Evening harbour</span></div>
+          <div class="badge-row"><span class="tag tag-dur">20 min</span><span class="tag tag-view">Shipwrecks visible below</span><span class="tag tag-scenic">Evening harbour glow</span></div>
           <ul class="stop-notes">
             <li>264 Big Tub Rd — iconic white lighthouse over crystal-clear Georgian Bay harbour</li>
-            <li>Sunken shipwrecks visible through the water from the dock — stop and look down</li>
-            <li>Evening light on the harbour is magical · best photo stop of the entire drive</li>
+            <li>Sunken shipwrecks visible through the water from the dock · look straight down</li>
+            <li>Evening light on the harbour is magical — best photo stop of the entire Day 1 drive</li>
           </ul>
         </div>
       </div>
@@ -444,9 +470,9 @@
       <div class="stop-item">
         <div class="stop-dot" style="background:#d0f0e0;">🏡</div>
         <div class="stop-card">
-          <div class="stop-time-label">✅ ~7:33 PM · Check In</div>
+          <div class="stop-time-label">✅ 7:58 PM · Check In</div>
           <div class="stop-name">Tobermory Village Campground — Cabins & Pods</div>
-          <div class="badge-row"><span class="tag tag-camp">End of Day 1 · 1h57m before 9:30 PM check-in</span></div>
+          <div class="badge-row"><span class="tag tag-camp">End of Day 1 · 1h32m before 9:30 PM check-in</span></div>
           <ul class="stop-notes">
             <li>7159 Hwy 6, Tobermory, ON N0H 2R0 · (519) 596-2689</li>
             <li>Settle into the cabin · cook dinner · bonfire to kick off the trip 🔥</li>
@@ -509,7 +535,7 @@
           <div class="badge-row"><span class="tag tag-dur">45 min</span><span class="tag tag-swim">Turquoise Georgian Bay</span></div>
           <ul class="stop-notes">
             <li>240–242 Little Cove Rd — stunning turquoise water framed by limestone and pine</li>
-            <li>Beautiful early morning light · calm water · great swim or sunrise photos</li>
+            <li>Beautiful early morning light · calm water · great for a swim or photos</li>
             <li>Swim shoes recommended on the rocky sections</li>
           </ul>
         </div>
@@ -520,13 +546,13 @@
       <div class="stop-item">
         <div class="stop-dot" style="background:#d0eeff;">🌊</div>
         <div class="stop-card">
-          <div class="stop-time-label">~8:50 AM – 10:00 AM · Driftwood Cove · 1 hr</div>
-          <div class="stop-name">Driftwood Cove — Morning Revisit</div>
-          <div class="badge-row"><span class="tag tag-dur">1 hr</span><span class="tag tag-scenic">Ancient cliff ecosystem</span><span class="tag tag-hike">Bruce Trail</span></div>
+          <div class="stop-time-label">~8:50 AM – 10:00 AM · Driftwood Cove · 1 hr 10 min</div>
+          <div class="stop-name">Driftwood Cove — Morning Explore</div>
+          <div class="badge-row"><span class="tag tag-dur">1 hr 10 min</span><span class="tag tag-scenic">Ancient cliff ecosystem</span><span class="tag tag-hike">Bruce Trail</span></div>
           <ul class="stop-notes">
-            <li>6CR9+65 — morning light on the driftwood-strewn limestone shore is exceptional</li>
-            <li>Much more time here than the quick evening stop on Day 1</li>
-            <li>Explore the ancient cliff ecosystem and shoreline properly</li>
+            <li>More time here than the evening stop on Day 1 — explore properly in morning light</li>
+            <li>Globally rare ancient cliff-edge ecosystem · oldest trees in eastern North America</li>
+            <li>Walk the Bruce Trail sections along the cove · utterly peaceful</li>
           </ul>
         </div>
       </div>
@@ -540,11 +566,11 @@
           <div class="split-body">
             <div class="split-col">
               <div class="split-col-title">🪨 The Grotto + Indian Head Cove + Natural Arch</div>
-              <div class="split-col-sub">The crown jewel of the Bruce Peninsula</div>
+              <div class="split-col-sub">Crown jewel of the Bruce Peninsula</div>
               <ul>
-                <li>~20 min hike each way — rocky, grip shoes essential</li>
+                <li>~20 min hike each way — rocky terrain, grip shoes essential</li>
                 <li>Swim in the crystal-clear turquoise cave</li>
-                <li>Indian Head Cove — dramatic shoreline steps away</li>
+                <li>Indian Head Cove — dramatic shoreline steps from the Grotto</li>
                 <li>Natural Arch — unique rock formation right there</li>
               </ul>
             </div>
@@ -552,10 +578,10 @@
               <div class="split-col-title">🏖️ Cyprus Lake Beach</div>
               <div class="split-col-sub">Calmer alternative at the trailhead</div>
               <ul>
-                <li>Flat sandy beach right at the parking lot</li>
+                <li>Flat sandy beach right at the parking area</li>
                 <li>Calm shallow turquoise water</li>
-                <li>Relax while the others hike to the Grotto</li>
-                <li>Meet back at parking area after</li>
+                <li>Relax while others do the Grotto hike</li>
+                <li>Meet back at parking lot when done</li>
               </ul>
             </div>
           </div>
@@ -568,11 +594,11 @@
         <div class="stop-dot" style="background:#fef3c7;">🍳</div>
         <div class="stop-card">
           <div class="stop-time-label">~1:00 PM – 4:00 PM · Camp</div>
-          <div class="stop-name">Back at Camp — Cook & Eat · Rest</div>
-          <div class="badge-row"><span class="tag tag-dur">3 hrs</span><span class="tag tag-all">Cook lunch at camp</span></div>
+          <div class="stop-name">Back at Camp — Cook Lunch · Rest · Recharge</div>
+          <div class="badge-row"><span class="tag tag-dur">3 hrs</span><span class="tag tag-all">Cook at camp</span></div>
           <ul class="stop-notes">
-            <li>Cook a proper meal at the cabin · eat outside · rest and recharge</li>
-            <li>Afternoon nap, read, walk the campground — enjoy the surroundings</li>
+            <li>Cook a proper meal at the cabin · eat outside if weather allows</li>
+            <li>Rest, nap, read — fully recharge before the Fathom Five evening walk</li>
           </ul>
         </div>
       </div>
@@ -582,14 +608,14 @@
       <div class="stop-item">
         <div class="stop-dot" style="background:#d0eeff;">🛥️</div>
         <div class="stop-card">
-          <div class="stop-time-label">~4:30 PM – 6:00 PM · Fathom Five · 1.5 hrs</div>
-          <div class="stop-name">Fathom Five National Marine Park — Dock Walk</div>
-          <div class="badge-row"><span class="tag tag-dur">1.5 hrs</span><span class="tag tag-view">Shipwrecks + harbour</span><span class="tag tag-all">No boat tour · dock walk only</span></div>
+          <div class="stop-time-label">~4:30 PM – 6:00 PM · Fathom Five · 1h 30 min</div>
+          <div class="stop-name">Fathom Five National Marine Park — Dock & Harbour Walk</div>
+          <div class="badge-row"><span class="tag tag-dur">1h 30 min</span><span class="tag tag-view">Shipwrecks + harbour</span><span class="tag tag-all">No boat tour · dock walk</span></div>
           <ul class="stop-notes">
-            <li>Walk the dock and Little Tub Harbour boardwalk</li>
-            <li>Shipwrecks visible from the shore in clear evening light</li>
-            <li>Interpretive signs about the 20+ shipwrecks in the park</li>
-            <li>Colourful boats, crystal-clear water, relaxed evening harbour vibe</li>
+            <li>Walk the dock and Little Tub Harbour boardwalk · relaxed evening pace</li>
+            <li>Shipwrecks visible from shore and dock in clear evening light</li>
+            <li>Interpretive signs about 20+ shipwrecks · colourful fishing boats tied up</li>
+            <li>Village shops and restaurants along the harbour if you want a snack</li>
           </ul>
         </div>
       </div>
@@ -605,7 +631,7 @@
           <ul class="stop-notes">
             <li>BBQ dinner · long bonfire under the stars 🔥</li>
             <li>Tobermory is a designated Dark Sky Reserve — incredible stargazing 🌌</li>
-            <li>No early start tomorrow — enjoy the night</li>
+            <li>No early start tomorrow — stay up, enjoy the night</li>
           </ul>
         </div>
       </div>
@@ -659,15 +685,15 @@
       <div class="stop-item">
         <div class="stop-dot" style="background:#ead8f5;">🗿</div>
         <div class="stop-card">
-          <div class="stop-time-label">~9:45 AM – 11:15 AM · Devil's Monument · 1.5 hrs</div>
+          <div class="stop-time-label">~9:45 AM – 11:15 AM · Devil's Monument · 1h 30 min</div>
           <div class="stop-name">Devil's Monument — Bruce Peninsula</div>
-          <div class="badge-row"><span class="tag tag-dur">1.5 hrs</span><span class="tag tag-geo">Flowerpot rock formation</span><span class="tag tag-hike">Steep + rocky trail</span><span class="tag tag-warn">Grip shoes essential</span></div>
+          <div class="badge-row"><span class="tag tag-dur">1h 30 min</span><span class="tag tag-geo">Flowerpot rock formation</span><span class="tag tag-hike">Steep rocky trail</span><span class="tag tag-warn">Grip shoes essential</span></div>
           <ul class="stop-notes">
             <li>Borchardt Rd, Northern Bruce Peninsula — free parking at end of road</li>
             <li>Largest flowerpot formation on the Bruce Peninsula — formed 5,500 years ago by wave erosion</li>
-            <li>Steep rocky trail ~680m to the monument · absolutely worth every step</li>
-            <li>Stairs down to a stunning Georgian Bay cobble beach — swim if weather allows</li>
-            <li>Much quieter than the Grotto · watch for poison ivy on the trail</li>
+            <li>Steep rocky trail ~680m · stairs down to a gorgeous Georgian Bay cobble beach</li>
+            <li>Swim at the beach if weather allows · much quieter than the Grotto</li>
+            <li>Watch for poison ivy on the trail · bring a walking stick</li>
           </ul>
         </div>
       </div>
@@ -677,27 +703,27 @@
       <div class="stop-item">
         <div class="stop-dot" style="background:#e8d8f5;">👁️</div>
         <div class="stop-card">
-          <div class="stop-time-label">~11:35 AM – 1:00 PM · Lion's Head · 1.5 hrs</div>
+          <div class="stop-time-label">~11:35 AM – 1:15 PM · Lion's Head · 1h 40 min</div>
           <div class="stop-name">Lion's Head Lookout + Lunch</div>
-          <div class="badge-row"><span class="tag tag-dur">1.5 hrs</span><span class="tag tag-hike">Steep cliff hike</span><span class="tag tag-dur">Lunch in village</span><span class="tag tag-view">Best panoramic view of the trip</span></div>
+          <div class="badge-row"><span class="tag tag-dur">1h 40 min</span><span class="tag tag-hike">Steep cliff hike</span><span class="tag tag-lunch">Lunch in village</span><span class="tag tag-view">Best panoramic view of the trip</span></div>
           <ul class="stop-notes">
             <li>Steep 15–20 min hike to the top · 200-ft cliffs over Georgian Bay · no railings</li>
             <li>360° panorama — the single most spectacular view of the entire trip</li>
-            <li>Grab lunch in Lion's Head village after · last proper sit-down meal</li>
-            <li>On the road home by 1:00 PM</li>
+            <li>Grab lunch in Lion's Head village after · plenty of time to sit and eat properly</li>
+            <li>On the road home by 1:15 PM</li>
           </ul>
         </div>
       </div>
 
-      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">Hwy 6 S → Grey Bruce Line → Mildmay · ~1h30m</span></div>
+      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">Hwy 6 S → Grey Bruce Line → Mildmay · ~1h 30 min</span></div>
 
       <div class="stop-item">
         <div class="stop-dot" style="background:#fce7f3;">🛝</div>
         <div class="stop-card">
-          <div class="stop-time-label">~2:30 PM · Mildmay · 15 min</div>
+          <div class="stop-time-label">~2:45 PM · Mildmay · 15 min</div>
           <div class="stop-name">Mildmay — Quick Stretch</div>
           <div class="badge-row"><span class="tag tag-drive">Halfway home</span></div>
-          <ul class="stop-notes"><li>Quiet small town · washroom · stretch · snack · regroup</li></ul>
+          <ul class="stop-notes"><li>Quiet small town · washroom · stretch · snack · regroup before the back roads</li></ul>
         </div>
       </div>
 
@@ -706,7 +732,7 @@
       <div class="stop-item">
         <div class="stop-dot" style="background:#ffe8e8;">☕</div>
         <div class="service-card">
-          <div class="service-label">☕ Break · ~3:35 PM · Listowel · 20 min</div>
+          <div class="service-label">☕⛽ Break · ~3:50 PM · Listowel · 20 min</div>
           <div class="service-row">
             <div class="service-item">
               <span class="si-icon">☕</span>
@@ -733,19 +759,19 @@
       <div class="stop-item">
         <div class="stop-dot" style="background:#d0eeff;">🏖️</div>
         <div class="stop-card">
-          <div class="stop-time-label">~4:40 PM – 6:00 PM · Grand Bend · 1 hr 20 min</div>
+          <div class="stop-time-label">~4:55 PM – 6:15 PM · Grand Bend · 1h 20 min</div>
           <div class="stop-name">Grand Bend Beach — Last Beach of the Trip</div>
-          <div class="badge-row"><span class="tag tag-dur">1 hr 20 min</span><span class="tag tag-swim">Blue Flag beach</span><span class="tag tag-scenic">Lake Huron sunset west-facing</span></div>
+          <div class="badge-row"><span class="tag tag-dur">1h 20 min</span><span class="tag tag-swim">Blue Flag beach</span><span class="tag tag-scenic">Lake Huron west-facing sunset</span></div>
           <ul class="stop-notes">
             <li>One of only 22 Blue Flag beaches in Canada — pristine sandy Lake Huron shore</li>
-            <li>Grand Bend faces west — late afternoon light here is spectacular 🌅</li>
-            <li>Boardwalk along the full beach · restaurants and ice cream on the strip</li>
-            <li>Parasailing and jet ski rentals if you're feeling adventurous</li>
+            <li>Grand Bend faces west — late afternoon light is spectacular here 🌅</li>
+            <li>Full boardwalk along the beach · restaurants and ice cream on the main strip</li>
+            <li>Parasailing and jet ski rentals available if feeling adventurous</li>
           </ul>
         </div>
       </div>
 
-      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">Hwy 21 S → Sarnia → Hwy 402 W → Windsor · ~1h30m</span></div>
+      <div class="drive-connector"><span class="dc-icon">🚗</span><span class="dc-label">Hwy 21 S → Sarnia → Hwy 402 W → Windsor · ~1h 30 min</span></div>
 
       <div class="stop-item">
         <div class="stop-dot" style="background:#fce7f3;">🏠</div>
@@ -754,7 +780,7 @@
           <div class="stop-name">Windsor — Home!</div>
           <div class="badge-row"><span class="tag tag-camp">End of Trip 🎉</span></div>
           <ul class="stop-notes">
-            <li>3 days · 2 nights · Bruce Peninsula conquered — well done Mani! 🙌</li>
+            <li>3 days · 2 nights · Bruce Peninsula done right — well done Mani! 🙌</li>
           </ul>
         </div>
       </div>
@@ -764,7 +790,7 @@
 
 </div>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-waves">
     <svg viewBox="0 0 1200 50" preserveAspectRatio="none" style="width:100%;height:50px;display:block;">
