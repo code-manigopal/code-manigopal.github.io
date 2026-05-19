@@ -1,180 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tobermory Trip Tracker ⛵</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --teal:#0D9E8A;--teal-lt:#14C4A8;--teal-dk:#0a7a6b;
-      --navy:#070E1A;--navy2:#0C1626;--navy3:#111E30;
-      --card:#152032;--card2:#1A2840;
-      --border:#243450;--border2:#1E2E44;
-      --text:#E2EDF8;--muted:#607A96;
-      --danger:#E05555;--amber:#F0A020;--green:#3DB874;--purple:#7C6EF5;
-    }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--text);min-height:100vh;overflow-x:hidden}
-    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
-      background:radial-gradient(ellipse 70% 50% at 15% 5%,rgba(13,158,138,.10) 0%,transparent 55%),
-                 radial-gradient(ellipse 50% 40% at 85% 90%,rgba(124,110,245,.06) 0%,transparent 55%)}
-    #app{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 20px 100px}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tobermory Trip · Finance Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#0a7e8c;--teal-deep:#064e5a;--teal-light:#1ab8cc;
+    --pine:#2d5a3d;--pine-light:#3d7a52;
+    --white:#f4fbfc;--text:#0d2b30;--text-muted:#3a6470;
+    --danger:#c0392b;--amber:#e67e22;--green:#27ae60;
+    --card-border:#c8eef3;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Nunito',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
 
-    /* HEADER */
-    header{display:flex;align-items:center;justify-content:space-between;padding:24px 0 20px;border-bottom:1px solid var(--border2);margin-bottom:32px;gap:12px}
-    .logo{display:flex;align-items:center;gap:13px}
-    .logo-mark{width:44px;height:44px;border-radius:14px;flex-shrink:0;background:linear-gradient(145deg,var(--teal),var(--teal-dk));display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 0 0 1px rgba(20,196,168,.25),0 4px 16px rgba(13,158,138,.3)}
-    .logo h1{font-family:'Syne',sans-serif;font-size:19px;font-weight:800;letter-spacing:-.4px}
-    .logo h1 span{color:var(--teal-lt)}
-    .logo p{font-size:12px;color:var(--muted);margin-top:2px}
-    #auth-bar{display:flex;align-items:center;gap:10px;flex-shrink:0}
-    .avatar{width:34px;height:34px;border-radius:50%;border:2px solid var(--teal);object-fit:cover}
-    .user-chip{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:30px;padding:5px 14px 5px 6px}
-    .user-chip span{font-size:13px;font-weight:500}
+  /* HERO */
+  .hero{position:relative;background:linear-gradient(180deg,#064e5a 0%,#0a7e8c 35%,#1ab8cc 65%,#5dd6e8 85%,#a8ecf5 100%);padding:52px 24px 0;text-align:center;overflow:hidden;min-height:340px;}
+  .hero-water{position:absolute;bottom:0;left:0;right:0;height:160px;}
+  .wave{position:absolute;width:200%;left:-50%;animation:waveMove 6s ease-in-out infinite;}
+  .wave1{bottom:40px;opacity:.5;animation-duration:7s;}
+  .wave2{bottom:20px;opacity:.7;animation-duration:5s;animation-delay:-2s;}
+  .wave3{bottom:0;opacity:1;animation-duration:8s;animation-delay:-4s;}
+  @keyframes waveMove{0%,100%{transform:translateX(0)}50%{transform:translateX(5%)}}
+  .hero-pines{position:absolute;bottom:50px;left:0;right:0;}
+  .hero-content{position:relative;z-index:10;padding-bottom:120px;}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);color:#fff;text-shadow:0 3px 20px rgba(0,0,0,.4);margin-bottom:6px;line-height:1.2;}
+  .hero-sub{font-size:.95rem;color:rgba(255,255,255,.88);font-weight:700;margin-bottom:18px;letter-spacing:.03em;}
+  .hero-badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+  .hero-badge{background:rgba(255,255,255,.18);backdrop-filter:blur(8px);border:1.5px solid rgba(255,255,255,.4);border-radius:999px;padding:5px 14px;font-size:.78rem;font-weight:700;color:#fff;}
 
-    /* BUTTONS */
-    .btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;border:none;transition:all .16s;white-space:nowrap}
-    .btn-primary{background:var(--teal);color:#fff}
-    .btn-primary:hover{background:var(--teal-lt);transform:translateY(-1px);box-shadow:0 4px 14px rgba(13,158,138,.35)}
-    .btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border)}
-    .btn-ghost:hover{border-color:var(--teal);color:var(--teal-lt)}
-    .btn-danger{background:rgba(224,85,85,.12);color:var(--danger);border:1px solid rgba(224,85,85,.25)}
-    .btn-danger:hover{background:rgba(224,85,85,.22)}
-    .btn-sm{padding:6px 13px;font-size:13px;border-radius:8px}
+  /* LAYOUT */
+  .container{max-width:900px;margin:0 auto;padding:0 20px 80px;}
 
-    /* TABS */
-    .tabs-wrap{display:flex;gap:4px;margin-bottom:28px;flex-wrap:wrap}
-    .tab{display:flex;align-items:center;gap:6px;padding:9px 18px;border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;border:1px solid var(--border2);background:transparent;color:var(--muted);font-family:'DM Sans',sans-serif;transition:all .14s}
-    .tab.active{background:var(--teal);color:#fff;border-color:var(--teal);box-shadow:0 3px 12px rgba(13,158,138,.3)}
-    .tab:hover:not(.active){border-color:var(--border);color:var(--text);background:var(--card)}
+  /* KPI STRIP */
+  .kpi-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:32px 0 28px;}
+  @media(max-width:640px){.kpi-strip{grid-template-columns:repeat(2,1fr);}}
+  .kpi{background:#fff;border:2px solid var(--card-border);border-radius:16px;padding:16px 14px;text-align:center;box-shadow:0 2px 12px rgba(10,126,140,.07);}
+  .kpi .k-label{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--teal-deep);margin-bottom:6px;}
+  .kpi .k-val{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;line-height:1;}
+  .kpi .k-sub{font-size:.68rem;color:var(--text-muted);margin-top:4px;font-weight:600;}
+  .kv-teal{color:var(--teal-deep);}
+  .kv-green{color:var(--green);}
+  .kv-red{color:var(--danger);}
+  .kv-amber{color:var(--amber);}
+  .kv-pine{color:var(--pine);}
 
-    /* KPI GRID */
-    .kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:28px}
-    @media(max-width:700px){.kpi-grid{grid-template-columns:repeat(2,1fr)}}
-    .kpi{background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:18px 18px 16px;position:relative;overflow:hidden}
-    .kpi::after{content:attr(data-icon);position:absolute;right:12px;top:12px;font-size:22px;opacity:.18}
-    .k-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:7px}
-    .k-val{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;line-height:1}
-    .k-sub{font-size:12px;color:var(--muted);margin-top:5px}
-    .k-teal{color:var(--teal-lt)}.k-green{color:var(--green)}.k-red{color:var(--danger)}.k-amber{color:var(--amber)}.k-purple{color:var(--purple)}
+  /* TABS */
+  .tabs{display:flex;gap:6px;margin-bottom:24px;flex-wrap:wrap;}
+  .tab{padding:8px 18px;border-radius:999px;font-size:.82rem;font-weight:700;cursor:pointer;border:2px solid var(--card-border);background:#fff;color:var(--text-muted);font-family:'Nunito',sans-serif;transition:all .15s;}
+  .tab.active{background:var(--teal-deep);color:#fff;border-color:var(--teal-deep);}
+  .tab:hover:not(.active){border-color:var(--teal);color:var(--teal-deep);}
 
-    /* CARDS */
-    .card{background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:22px 24px;margin-bottom:16px}
-    .card-hd{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between}
+  /* SECTION HEADER */
+  .sec-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+  .sec-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--teal-deep);}
 
-    /* TWO COL */
-    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
-    @media(max-width:680px){.two-col{grid-template-columns:1fr}}
+  /* CARDS */
+  .card{background:#fff;border:2px solid var(--card-border);border-radius:16px;padding:20px 22px;margin-bottom:14px;box-shadow:0 2px 12px rgba(10,126,140,.06);}
+  .card-title{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--teal-deep);margin-bottom:14px;}
 
-    /* EXPENSE ROW */
-    .exp-row{display:flex;align-items:flex-start;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border2);gap:12px}
-    .exp-row:last-child{border-bottom:none}
-    .exp-icon{width:40px;height:40px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:19px;background:linear-gradient(135deg,rgba(13,158,138,.18),rgba(13,158,138,.06));border:1px solid rgba(13,158,138,.2)}
-    .exp-body{flex:1;min-width:0}
-    .exp-name{font-weight:600;font-size:15px;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .exp-meta{font-size:12px;color:var(--muted);line-height:1.7}
-    .exp-tag{display:inline-block;padding:2px 8px;border-radius:5px;font-size:11px;font-weight:600;background:rgba(240,160,32,.14);color:var(--amber);margin-left:7px;vertical-align:middle}
-    .exp-right{text-align:right;flex-shrink:0}
-    .exp-amount{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--teal-lt)}
-    .exp-per{font-size:11px;color:var(--muted);margin-top:2px}
+  /* BUTTONS */
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:999px;font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;border:none;transition:all .15s;white-space:nowrap;}
+  .btn-primary{background:var(--teal-deep);color:#fff;}
+  .btn-primary:hover{background:var(--teal);transform:translateY(-1px);box-shadow:0 4px 14px rgba(10,126,140,.3);}
+  .btn-ghost{background:#fff;color:var(--text-muted);border:2px solid var(--card-border);}
+  .btn-ghost:hover{border-color:var(--teal);color:var(--teal-deep);}
+  .btn-danger{background:rgba(192,57,43,.1);color:var(--danger);border:2px solid rgba(192,57,43,.25);}
+  .btn-danger:hover{background:rgba(192,57,43,.2);}
+  .btn-green{background:rgba(39,174,96,.1);color:var(--green);border:2px solid rgba(39,174,96,.3);}
+  .btn-green:hover{background:rgba(39,174,96,.2);}
+  .btn-sm{padding:5px 14px;font-size:.75rem;}
+  .btn-pine{background:var(--pine);color:#fff;}
+  .btn-pine:hover{background:var(--pine-light);}
 
-    /* BAL ROW */
-    .bal-row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border2)}
-    .bal-row:last-child{border-bottom:none}
-    .bal-name{font-size:14px;font-weight:500;min-width:80px}
-    .bar-wrap{flex:1;height:6px;background:var(--border2);border-radius:4px;overflow:hidden}
-    .bar-fill{height:100%;border-radius:4px;transition:width .5s}
-    .bal-num{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;min-width:72px;text-align:right}
+  /* EXPENSE ROW */
+  .exp-row{display:flex;align-items:flex-start;justify-content:space-between;padding:14px 0;border-bottom:1.5px solid #e0f0f5;gap:12px;}
+  .exp-row:last-child{border-bottom:none;}
+  .exp-icon{width:40px;height:40px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;background:#e6f7fa;border:1.5px solid var(--card-border);}
+  .exp-body{flex:1;min-width:0;}
+  .exp-name{font-weight:800;font-size:.9rem;margin-bottom:3px;color:var(--text);}
+  .exp-meta{font-size:.75rem;color:var(--text-muted);line-height:1.7;font-weight:600;}
+  .exp-tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:.65rem;font-weight:800;background:#d0f0f5;color:var(--teal-deep);margin-left:6px;}
+  .exp-right{text-align:right;flex-shrink:0;}
+  .exp-amt{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--teal-deep);}
+  .exp-per{font-size:.68rem;color:var(--text-muted);margin-top:2px;font-weight:600;}
 
-    /* SETTLE */
-    .settle-row{display:flex;align-items:center;gap:10px;background:var(--navy3);border:1px solid var(--border2);border-radius:12px;padding:14px 16px;margin-bottom:10px;flex-wrap:wrap}
-    .settle-from{font-weight:600;font-size:15px}
-    .settle-arrow{color:var(--amber);font-size:16px}
-    .settle-to{font-weight:600;font-size:15px;color:var(--teal-lt)}
-    .settle-amt{margin-left:auto;font-family:'Syne',sans-serif;font-size:19px;font-weight:800;color:var(--green);padding-right:12px}
-    .badge-done{padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;background:rgba(61,184,116,.15);color:var(--green);border:1px solid rgba(61,184,116,.3)}
+  /* BAL ROW */
+  .bal-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1.5px solid #e0f0f5;}
+  .bal-row:last-child{border-bottom:none;}
+  .bal-name{font-size:.82rem;font-weight:700;min-width:80px;color:var(--text);}
+  .bar-wrap{flex:1;height:7px;background:#e0f0f5;border-radius:4px;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:4px;transition:width .5s;}
+  .bal-num{font-family:'Playfair Display',serif;font-weight:700;font-size:.9rem;min-width:70px;text-align:right;}
 
-    /* PILLS */
-    .pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
-    .pill{padding:6px 14px;border-radius:20px;font-size:13px;font-weight:500;border:1px solid var(--border2);background:var(--navy3);cursor:pointer;color:var(--muted);transition:all .14s}
-    .pill.active{background:rgba(13,158,138,.18);border-color:var(--teal);color:var(--teal-lt)}
-    .pill:hover:not(.active){border-color:var(--border);color:var(--text)}
+  /* SETTLE ROW */
+  .settle-row{display:flex;align-items:center;gap:10px;background:#f0fafc;border:2px solid var(--card-border);border-radius:12px;padding:14px 16px;margin-bottom:10px;flex-wrap:wrap;}
+  .settle-from{font-weight:800;font-size:.9rem;color:var(--text);}
+  .settle-arrow{color:var(--amber);font-size:15px;font-weight:800;}
+  .settle-to{font-weight:800;font-size:.9rem;color:var(--teal-deep);}
+  .settle-amt{margin-left:auto;font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--pine);padding-right:10px;}
+  .badge-done{padding:4px 12px;border-radius:999px;font-size:.7rem;font-weight:800;background:#d0f0e0;color:var(--pine);border:2px solid #b3d9be;}
 
-    /* FORM */
-    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    @media(max-width:520px){.form-grid{grid-template-columns:1fr}}
-    .fg{display:flex;flex-direction:column;gap:6px}
-    .fg.full{grid-column:1/-1}
-    .fg label{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
-    input,select,textarea{background:var(--navy2);border:1px solid var(--border);border-radius:9px;padding:10px 13px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;transition:border-color .14s;outline:none;width:100%}
-    input:focus,select:focus,textarea:focus{border-color:var(--teal);background:var(--navy3)}
-    select option{background:var(--navy2)}
-    textarea{resize:vertical;min-height:70px}
-    .check-group{display:flex;flex-wrap:wrap;gap:7px}
-    .check-chip{display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--navy2);cursor:pointer;font-size:13px;font-weight:500;transition:all .13s;user-select:none}
-    .check-chip:hover{border-color:var(--teal)}
-    .check-chip.on{background:rgba(13,158,138,.18);border-color:var(--teal);color:var(--teal-lt)}
-    .check-chip input{display:none}
+  /* PILLS */
+  .pills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px;}
+  .pill{padding:5px 14px;border-radius:999px;font-size:.75rem;font-weight:700;border:2px solid var(--card-border);background:#fff;cursor:pointer;color:var(--text-muted);transition:all .14s;}
+  .pill.active{background:var(--teal-deep);border-color:var(--teal-deep);color:#fff;}
+  .pill:hover:not(.active){border-color:var(--teal);color:var(--teal-deep);}
 
-    /* MODAL */
-    .overlay{position:fixed;inset:0;background:rgba(4,9,18,.8);backdrop-filter:blur(8px);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px}
-    .modal{background:var(--navy2);border:1px solid var(--border);border-radius:20px;padding:28px 26px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;animation:rise .2s cubic-bezier(.2,.8,.4,1)}
-    @keyframes rise{from{transform:translateY(18px) scale(.98);opacity:0}}
-    .modal-hd{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;margin-bottom:22px;display:flex;align-items:center;justify-content:space-between}
-    .x-btn{background:none;border:none;color:var(--muted);cursor:pointer;font-size:20px;line-height:1;padding:2px 6px;border-radius:6px}
-    .x-btn:hover{background:var(--card);color:var(--text)}
+  /* FORM */
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:520px){.form-grid{grid-template-columns:1fr;}}
+  .fg{display:flex;flex-direction:column;gap:5px;}
+  .fg.full{grid-column:1/-1;}
+  .fg label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--teal-deep);}
+  input,select,textarea{background:#f4fbfc;border:2px solid var(--card-border);border-radius:10px;padding:10px 13px;color:var(--text);font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:600;transition:border-color .14s;outline:none;width:100%;}
+  input:focus,select:focus,textarea:focus{border-color:var(--teal);background:#fff;}
+  select option{background:#fff;}
+  textarea{resize:vertical;min-height:68px;}
+  .check-group{display:flex;flex-wrap:wrap;gap:7px;}
+  .check-chip{display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:999px;border:2px solid var(--card-border);background:#fff;cursor:pointer;font-size:.75rem;font-weight:700;transition:all .13s;user-select:none;color:var(--text-muted);}
+  .check-chip:hover{border-color:var(--teal);}
+  .check-chip.on{background:#d0f0f5;border-color:var(--teal-deep);color:var(--teal-deep);}
+  .check-chip input{display:none;}
 
-    /* SIGN IN */
-    .signin-wrap{display:flex;align-items:center;justify-content:center;min-height:78vh}
-    .signin-box{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:52px 44px;max-width:420px;width:100%;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.5)}
-    @media(max-width:480px){.signin-box{padding:36px 24px}}
-    .signin-boat{font-size:64px;margin-bottom:4px;display:block}
-    .signin-title{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;margin-bottom:8px}
-    .signin-sub{color:var(--muted);font-size:15px;line-height:1.65;margin-bottom:34px}
-    .google-btn{display:flex;align-items:center;gap:14px;padding:14px 24px;border-radius:12px;background:#fff;color:#1a1a1a;border:none;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;width:100%;justify-content:center;transition:all .18s;box-shadow:0 2px 12px rgba(0,0,0,.3)}
-    .google-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.4)}
-    .g-logo{width:22px;height:22px;flex-shrink:0}
+  /* MODAL */
+  .overlay{position:fixed;inset:0;background:rgba(6,78,90,.55);backdrop-filter:blur(6px);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;}
+  .modal{background:#fff;border:2px solid var(--card-border);border-radius:20px;padding:28px 26px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;animation:rise .2s cubic-bezier(.2,.8,.4,1);box-shadow:0 20px 60px rgba(6,78,90,.2);}
+  @keyframes rise{from{transform:translateY(16px) scale(.98);opacity:0;}}
+  .modal-hd{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--teal-deep);margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
+  .x-btn{background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:20px;line-height:1;padding:2px 6px;border-radius:6px;font-family:'Nunito',sans-serif;}
+  .x-btn:hover{background:#e6f7fa;color:var(--teal-deep);}
 
-    /* EMPTY */
-    .empty{text-align:center;padding:44px 20px;color:var(--muted)}
-    .empty-icon{font-size:42px;margin-bottom:12px}
-    .empty p{font-size:15px}
+  /* SIGN IN */
+  .signin-wrap{display:flex;align-items:center;justify-content:center;min-height:60vh;}
+  .signin-box{background:#fff;border:2px solid var(--card-border);border-radius:24px;padding:48px 40px;max-width:400px;width:100%;text-align:center;box-shadow:0 16px 48px rgba(6,78,90,.12);}
+  @media(max-width:460px){.signin-box{padding:32px 22px;}}
+  .signin-boat{font-size:56px;margin-bottom:6px;display:block;}
+  .signin-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--teal-deep);margin-bottom:8px;}
+  .signin-sub{color:var(--text-muted);font-size:.85rem;line-height:1.7;margin-bottom:28px;font-weight:600;}
+  .google-btn{display:flex;align-items:center;gap:12px;padding:13px 22px;border-radius:12px;background:#fff;color:#1a1a1a;border:2px solid #e0e0e0;font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;width:100%;justify-content:center;transition:all .16s;box-shadow:0 2px 10px rgba(0,0,0,.1);}
+  .google-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.15);border-color:#bbb;}
+  .g-logo{width:20px;height:20px;flex-shrink:0;}
 
-    /* TOAST */
-    #toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:var(--teal);color:#fff;padding:12px 24px;border-radius:12px;font-size:14px;font-weight:500;z-index:999;opacity:0;transition:opacity .2s;pointer-events:none;box-shadow:0 4px 20px rgba(13,158,138,.4)}
-    #toast.show{opacity:1}
+  /* PENDING SCREEN */
+  .pending-wrap{display:flex;align-items:center;justify-content:center;min-height:60vh;}
+  .pending-box{background:#fff;border:2px solid #fde8cc;border-radius:24px;padding:44px 36px;max-width:400px;width:100%;text-align:center;box-shadow:0 12px 40px rgba(6,78,90,.1);}
+  .pending-icon{font-size:52px;margin-bottom:10px;display:block;}
+  .pending-title{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--amber);margin-bottom:8px;}
+  .pending-sub{color:var(--text-muted);font-size:.85rem;line-height:1.7;font-weight:600;}
 
-    .sec-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-    .sec-title{font-family:'Syne',sans-serif;font-size:17px;font-weight:800}
-    .divider{height:1px;background:var(--border2);margin:16px 0}
-  </style>
+  /* HEADER */
+  .site-header{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;background:#fff;border-bottom:2px solid var(--card-border);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(10,126,140,.07);}
+  .site-logo{display:flex;align-items:center;gap:10px;}
+  .site-logo-mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#064e5a,#0a7e8c);display:flex;align-items:center;justify-content:center;font-size:18px;}
+  .site-logo h1{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--teal-deep);}
+  .site-logo h1 span{color:var(--teal-light);}
+  #auth-bar{display:flex;align-items:center;gap:8px;}
+  .user-chip{display:flex;align-items:center;gap:7px;background:#e6f7fa;border:2px solid var(--card-border);border-radius:999px;padding:4px 12px 4px 5px;}
+  .avatar{width:28px;height:28px;border-radius:50%;border:2px solid var(--teal);object-fit:cover;}
+  .user-chip span{font-size:.78rem;font-weight:700;color:var(--teal-deep);}
+  .admin-badge{font-size:.62rem;background:var(--teal-deep);color:#fff;padding:2px 7px;border-radius:999px;font-weight:800;}
+
+  /* MEMBER CARD */
+  .member-card{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1.5px solid #e0f0f5;gap:12px;}
+  .member-card:last-child{border-bottom:none;}
+  .member-left{display:flex;align-items:center;gap:10px;}
+  .member-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#e6f7fa,#b3e8f0);border:2px solid var(--card-border);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+  .member-name{font-weight:800;font-size:.88rem;color:var(--text);}
+  .member-email{font-size:.7rem;color:var(--text-muted);font-weight:600;}
+  .role-badge{font-size:.62rem;font-weight:800;padding:2px 8px;border-radius:999px;}
+  .role-admin{background:var(--teal-deep);color:#fff;}
+  .role-member{background:#d0f0f5;color:var(--teal-deep);}
+  .role-pending{background:#fde8cc;color:var(--amber);}
+
+  /* EMPTY */
+  .empty{text-align:center;padding:40px 20px;color:var(--text-muted);}
+  .empty-icon{font-size:40px;margin-bottom:10px;}
+  .empty p{font-size:.88rem;font-weight:600;}
+
+  /* TOAST */
+  #toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:var(--teal-deep);color:#fff;padding:11px 22px;border-radius:999px;font-size:.82rem;font-weight:700;z-index:999;opacity:0;transition:opacity .2s;pointer-events:none;box-shadow:0 4px 18px rgba(6,78,90,.35);font-family:'Nunito',sans-serif;}
+  #toast.show{opacity:1;}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+  @media(max-width:640px){.two-col{grid-template-columns:1fr;}}
+  .divider{height:1.5px;background:#e0f0f5;margin:16px 0;}
+  .info-note{background:#e6f7fa;border:2px solid var(--card-border);border-radius:12px;padding:12px 16px;font-size:.78rem;color:var(--teal-deep);font-weight:700;margin-bottom:16px;line-height:1.6;}
+</style>
 </head>
 <body>
+
 <div id="toast"></div>
-<div id="app">
-  <header>
-    <div class="logo">
-      <div class="logo-mark">⛵</div>
-      <div>
-        <h1>Tobermory <span>Splits</span></h1>
-        <p>Trip expense tracker</p>
-      </div>
+
+<!-- STICKY HEADER -->
+<div class="site-header">
+  <div class="site-logo">
+    <div class="site-logo-mark">⛵</div>
+    <h1>Tobermory <span>Splits</span></h1>
+  </div>
+  <div id="auth-bar"><span style="color:var(--text-muted);font-size:.82rem;font-weight:600;">Loading…</span></div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <h1>Trip Finance Tracker</h1>
+    <div class="hero-sub">Tobermory · May 2026 · Split every expense fairly ⚖️</div>
+    <div class="hero-badges">
+      <span class="hero-badge">💸 Expense Splitting</span>
+      <span class="hero-badge">🔄 Auto Settlement</span>
+      <span class="hero-badge">🏝️ Activity Groups</span>
+      <span class="hero-badge">👥 Group Tracking</span>
     </div>
-    <div id="auth-bar"><span style="color:var(--muted);font-size:13px">Loading…</span></div>
-  </header>
+  </div>
+  <div class="hero-pines">
+    <svg viewBox="0 0 1200 100" preserveAspectRatio="none" style="width:100%;height:70px;display:block;">
+      <polygon points="30,100 50,40 70,100" fill="#1a4a2a" opacity=".9"/>
+      <polygon points="42,100 62,18 82,100" fill="#2d5a3d" opacity=".95"/>
+      <polygon points="68,100 88,48 108,100" fill="#1a4a2a" opacity=".85"/>
+      <polygon points="82,100 105,28 128,100" fill="#2d5a3d" opacity=".9"/>
+      <polygon points="900,100 920,35 940,100" fill="#1a4a2a" opacity=".9"/>
+      <polygon points="922,100 948,16 972,100" fill="#2d5a3d" opacity=".95"/>
+      <polygon points="958,100 978,42 998,100" fill="#1a4a2a" opacity=".85"/>
+      <polygon points="982,100 1008,26 1032,100" fill="#2d5a3d" opacity=".9"/>
+      <polygon points="1042,100 1068,20 1094,100" fill="#2d5a3d" opacity=".95"/>
+    </svg>
+  </div>
+  <div class="hero-water">
+    <svg class="wave wave1" viewBox="0 0 1440 80"><path d="M0,40 C180,10 360,70 540,40 C720,10 900,70 1080,40 C1260,10 1440,50 1440,40 L1440,80 L0,80 Z" fill="rgba(255,255,255,.15)"/></svg>
+    <svg class="wave wave2" viewBox="0 0 1440 80"><path d="M0,50 C200,20 400,80 600,50 C800,20 1000,80 1200,50 C1350,30 1440,60 1440,50 L1440,80 L0,80 Z" fill="rgba(255,255,255,.25)"/></svg>
+    <svg class="wave wave3" viewBox="0 0 1440 80"><path d="M0,55 C240,25 480,85 720,55 C960,25 1200,75 1440,55 L1440,80 L0,80 Z" fill="#f4fbfc"/></svg>
+  </div>
+</div>
+
+<div class="container">
   <div id="main"></div>
 </div>
 
 <script type="module">
-import { initializeApp }                                          from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+import { initializeApp }   from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged }
-                                                                  from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+                           from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
 
-// ════════════════════════════════════════════
-//  CONFIG — fill in GITHUB_TOKEN after regenerating
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════
+//  CONFIG
+// ══════════════════════════════════════════
 const FB = {
   apiKey:            "AIzaSyBHtdnCt4xtSuezt3p5vrTqMPEZRRIX2UQ",
   authDomain:        "trip-expense-tracker-4bb2f.firebaseapp.com",
@@ -183,41 +255,53 @@ const FB = {
   messagingSenderId: "585256105192",
   appId:             "1:585256105192:web:ed2d38a97fe81d064c055d"
 };
-const GH_TOKEN = "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";   // ← paste new token here
+const GH_TOKEN = "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";
 const GH_OWNER = "code-manigopal";
 const GH_REPO  = "code-manigopal.github.io";
 const GH_PATH  = "tobermory-tracker-data/trips.json";
+const ADMIN_EMAIL = "manikandangopal97@gmail.com";
 
-// ════════════════════════════════════════════
-//  TRIP DEFAULTS  — edit names before trip
-// ════════════════════════════════════════════
-const DEF_MEMBERS = ["Mani","Spouse","Friend 1","Friend 2","Friend 3"];
-const DEF_ACTS    = ["Shared (All)","Flowerpot Island","Scuba Diving","Kayaking","Accommodation","Food & Drinks","Transportation"];
-const ICONS       = {"Shared (All)":"🏕️","Flowerpot Island":"🌺","Scuba Diving":"🤿","Kayaking":"🚣","Accommodation":"🏠","Food & Drinks":"🍽️","Transportation":"🚗"};
+// ══════════════════════════════════════════
+//  ACTIVITY DEFAULTS & ICONS
+// ══════════════════════════════════════════
+const DEF_ACTS = ["Shared (All)","Flowerpot Island","Scuba Diving","Kayaking","Accommodation","Food & Drinks","Transportation"];
+const ICONS    = {"Shared (All)":"🏕️","Flowerpot Island":"🌺","Scuba Diving":"🤿","Kayaking":"🚣","Accommodation":"🏠","Food & Drinks":"🍽️","Transportation":"🚗"};
 
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════
 //  FIREBASE
-// ════════════════════════════════════════════
-const app      = initializeApp(FB);
-const auth     = getAuth(app);
+// ══════════════════════════════════════════
+const fbApp    = initializeApp(FB);
+const auth     = getAuth(fbApp);
 const provider = new GoogleAuthProvider();
 
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════
 //  STATE
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════
 let user   = null;
-let data   = { expenses:[], activities:[...DEF_ACTS], members:[...DEF_MEMBERS], settled:[] };
+let data   = { expenses:[], activities:[...DEF_ACTS], members:[], settled:[] };
 let tab    = "dashboard";
 let actFil = "All";
-let modal  = null;   // null | "expense" | "activity" | "member"
+let modal  = null;
 let ghSHA  = null;
-const hasToken = GH_TOKEN !== "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";
 
-// ════════════════════════════════════════════
+const isAdmin = () => user && user.email === ADMIN_EMAIL;
+const getMe   = () => data.members.find(m => m.email === user?.email);
+const isApproved = () => {
+  if (!user) return false;
+  if (isAdmin()) return true;
+  const me = getMe();
+  return me && me.status === "approved";
+};
+const isPending = () => {
+  if (!user || isAdmin()) return false;
+  const me = getMe();
+  return me && me.status === "pending";
+};
+
+// ══════════════════════════════════════════
 //  GITHUB
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════
 async function ghLoad() {
-  if (!hasToken) { render(); return; }
   try {
     const r = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_PATH}`,
       { headers:{ Authorization:`token ${GH_TOKEN}` } });
@@ -225,103 +309,112 @@ async function ghLoad() {
       const j = await r.json();
       ghSHA = j.sha;
       const d2 = JSON.parse(atob(j.content.replace(/\n/g,'')));
-      data = { ...data, ...d2 };
+      data = { expenses:[], activities:[...DEF_ACTS], members:[], settled:[], ...d2 };
     }
   } catch(e) { console.warn(e); }
+  // auto-enroll new user
+  if (user && !isAdmin()) {
+    const exists = data.members.find(m=>m.email===user.email);
+    if (!exists) {
+      data.members.push({ id:Date.now().toString(), name:user.displayName||user.email, email:user.email, photo:user.photoURL||"", status:"pending", joinedAt:new Date().toISOString() });
+      await ghSave(false);
+    }
+  }
   render();
 }
 
-async function ghSave() {
-  if (!hasToken) { toast("Add GitHub token to enable saving"); return; }
+async function ghSave(showMsg=true) {
   const content = btoa(unescape(encodeURIComponent(JSON.stringify(data,null,2))));
   const body = { message:"Update Tobermory trip data", content };
   if (ghSHA) body.sha = ghSHA;
   try {
     const r = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_PATH}`,
       { method:"PUT", headers:{ Authorization:`token ${GH_TOKEN}`, "Content-Type":"application/json" }, body:JSON.stringify(body) });
-    if (r.ok) { const j = await r.json(); ghSHA = j.content.sha; toast("Saved ✓"); }
-    else toast("Save failed — check token");
-  } catch(e) { toast("Save error"); }
+    if (r.ok) { const j=await r.json(); ghSHA=j.content.sha; if(showMsg) toast("Saved ✓"); }
+    else { if(showMsg) toast("Save failed"); }
+  } catch(e) { if(showMsg) toast("Save error"); }
 }
 
-// ════════════════════════════════════════════
-//  SETTLEMENT ALGORITHM
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════
+//  SETTLEMENT
+// ══════════════════════════════════════════
 function settle(expenses) {
-  const bal = {};
-  data.members.forEach(m => bal[m] = 0);
-  expenses.forEach(e => {
-    const pp = e.participants || data.members;
-    const sh = e.amount / pp.length;
-    bal[e.paidBy] = (bal[e.paidBy]||0) + e.amount;
-    pp.forEach(p => bal[p] = (bal[p]||0) - sh);
+  const names = approvedNames();
+  const bal = {}; names.forEach(n=>bal[n]=0);
+  expenses.forEach(e=>{
+    const pp=e.participants||names;
+    const sh=e.amount/pp.length;
+    bal[e.paidBy]=(bal[e.paidBy]||0)+e.amount;
+    pp.forEach(p=>bal[p]=(bal[p]||0)-sh);
   });
-  const cr = [], dr = [];
-  Object.entries(bal).forEach(([n,b]) => {
-    if (b > .01) cr.push({n, b});
-    else if (b < -.01) dr.push({n, b:-b});
-  });
+  const cr=[],dr=[];
+  Object.entries(bal).forEach(([n,b])=>{ if(b>.01)cr.push({n,b}); else if(b<-.01)dr.push({n,b:-b}); });
   cr.sort((a,b)=>b.b-a.b); dr.sort((a,b)=>b.b-a.b);
-  const txns = [];
-  let i=0,j=0;
-  while(i<cr.length && j<dr.length){
-    const c=cr[i],d=dr[j], a=Math.min(c.b,d.b);
-    txns.push({from:d.n, to:c.n, amount:+a.toFixed(2)});
-    c.b-=a; d.b-=a;
-    if(c.b<.01)i++; if(d.b<.01)j++;
+  const txns=[]; let i=0,j=0;
+  while(i<cr.length&&j<dr.length){
+    const c=cr[i],d=dr[j],a=Math.min(c.b,d.b);
+    txns.push({from:d.n,to:c.n,amount:+a.toFixed(2)});
+    c.b-=a; d.b-=a; if(c.b<.01)i++; if(d.b<.01)j++;
   }
   return txns;
 }
 
-function netBal(m, expenses) {
+function netBal(name, expenses) {
   let b=0;
-  expenses.forEach(e => {
-    const pp = e.participants || data.members;
-    if(e.paidBy===m) b+=e.amount;
-    if(pp.includes(m)) b-=e.amount/pp.length;
+  expenses.forEach(e=>{
+    const pp=e.participants||approvedNames();
+    if(e.paidBy===name) b+=e.amount;
+    if(pp.includes(name)) b-=e.amount/pp.length;
   });
   return +b.toFixed(2);
 }
 
-// ════════════════════════════════════════════
+function approvedNames() {
+  const names = data.members.filter(m=>m.status==="approved").map(m=>m.name);
+  if (isAdmin() && !names.includes(user.displayName||user.email)) names.unshift(user.displayName||user.email);
+  return names;
+}
+
+// ══════════════════════════════════════════
 //  TOAST
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════
 function toast(msg) {
   const t=document.getElementById("toast");
   t.textContent=msg; t.classList.add("show");
   setTimeout(()=>t.classList.remove("show"),2600);
 }
 
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════
 //  RENDER
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════
 function render() {
-  const mc = document.getElementById("main");
-  if (!user) { mc.innerHTML = rSignIn(); bindAuth(); return; }
-  mc.innerHTML = rKPI() + rTabs()
-    + (tab==="dashboard"    ? rDash()    : "")
-    + (tab==="expenses"     ? rExpenses(): "")
-    + (tab==="settlements"  ? rSettle()  : "")
-    + (tab==="members"      ? rMembers() : "")
-    + (modal==="expense"    ? rExpModal(): "")
-    + (modal==="activity"   ? rActModal(): "")
-    + (modal==="member"     ? rMemModal(): "");
-  bind();
-  rAuthBar();
+  const mc=document.getElementById("main");
+  if (!user) { mc.innerHTML=rSignIn(); bindAuth(); rAuthBar(); return; }
+  if (isPending()) { mc.innerHTML=rPending(); rAuthBar(); return; }
+  mc.innerHTML = rKPI()+rTabs()
+    +(tab==="dashboard"   ? rDash()    : "")
+    +(tab==="expenses"    ? rExpenses(): "")
+    +(tab==="settlements" ? rSettle()  : "")
+    +(tab==="members"     ? rMembers() : "")
+    +(modal==="expense"   ? rExpModal(): "")
+    +(modal==="activity"  ? rActModal(): "");
+  bind(); rAuthBar();
 }
 
-// ── AUTH BAR ──
 function rAuthBar() {
-  const bar = document.getElementById("auth-bar");
+  const bar=document.getElementById("auth-bar");
   if (user) {
-    bar.innerHTML = `<div class="user-chip">
+    bar.innerHTML=`<div class="user-chip">
       <img class="avatar" src="${user.photoURL||''}" onerror="this.style.display='none'"/>
-      <span>${user.displayName||user.email}</span>
+      <span>${(user.displayName||user.email).split(" ")[0]}</span>
+      ${isAdmin()?'<span class="admin-badge">Admin</span>':''}
     </div>
     <button class="btn btn-ghost btn-sm" id="b-out">Sign out</button>`;
   } else {
-    bar.innerHTML = `<button class="btn btn-primary btn-sm" id="b-in-hdr">Sign in</button>`;
+    bar.innerHTML=`<button class="btn btn-primary btn-sm" id="b-in-hdr">Sign in</button>`;
   }
+  document.getElementById("b-out")?.addEventListener("click",()=>signOut(auth));
+  document.getElementById("b-in-hdr")?.addEventListener("click",()=>signInWithPopup(auth,provider).catch(e=>toast("Sign-in error: "+e.code)));
 }
 
 // ── SIGN IN ──
@@ -329,7 +422,7 @@ function rSignIn() {
   return `<div class="signin-wrap"><div class="signin-box">
     <span class="signin-boat">⛵</span>
     <div class="signin-title">Tobermory Splits</div>
-    <p class="signin-sub">Track & split every expense for the trip.<br>Sign in to get started.</p>
+    <p class="signin-sub">Sign in with your Google account to join the trip tracker. Your name will appear automatically — no setup needed.</p>
     <button class="google-btn" id="b-gsi">
       <svg class="g-logo" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
       Sign in with Google
@@ -337,85 +430,96 @@ function rSignIn() {
   </div></div>`;
 }
 
+// ── PENDING ──
+function rPending() {
+  const me=getMe();
+  return `<div class="pending-wrap"><div class="pending-box">
+    <span class="pending-icon">⏳</span>
+    <div class="pending-title">Awaiting Approval</div>
+    <p class="pending-sub">Hey <strong>${me?.name||'there'}</strong>! Your request to join the Tobermory trip tracker has been sent to the admin.<br><br>Once approved, you'll have full access to add expenses and view settlements.<br><br>Please check back shortly or ask the trip organiser to approve you.</p>
+    <button class="btn btn-ghost" style="margin-top:20px;width:100%" id="b-out2">Sign out</button>
+  </div></div>`;
+}
+
 // ── KPI ──
 function rKPI() {
-  const total = data.expenses.reduce((s,e)=>s+e.amount,0);
-  const me    = user?.displayName || user?.email || "";
-  const myPaid= data.expenses.filter(e=>e.paidBy===me).reduce((s,e)=>s+e.amount,0);
-  const myBal = netBal(me, data.expenses);
-  const txns  = settle(data.expenses);
-  const pend  = txns.filter(t=>!(data.settled||[]).includes(t.from+">"+t.to)).length;
-  return `<div class="kpi-grid">
-    <div class="kpi" data-icon="💰"><div class="k-label">Total Spent</div><div class="k-val k-teal">$${total.toFixed(2)}</div><div class="k-sub">${data.expenses.length} expenses</div></div>
-    <div class="kpi" data-icon="🧾"><div class="k-label">You Paid</div><div class="k-val">$${myPaid.toFixed(2)}</div><div class="k-sub">across all activities</div></div>
-    <div class="kpi" data-icon="⚖️"><div class="k-label">Your Balance</div><div class="k-val ${myBal>=0?'k-green':'k-red'}">${myBal>=0?'+':''}$${Math.abs(myBal).toFixed(2)}</div><div class="k-sub">${myBal>0?'you are owed':myBal<0?'you owe':'all even'}</div></div>
-    <div class="kpi" data-icon="🔄"><div class="k-label">Pending</div><div class="k-val ${pend>0?'k-amber':'k-green'}">${pend}</div><div class="k-sub">transfers left</div></div>
-    <div class="kpi" data-icon="👥"><div class="k-label">Members</div><div class="k-val k-purple">${data.members.length}</div><div class="k-sub">${data.activities.length} activities</div></div>
+  const total=data.expenses.reduce((s,e)=>s+e.amount,0);
+  const myName=(isAdmin()?user.displayName||user.email:getMe()?.name)||"";
+  const myPaid=data.expenses.filter(e=>e.paidBy===myName).reduce((s,e)=>s+e.amount,0);
+  const myBal=netBal(myName,data.expenses);
+  const txns=settle(data.expenses);
+  const pend=txns.filter(t=>!(data.settled||[]).includes(t.from+">"+t.to)).length;
+  return `<div class="kpi-strip">
+    <div class="kpi"><div class="k-label">Total Spent</div><div class="k-val kv-teal">$${total.toFixed(2)}</div><div class="k-sub">${data.expenses.length} expenses</div></div>
+    <div class="kpi"><div class="k-label">You Paid</div><div class="k-val kv-pine">$${myPaid.toFixed(2)}</div><div class="k-sub">across all activities</div></div>
+    <div class="kpi"><div class="k-label">Your Balance</div><div class="k-val ${myBal>=0?'kv-green':'kv-red'}">${myBal>=0?'+':''}$${Math.abs(myBal).toFixed(2)}</div><div class="k-sub">${myBal>0?'to receive':myBal<0?'you owe':'all even'}</div></div>
+    <div class="kpi"><div class="k-label">Pending</div><div class="k-val ${pend>0?'kv-amber':'kv-green'}">${pend}</div><div class="k-sub">transfers left</div></div>
+    <div class="kpi"><div class="k-label">Members</div><div class="k-val kv-pine">${data.members.filter(m=>m.status==="approved").length}</div><div class="k-sub">${data.members.filter(m=>m.status==="pending").length} pending</div></div>
   </div>`;
 }
 
 // ── TABS ──
 function rTabs() {
-  return `<div class="tabs-wrap">
+  return `<div class="tabs">
     ${[["dashboard","📊 Dashboard"],["expenses","💸 Expenses"],["settlements","🔄 Settle Up"],["members","👥 Members"]]
-      .map(([id,l])=>`<button class="tab${tab===id?' active':''}" data-tab="${id}">${l}</button>`).join("")}
+      .map(([id,l])=>`<button class="tab${tab===id?" active":""}" data-tab="${id}">${l}</button>`).join("")}
   </div>`;
 }
 
 // ── DASHBOARD ──
 function rDash() {
-  const byAct = {};
+  const byAct={};
   data.activities.forEach(a=>byAct[a]=0);
-  data.expenses.forEach(e=>{ byAct[e.activity]=(byAct[e.activity]||0)+e.amount; });
-  const maxAct = Math.max(...Object.values(byAct), 1);
-
-  const actRows = Object.entries(byAct).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1])
+  data.expenses.forEach(e=>{byAct[e.activity]=(byAct[e.activity]||0)+e.amount;});
+  const maxAct=Math.max(...Object.values(byAct),1);
+  const actRows=Object.entries(byAct).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1])
     .map(([n,v])=>`<div class="bal-row">
       <span class="bal-name">${ICONS[n]||'💰'} ${n}</span>
-      <div class="bar-wrap"><div class="bar-fill" style="width:${(v/maxAct*100).toFixed(1)}%;background:var(--teal)"></div></div>
-      <span class="bal-num k-teal">$${v.toFixed(2)}</span>
-    </div>`).join("") || '<div class="empty" style="padding:20px 0"><p>No expenses yet</p></div>';
+      <div class="bar-wrap"><div class="bar-fill" style="width:${(v/maxAct*100).toFixed(1)}%;background:var(--teal-deep)"></div></div>
+      <span class="bal-num kv-teal">$${v.toFixed(2)}</span>
+    </div>`).join("")||'<div class="empty" style="padding:16px 0"><p>No expenses yet</p></div>';
 
-  const maxBal = Math.max(...data.members.map(m=>Math.abs(netBal(m,data.expenses))),1);
-  const memRows = data.members.map(m=>{
-    const b=netBal(m,data.expenses);
+  const names=approvedNames();
+  const maxBal=Math.max(...names.map(n=>Math.abs(netBal(n,data.expenses))),1);
+  const memRows=names.map(n=>{
+    const b=netBal(n,data.expenses);
     return `<div class="bal-row">
-      <span class="bal-name">${m}</span>
+      <span class="bal-name">${n}</span>
       <div class="bar-wrap"><div class="bar-fill" style="width:${(Math.abs(b)/maxBal*100).toFixed(1)}%;background:${b>=0?'var(--green)':'var(--danger)'}"></div></div>
-      <span class="bal-num ${b>=0?'k-green':'k-red'}">${b>=0?'+':''}$${Math.abs(b).toFixed(2)}</span>
+      <span class="bal-num ${b>=0?'kv-green':'kv-red'}">${b>=0?'+':''}$${Math.abs(b).toFixed(2)}</span>
     </div>`;
-  }).join("");
+  }).join("")||'<div class="empty" style="padding:16px 0"><p>No approved members yet</p></div>';
 
-  const recent = [...data.expenses].reverse().slice(0,5);
+  const recent=[...data.expenses].reverse().slice(0,5);
   return `
     <div class="two-col">
-      <div class="card"><div class="card-hd">📊 Spending by Activity</div>${actRows}</div>
-      <div class="card"><div class="card-hd">👥 Member Balances</div>${memRows}</div>
+      <div class="card"><div class="card-title">📊 Spending by Activity</div>${actRows}</div>
+      <div class="card"><div class="card-title">👥 Member Balances</div>${memRows}</div>
     </div>
     <div class="card">
-      <div class="card-hd">Recent Expenses <button class="btn btn-primary btn-sm" id="b-addexp">+ Add Expense</button></div>
-      ${recent.length ? recent.map(rExpRow).join("") : '<div class="empty"><div class="empty-icon">💸</div><p>No expenses yet — add the first one!</p></div>'}
+      <div class="sec-hd"><div class="sec-title">Recent Expenses</div><button class="btn btn-primary btn-sm" id="b-addexp">+ Add Expense</button></div>
+      ${recent.length?recent.map(rExpRow).join(""):'<div class="empty"><div class="empty-icon">💸</div><p>No expenses yet — add the first one!</p></div>'}
     </div>`;
 }
 
-// ── EXPENSES TAB ──
+// ── EXPENSES ──
 function rExpenses() {
-  const fil = actFil==="All" ? data.expenses : data.expenses.filter(e=>e.activity===actFil);
+  const fil=actFil==="All"?data.expenses:data.expenses.filter(e=>e.activity===actFil);
   return `
     <div class="sec-hd"><div class="sec-title">All Expenses</div><button class="btn btn-primary btn-sm" id="b-addexp">+ Add Expense</button></div>
     <div class="pills">
       <div class="pill${actFil==="All"?" active":""}" data-af="All">All</div>
       ${data.activities.map(a=>`<div class="pill${actFil===a?" active":""}" data-af="${a}">${ICONS[a]||'💰'} ${a}</div>`).join("")}
-      <div class="pill" style="border-style:dashed" id="b-addact">+ New Activity</div>
+      ${isAdmin()?`<div class="pill" style="border-style:dashed" id="b-addact">+ New Activity</div>`:""}
     </div>
     <div class="card">
-      ${fil.length ? [...fil].reverse().map(rExpRow).join("") : '<div class="empty"><div class="empty-icon">💸</div><p>No expenses here yet</p></div>'}
+      ${fil.length?[...fil].reverse().map(rExpRow).join(""):'<div class="empty"><div class="empty-icon">💸</div><p>No expenses here yet</p></div>'}
     </div>`;
 }
 
 function rExpRow(e) {
-  const pp = e.participants || data.members;
-  const sh = (e.amount/pp.length).toFixed(2);
+  const pp=e.participants||approvedNames();
+  const sh=(e.amount/pp.length).toFixed(2);
   return `<div class="exp-row">
     <div class="exp-icon">${ICONS[e.activity]||'💰'}</div>
     <div class="exp-body">
@@ -424,74 +528,105 @@ function rExpRow(e) {
       <div class="exp-meta">👥 ${pp.join(", ")}</div>
     </div>
     <div class="exp-right">
-      <div class="exp-amount">$${(+e.amount).toFixed(2)}</div>
+      <div class="exp-amt">$${(+e.amount).toFixed(2)}</div>
       <div class="exp-per">$${sh}/person</div>
-      <button class="btn btn-danger btn-sm" style="margin-top:6px" data-del="${e.id}">✕ Remove</button>
+      ${isAdmin()?`<button class="btn btn-danger btn-sm" style="margin-top:6px" data-del="${e.id}">✕ Remove</button>`:""}
     </div>
   </div>`;
 }
 
-// ── SETTLE TAB ──
+// ── SETTLE ──
 function rSettle() {
-  const txns = settle(data.expenses);
-  const done = data.settled || [];
-  if (!txns.length) return `<div class="card"><div class="empty"><div class="empty-icon">🎉</div><p>All settled! No transfers needed.</p></div></div>`;
-  const pending = txns.filter(t=>!done.includes(t.from+">"+t.to));
-  const settled = txns.filter(t=> done.includes(t.from+">"+t.to));
+  const txns=settle(data.expenses);
+  const done=data.settled||[];
+  if(!txns.length) return `<div class="card"><div class="empty"><div class="empty-icon">🎉</div><p>All settled! No transfers needed.</p></div></div>`;
+  const pend=txns.filter(t=>!done.includes(t.from+">"+t.to));
+  const settl=txns.filter(t=> done.includes(t.from+">"+t.to));
   return `
     <div class="card">
-      <div class="card-hd">💸 Pending Transfers (${pending.length})</div>
-      ${pending.map(t=>`<div class="settle-row">
+      <div class="sec-hd"><div class="sec-title">💸 Who Pays Whom</div><span style="font-size:.75rem;font-weight:700;color:var(--text-muted)">${pend.length} pending</span></div>
+      ${pend.map(t=>`<div class="settle-row">
         <span class="settle-from">${t.from}</span>
         <span class="settle-arrow">→</span>
         <span class="settle-to">${t.to}</span>
         <span class="settle-amt">$${t.amount.toFixed(2)}</span>
-        <button class="btn btn-sm" style="background:rgba(61,184,116,.15);color:var(--green);border:1px solid rgba(61,184,116,.3)" data-settle="${t.from}>${t.to}">✓ Mark Done</button>
+        ${isAdmin()?`<button class="btn btn-green btn-sm" data-settle="${t.from}>${t.to}">✓ Mark Done</button>`:""}
       </div>`).join("")}
-      ${settled.length ? `<div class="divider"></div><div style="font-size:13px;color:var(--muted);margin-bottom:10px">Completed</div>
-        ${settled.map(t=>`<div class="settle-row" style="opacity:.5">
+      ${settl.length?`<div class="divider"></div><div style="font-size:.72rem;font-weight:800;color:var(--text-muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em;">Completed</div>
+        ${settl.map(t=>`<div class="settle-row" style="opacity:.55">
           <span class="settle-from">${t.from}</span><span class="settle-arrow">→</span>
           <span class="settle-to">${t.to}</span>
           <span class="settle-amt">$${t.amount.toFixed(2)}</span>
           <span class="badge-done">✓ Done</span>
-        </div>`).join("")}` : ""}
+        </div>`).join("")}`:""}
     </div>
     <div class="card">
-      <div class="card-hd">📋 Breakdown by Activity</div>
+      <div class="card-title">📋 Breakdown by Activity</div>
       ${data.activities.map(act=>{
         const exps=data.expenses.filter(e=>e.activity===act);
         if(!exps.length) return "";
         return `<div style="margin-bottom:14px">
-          <div style="font-weight:600;margin-bottom:6px">${ICONS[act]||'💰'} ${act} — $${exps.reduce((s,e)=>s+e.amount,0).toFixed(2)}</div>
-          ${exps.map(e=>`<div class="exp-meta" style="margin-left:14px;margin-bottom:3px">• ${e.description}: $${(+e.amount).toFixed(2)} (${e.paidBy})</div>`).join("")}
+          <div style="font-weight:800;font-size:.85rem;margin-bottom:5px;color:var(--teal-deep)">${ICONS[act]||'💰'} ${act} — $${exps.reduce((s,e)=>s+e.amount,0).toFixed(2)}</div>
+          ${exps.map(e=>`<div class="exp-meta" style="margin-left:14px;margin-bottom:2px">• ${e.description}: $${(+e.amount).toFixed(2)} (${e.paidBy})</div>`).join("")}
         </div>`;
       }).join("")}
     </div>`;
 }
 
-// ── MEMBERS TAB ──
+// ── MEMBERS ──
 function rMembers() {
+  const approved=data.members.filter(m=>m.status==="approved");
+  const pending =data.members.filter(m=>m.status==="pending");
   return `
     <div class="card">
-      <div class="card-hd">👥 Trip Members <button class="btn btn-primary btn-sm" id="b-addmem">+ Add Member</button></div>
-      ${data.members.map(m=>{
-        const b=netBal(m,data.expenses);
-        const paid=data.expenses.filter(e=>e.paidBy===m).reduce((s,e)=>s+e.amount,0);
-        return `<div class="bal-row">
-          <div style="flex:1"><div class="bal-name">${m}</div><div class="exp-meta">Paid $${paid.toFixed(2)} total</div></div>
-          <div style="text-align:right">
-            <div class="bal-num ${b>=0?'k-green':'k-red'}" style="font-size:17px">${b>=0?'+':''}$${Math.abs(b).toFixed(2)}</div>
-            <div class="exp-meta">${b>0?'to receive':b<0?'to pay':'settled'}</div>
+      <div class="card-title">✅ Approved Members (${approved.length})</div>
+      ${approved.length?approved.map(m=>{
+        const b=netBal(m.name,data.expenses);
+        const paid=data.expenses.filter(e=>e.paidBy===m.name).reduce((s,e)=>s+e.amount,0);
+        return `<div class="member-card">
+          <div class="member-left">
+            <div class="member-avatar">${m.photo?`<img src="${m.photo}" style="width:100%;height:100%;border-radius:50%;object-fit:cover" onerror="this.parentNode.textContent='👤'">`:"👤"}</div>
+            <div>
+              <div class="member-name">${m.name} ${m.email===ADMIN_EMAIL?'<span class="role-badge role-admin">Admin</span>':'<span class="role-badge role-member">Member</span>'}</div>
+              <div class="member-email">${m.email} · Paid $${paid.toFixed(2)}</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="text-align:right">
+              <div class="bal-num ${b>=0?'kv-green':'kv-red'}" style="font-size:1rem">${b>=0?'+':''}$${Math.abs(b).toFixed(2)}</div>
+              <div class="exp-meta">${b>0?'to receive':b<0?'owes':'even'}</div>
+            </div>
+            ${isAdmin()&&m.email!==ADMIN_EMAIL?`<button class="btn btn-danger btn-sm" data-kick="${m.id}">Remove</button>`:""}
           </div>
         </div>`;
-      }).join("")}
-    </div>`;
+      }).join(""):'<div class="empty" style="padding:16px 0"><p>No approved members yet</p></div>'}
+    </div>
+    ${isAdmin()&&pending.length?`
+    <div class="card" style="border-color:#fde8cc;">
+      <div class="card-title" style="color:var(--amber)">⏳ Pending Approval (${pending.length})</div>
+      <div class="info-note">These people signed in and are waiting for your approval to join the tracker.</div>
+      ${pending.map(m=>`<div class="member-card">
+        <div class="member-left">
+          <div class="member-avatar">${m.photo?`<img src="${m.photo}" style="width:100%;height:100%;border-radius:50%;object-fit:cover" onerror="this.parentNode.textContent='👤'">`:"👤"}</div>
+          <div>
+            <div class="member-name">${m.name} <span class="role-badge role-pending">Pending</span></div>
+            <div class="member-email">${m.email}</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:7px">
+          <button class="btn btn-green btn-sm" data-approve="${m.id}">✓ Approve</button>
+          <button class="btn btn-danger btn-sm" data-kick="${m.id}">✕ Reject</button>
+        </div>
+      </div>`).join("")}
+    </div>`:""}
+    ${!isAdmin()&&pending.length===0&&approved.length===0?`<div class="info-note">Share the tracker link with your trip group. When they sign in with Google, they'll appear here for you to approve.</div>`:""}`;
 }
 
 // ── MODALS ──
 function rExpModal() {
-  const today = new Date().toISOString().split("T")[0];
-  const me    = user?.displayName || user?.email || "";
+  const today=new Date().toISOString().split("T")[0];
+  const myName=(isAdmin()?user.displayName||user.email:getMe()?.name)||"";
+  const names=approvedNames();
   return `<div class="overlay" id="ov">
     <div class="modal">
       <div class="modal-hd">➕ Add Expense <button class="x-btn" id="b-close">✕</button></div>
@@ -500,20 +635,18 @@ function rExpModal() {
         <div class="fg"><label>Amount (CAD) *</label><input id="e-amt" type="number" placeholder="0.00" step="0.01" min="0"/></div>
         <div class="fg"><label>Date</label><input id="e-date" type="date" value="${today}"/></div>
         <div class="fg"><label>Paid By *</label>
-          <select id="e-paid">
-            ${data.members.map(m=>`<option value="${m}"${m===me?' selected':''}>${m}</option>`).join("")}
-          </select>
+          <select id="e-paid">${names.map(n=>`<option value="${n}"${n===myName?" selected":""}>${n}</option>`).join("")}</select>
         </div>
         <div class="fg"><label>Activity</label>
           <select id="e-act">${data.activities.map(a=>`<option>${a}</option>`).join("")}</select>
         </div>
-        <div class="fg full"><label>Who's splitting this? (tap to toggle)</label>
+        <div class="fg full"><label>Who's splitting this?</label>
           <div class="check-group" id="e-pp">
-            ${data.members.map(m=>`<label class="check-chip on" data-m="${m}"><input type="checkbox" checked value="${m}"/>${m}</label>`).join("")}
+            ${names.map(n=>`<label class="check-chip on" data-m="${n}"><input type="checkbox" checked value="${n}"/>${n}</label>`).join("")}
           </div>
         </div>
-        <div class="fg full"><label>Notes</label><textarea id="e-notes" placeholder="Optional notes…"></textarea></div>
-        <div class="fg full"><button class="btn btn-primary" id="b-saveexp" style="width:100%;padding:13px;font-size:15px">Save Expense</button></div>
+        <div class="fg full"><label>Notes (optional)</label><textarea id="e-notes" placeholder="Any notes…"></textarea></div>
+        <div class="fg full"><button class="btn btn-primary" id="b-saveexp" style="width:100%;padding:12px;font-size:.9rem">Save Expense</button></div>
       </div>
     </div>
   </div>`;
@@ -521,104 +654,92 @@ function rExpModal() {
 
 function rActModal() {
   return `<div class="overlay" id="ov">
-    <div class="modal" style="max-width:380px">
+    <div class="modal" style="max-width:360px">
       <div class="modal-hd">🏷️ New Activity <button class="x-btn" id="b-close">✕</button></div>
       <div class="fg"><label>Activity Name</label><input id="a-name" placeholder="e.g. Fishing Charter"/></div>
-      <button class="btn btn-primary" id="b-saveact" style="width:100%;margin-top:16px;padding:12px">Create Activity</button>
+      <button class="btn btn-primary" id="b-saveact" style="width:100%;margin-top:16px;padding:11px">Create Activity</button>
     </div>
   </div>`;
 }
 
-function rMemModal() {
-  return `<div class="overlay" id="ov">
-    <div class="modal" style="max-width:380px">
-      <div class="modal-hd">👤 Add Member <button class="x-btn" id="b-close">✕</button></div>
-      <div class="fg"><label>Full Name</label><input id="m-name" placeholder="e.g. Priya Sharma"/></div>
-      <button class="btn btn-primary" id="b-savemem" style="width:100%;margin-top:16px;padding:12px">Add Member</button>
-    </div>
-  </div>`;
-}
-
-// ════════════════════════════════════════════
-//  EVENT BINDING
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════
+//  BIND
+// ══════════════════════════════════════════
 function bindAuth() {
-  document.getElementById("b-gsi")?.addEventListener("click", ()=>{
-    signInWithPopup(auth, provider).catch(e=>{ console.error(e); toast("Sign-in error: "+e.code); });
-  });
+  document.getElementById("b-gsi")?.addEventListener("click",()=>
+    signInWithPopup(auth,provider).catch(e=>{ console.error(e); toast("Sign-in error: "+e.code); }));
 }
 
 function bind() {
-  // tabs
   document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{ tab=t.dataset.tab; render(); }));
-  // activity filter pills
   document.querySelectorAll("[data-af]").forEach(p=>p.addEventListener("click",()=>{ actFil=p.dataset.af; render(); }));
-  // open modals
   document.getElementById("b-addexp")?.addEventListener("click",()=>{ modal="expense"; render(); });
   document.getElementById("b-addact")?.addEventListener("click",()=>{ modal="activity"; render(); });
-  document.getElementById("b-addmem")?.addEventListener("click",()=>{ modal="member"; render(); });
-  // close modal
   document.getElementById("b-close")?.addEventListener("click",()=>{ modal=null; render(); });
   document.getElementById("ov")?.addEventListener("click",e=>{ if(e.target.id==="ov"){ modal=null; render(); } });
-  // participant toggle
+
   document.querySelectorAll(".check-chip[data-m]").forEach(c=>{
     c.addEventListener("click",()=>{ c.classList.toggle("on"); c.querySelector("input").checked=c.classList.contains("on"); });
   });
-  // save expense
+
   document.getElementById("b-saveexp")?.addEventListener("click",()=>{
     const desc=document.getElementById("e-desc").value.trim();
-    const amt =parseFloat(document.getElementById("e-amt").value);
+    const amt=parseFloat(document.getElementById("e-amt").value);
     const date=document.getElementById("e-date").value;
     const paid=document.getElementById("e-paid").value;
-    const act =document.getElementById("e-act").value;
+    const act=document.getElementById("e-act").value;
     const notes=document.getElementById("e-notes").value.trim();
-    const pp  =[...document.querySelectorAll(".check-chip.on")].map(c=>c.dataset.m);
+    const pp=[...document.querySelectorAll(".check-chip.on")].map(c=>c.dataset.m);
     if(!desc||isNaN(amt)||amt<=0){ toast("Enter description and amount"); return; }
     if(!pp.length){ toast("Select at least one participant"); return; }
     data.expenses.push({ id:Date.now().toString(), description:desc, amount:amt, date, paidBy:paid, activity:act, notes, participants:pp });
-    modal=null;
-    ghSave().then(()=>render());
+    modal=null; ghSave().then(()=>render());
   });
-  // save activity
+
   document.getElementById("b-saveact")?.addEventListener("click",()=>{
     const n=document.getElementById("a-name").value.trim();
     if(!n){ toast("Enter activity name"); return; }
     if(!data.activities.includes(n)) data.activities.push(n);
     modal=null; ghSave().then(()=>render());
   });
-  // save member
-  document.getElementById("b-savemem")?.addEventListener("click",()=>{
-    const n=document.getElementById("m-name").value.trim();
-    if(!n){ toast("Enter a name"); return; }
-    if(!data.members.includes(n)) data.members.push(n);
-    modal=null; ghSave().then(()=>render());
-  });
-  // delete expense
+
   document.querySelectorAll("[data-del]").forEach(b=>b.addEventListener("click",()=>{
     data.expenses=data.expenses.filter(e=>e.id!==b.dataset.del);
     ghSave().then(()=>render());
   }));
-  // mark settled
+
   document.querySelectorAll("[data-settle]").forEach(b=>b.addEventListener("click",()=>{
     if(!data.settled) data.settled=[];
     data.settled.push(b.dataset.settle);
     ghSave().then(()=>render());
   }));
-  // sign out
-  document.getElementById("b-out")?.addEventListener("click",()=>signOut(auth));
-  document.getElementById("b-in-hdr")?.addEventListener("click",()=>{
-    signInWithPopup(auth, provider).catch(e=>{ console.error(e); toast("Sign-in error: "+e.code); });
-  });
+
+  document.querySelectorAll("[data-approve]").forEach(b=>b.addEventListener("click",()=>{
+    const m=data.members.find(x=>x.id===b.dataset.approve);
+    if(m){ m.status="approved"; ghSave().then(()=>render()); }
+  }));
+
+  document.querySelectorAll("[data-kick]").forEach(b=>b.addEventListener("click",()=>{
+    data.members=data.members.filter(x=>x.id!==b.dataset.kick);
+    ghSave().then(()=>render());
+  }));
+
+  document.getElementById("b-out2")?.addEventListener("click",()=>signOut(auth));
 }
 
-// ════════════════════════════════════════════
-//  AUTH STATE
-// ════════════════════════════════════════════
+// ══════════════════════════════════════════
+//  AUTH
+// ══════════════════════════════════════════
 onAuthStateChanged(auth, u => {
-  user = u;
-  if (u) ghLoad();
+  user=u;
+  if(u) ghLoad();
   else render();
 });
 </script>
+
+<footer style="background:var(--teal-deep);color:#fff;text-align:center;padding:36px 24px;margin-top:40px;font-family:'Nunito',sans-serif;">
+  <div style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:6px;">⚓ Tobermory Trip · May 2026</div>
+  <div style="font-size:.8rem;opacity:.7;font-weight:600;">Split fairly · Settle easily · Enjoy the trip 🌊</div>
+</footer>
 </body>
 </html>
