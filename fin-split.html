@@ -14,7 +14,6 @@ body{font-family:'DM Sans',sans-serif;background:#FFFFFF;color:#1A2235;min-heigh
   --teal:#00b386;--teal-dark:#008C69;--teal-dim:rgba(0,179,134,0.10);--teal-border:rgba(0,179,134,0.28);
   --amber:#C27A00;--amber-dim:rgba(194,122,0,0.10);--amber-border:rgba(194,122,0,0.28);
   --red:#D93025;--red-dim:rgba(217,48,37,0.08);--red-border:rgba(217,48,37,0.25);
-  --indigo:#4F46E5;--indigo-dim:rgba(79,70,229,0.10);
   --surface:#F0F2F5;--bg:#FFFFFF;--panel:#E4E7ED;
   --border:rgba(0,0,0,0.09);--border-md:rgba(0,0,0,0.15);
   --text:#1A2235;--text2:#5A6478;--text3:#9AA3B2;
@@ -25,8 +24,6 @@ body{font-family:'DM Sans',sans-serif;background:#FFFFFF;color:#1A2235;min-heigh
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:#EAECEF}
 ::-webkit-scrollbar-thumb{background:#C4C9D4;border-radius:3px}
-
-/* TOPBAR */
 .topbar{position:sticky;top:0;z-index:100;background:#FFFFFF;border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;box-shadow:var(--shadow)}
 .logo{display:flex;align-items:center;gap:10px}
 .logo-mark{width:32px;height:32px;border-radius:8px;background:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
@@ -37,19 +34,12 @@ body{font-family:'DM Sans',sans-serif;background:#FFFFFF;color:#1A2235;min-heigh
 .nav-btn{display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;font-family:'DM Sans',sans-serif;color:var(--text2);background:none;border:none;cursor:pointer;transition:background .15s,color .15s;white-space:nowrap}
 .nav-btn:hover{background:var(--surface);color:var(--text)}
 .nav-btn.active{background:var(--teal-dim);color:var(--teal-dark);font-weight:600}
-.nav-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
-#auth-bar{display:flex;align-items:center;gap:8px;flex-shrink:0;white-space:nowrap}
+#auth-bar{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .user-chip{display:inline-flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:4px 12px 4px 5px;font-size:12px;font-weight:500;color:var(--text2);white-space:nowrap;flex-shrink:0}
 .u-avatar{width:24px;height:24px;border-radius:50%;border:2px solid var(--teal-border);object-fit:cover;flex-shrink:0}
 .admin-pip{font-size:10px;background:var(--teal);color:#fff;padding:1px 6px;border-radius:10px;font-weight:600}
-.status-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 5px var(--teal)}
-
-/* PAGE */
 .page{padding:22px 28px;max-width:1100px;margin:0 auto}
-.screen{display:none}
-.screen.active{display:block}
-
-/* SIGN IN */
+.screen{display:none}.screen.active{display:block}
 .signin-outer{min-height:calc(100vh - 56px);display:flex;align-items:center;justify-content:center;padding:32px;background:var(--surface)}
 .signin-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-md);overflow:hidden;width:100%;max-width:440px}
 .signin-head{background:var(--teal);padding:28px 32px}
@@ -59,15 +49,11 @@ body{font-family:'DM Sans',sans-serif;background:#FFFFFF;color:#1A2235;min-heigh
 .google-btn{display:flex;align-items:center;gap:12px;padding:11px 18px;border-radius:var(--radius-sm);background:#fff;color:#1a1a1a;border:1px solid var(--border-md);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;width:100%;justify-content:center;transition:all .15s;box-shadow:var(--shadow)}
 .google-btn:hover{box-shadow:var(--shadow-md);border-color:#aaa}
 .g-logo{width:20px;height:20px;flex-shrink:0}
-
-/* PENDING */
 .pending-outer{min-height:calc(100vh - 56px);display:flex;align-items:center;justify-content:center;padding:32px;background:var(--surface)}
 .pending-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-md);padding:40px 36px;max-width:400px;width:100%;text-align:center}
 .pending-icon{font-size:44px;margin-bottom:12px;display:block}
 .pending-title{font-size:20px;font-weight:600;color:var(--amber);margin-bottom:8px}
 .pending-sub{font-size:13px;color:var(--text2);line-height:1.7}
-
-/* KPI */
 .kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:18px}
 @media(max-width:700px){.kpi-grid{grid-template-columns:repeat(2,1fr)}}
 .kpi{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
@@ -79,33 +65,21 @@ body{font-family:'DM Sans',sans-serif;background:#FFFFFF;color:#1A2235;min-heigh
 .kl{font-size:10px;font-weight:600;color:var(--text3);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.6px}
 .kv{font-size:19px;font-weight:600;font-family:'DM Mono',monospace;color:var(--text);line-height:1}
 .ks{font-size:11px;color:var(--text3);margin-top:3px;font-family:'DM Mono',monospace}
-
-/* TABS */
 .tabs{display:flex;gap:2px;margin-bottom:20px;flex-wrap:wrap}
 .tab{display:flex;align-items:center;gap:6px;padding:7px 14px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--text2);font-family:'DM Sans',sans-serif;transition:all .14s}
 .tab.active{background:var(--teal-dim);color:var(--teal-dark);border-color:var(--teal-border);font-weight:600}
 .tab:hover:not(.active){background:var(--surface);color:var(--text)}
-
-/* SECTION CARD */
 .sc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 22px;margin-bottom:14px;box-shadow:var(--shadow)}
 .sc-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
 .sc-sub{font-size:12px;font-weight:400;color:var(--text3);font-family:'DM Mono',monospace}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
 @media(max-width:640px){.two-col{grid-template-columns:1fr}}
-
-/* BUTTONS */
 .btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;border:none;transition:all .14s;white-space:nowrap}
-.btn-primary{background:var(--teal);color:#fff}
-.btn-primary:hover{background:var(--teal-dark)}
-.btn-ghost{background:#fff;color:var(--text2);border:1px solid var(--border-md)}
-.btn-ghost:hover{background:var(--surface)}
-.btn-danger{background:none;color:var(--red);border:1px solid var(--red-border)}
-.btn-danger:hover{background:var(--red-dim)}
-.btn-green{background:none;color:#15803d;border:1px solid rgba(22,163,74,0.3)}
-.btn-green:hover{background:rgba(22,163,74,0.08)}
+.btn-primary{background:var(--teal);color:#fff}.btn-primary:hover{background:var(--teal-dark)}
+.btn-ghost{background:#fff;color:var(--text2);border:1px solid var(--border-md)}.btn-ghost:hover{background:var(--surface)}
+.btn-danger{background:none;color:var(--red);border:1px solid var(--red-border)}.btn-danger:hover{background:var(--red-dim)}
+.btn-green{background:none;color:#15803d;border:1px solid rgba(22,163,74,0.3)}.btn-green:hover{background:rgba(22,163,74,0.08)}
 .btn-sm{padding:5px 12px;font-size:12px}
-
-/* EXP ROW */
 .exp-row{display:flex;align-items:flex-start;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);gap:12px}
 .exp-row:last-child{border-bottom:none}
 .exp-icon{width:36px;height:36px;border-radius:var(--radius-sm);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:17px;background:var(--teal-dim);border:1px solid var(--teal-border)}
@@ -116,34 +90,25 @@ body{font-family:'DM Sans',sans-serif;background:#FFFFFF;color:#1A2235;min-heigh
 .exp-right{text-align:right;flex-shrink:0}
 .exp-amt{font-size:16px;font-weight:600;font-family:'DM Mono',monospace;color:var(--teal-dark)}
 .exp-per{font-size:11px;color:var(--text3);margin-top:2px;font-family:'DM Mono',monospace}
-
-/* BAL ROW */
 .bal-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)}
 .bal-row:last-child{border-bottom:none}
 .bal-name{font-size:13px;font-weight:500;min-width:88px;color:var(--text)}
 .bar-wrap{flex:1;height:6px;background:var(--panel);border-radius:3px;overflow:hidden}
 .bar-fill{height:100%;border-radius:3px;transition:width .5s}
 .bal-num{font-size:13px;font-weight:600;font-family:'DM Mono',monospace;min-width:70px;text-align:right}
-
-/* SETTLE */
 .settle-row{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:8px;flex-wrap:wrap;box-shadow:var(--shadow)}
 .settle-from{font-weight:600;font-size:13px;color:var(--text)}
 .settle-arrow{color:var(--amber);font-weight:600;font-size:13px}
 .settle-to{font-weight:600;font-size:13px;color:var(--teal-dark)}
 .settle-amt{margin-left:auto;font-family:'DM Mono',monospace;font-size:15px;font-weight:600;color:#15803d;padding-right:10px}
 .badge-done{padding:3px 10px;border-radius:10px;font-size:11px;font-weight:600;background:rgba(22,163,74,0.1);color:#15803d;border:1px solid rgba(22,163,74,0.25)}
-
-/* PILLS */
 .pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
 .pill{padding:5px 12px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid var(--border);background:#fff;cursor:pointer;color:var(--text2);transition:all .13s}
 .pill.active{background:var(--teal-dim);border-color:var(--teal-border);color:var(--teal-dark);font-weight:600}
 .pill:hover:not(.active){background:var(--surface);color:var(--text)}
-
-/* FORM */
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:520px){.form-grid{grid-template-columns:1fr}}
-.fg{display:flex;flex-direction:column;gap:5px}
-.fg.full{grid-column:1/-1}
+.fg{display:flex;flex-direction:column;gap:5px}.fg.full{grid-column:1/-1}
 .fg label{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px}
 input,select,textarea{width:100%;padding:8px 11px;background:#fff;border:1px solid var(--border-md);border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text);outline:none;transition:border-color .14s,box-shadow .14s}
 input:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(0,179,134,0.10)}
@@ -155,16 +120,12 @@ textarea{resize:vertical;min-height:64px}
 .check-chip:hover{border-color:var(--teal)}
 .check-chip.on{background:var(--teal-dim);border-color:var(--teal-border);color:var(--teal-dark)}
 .check-chip input{display:none}
-
-/* MODAL */
 .overlay{position:fixed;inset:0;background:rgba(10,18,35,0.55);backdrop-filter:blur(4px);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px}
 .modal{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:24px 22px;max-width:540px;width:100%;max-height:90vh;overflow-y:auto;animation:rise .18s ease;box-shadow:var(--shadow-md)}
 @keyframes rise{from{transform:translateY(12px);opacity:0}}
 .modal-hd{font-size:16px;font-weight:600;color:var(--text);margin-bottom:18px;display:flex;align-items:center;justify-content:space-between}
 .x-btn{background:none;border:none;color:var(--text3);cursor:pointer;font-size:18px;line-height:1;padding:2px 5px;border-radius:4px;font-family:'DM Sans',sans-serif}
 .x-btn:hover{background:var(--surface);color:var(--text)}
-
-/* MEMBER */
 .member-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border);gap:12px}
 .member-row:last-child{border-bottom:none}
 .m-left{display:flex;align-items:center;gap:10px}
@@ -175,34 +136,27 @@ textarea{resize:vertical;min-height:64px}
 .badge-admin{background:var(--teal-dim);color:var(--teal-dark);border:1px solid var(--teal-border)}
 .badge-member{background:var(--surface);color:var(--text2);border:1px solid var(--border-md)}
 .badge-pending{background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border)}
-
-/* DANGER ZONE */
 .danger-zone{background:var(--surface);border:1px solid var(--red-border);border-radius:var(--radius);padding:16px 20px;margin-top:14px}
 .dz-title{font-size:11px;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px}
-
-/* EMPTY */
 .empty{text-align:center;padding:32px 20px;color:var(--text3);font-size:13px}
 .empty-icon{font-size:32px;margin-bottom:8px}
-
-/* TOAST */
 #toast{position:fixed;bottom:22px;right:22px;padding:10px 16px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s;z-index:999;pointer-events:none;font-family:'DM Sans',sans-serif}
 #toast.show{opacity:1;transform:translateY(0)}
 #toast.success{background:var(--teal);color:#fff}
 #toast.error{background:var(--red);color:#fff}
 #toast.info{background:var(--text);color:#fff}
-
 .info-note{background:var(--teal-dim);border:1px solid var(--teal-border);border-radius:var(--radius-sm);padding:10px 14px;font-size:12px;color:var(--teal-dark);font-weight:500;margin-bottom:12px;line-height:1.6}
 .warn-note{background:var(--amber-dim);border:1px solid var(--amber-border);border-radius:var(--radius-sm);padding:10px 14px;font-size:12px;color:var(--amber);font-weight:500;margin-bottom:12px;line-height:1.6}
 .divider{height:1px;background:var(--border);margin:14px 0}
 .sec-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .sec-title{font-size:15px;font-weight:600;color:var(--text)}
+.loading-overlay{position:fixed;inset:0;background:rgba(255,255,255,0.85);display:flex;align-items:center;justify-content:center;z-index:500;font-size:14px;color:var(--text2);font-weight:500;gap:10px}
+.spinner{width:20px;height:20px;border:2px solid var(--teal-border);border-top-color:var(--teal);border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
-
 <div id="toast"></div>
-
-<!-- TOPBAR -->
 <header class="topbar">
   <div class="logo">
     <div class="logo-mark">⚖️</div>
@@ -217,16 +171,15 @@ textarea{resize:vertical;min-height:64px}
     <button class="nav-btn" data-tab="settlements">🔄 Settle Up</button>
     <button class="nav-btn" data-tab="members">👥 Members</button>
   </nav>
-  <div id="auth-bar" style="display:flex;align-items:center;gap:8px;flex-shrink:0;"><span style="font-size:12px;color:var(--text3)">Loading…</span></div>
+  <div id="auth-bar"><span style="font-size:12px;color:var(--text3)">Loading…</span></div>
 </header>
 
-<!-- SCREENS -->
 <div id="screen-signin" class="screen active">
   <div class="signin-outer">
     <div class="signin-card">
-      <div class="signin-head"><h1>Welcome to FinSplit</h1><p>Sign in to join the trip expense tracker</p></div>
+      <div class="signin-head"><h1>Welcome to FinSplit</h1><p>Tobermory Trip · May 2026</p></div>
       <div class="signin-body">
-        <p style="font-size:13px;color:var(--text2);margin-bottom:20px;line-height:1.7">Sign in with your Google account. Your real name will appear automatically — no setup needed. The trip organiser will approve you.</p>
+        <p style="font-size:13px;color:var(--text2);margin-bottom:20px;line-height:1.7">Sign in with your Google account to join the trip tracker. Your real name appears automatically. The organiser will approve you.</p>
         <button class="google-btn" id="b-gsi">
           <svg class="g-logo" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
           Sign in with Google
@@ -241,7 +194,7 @@ textarea{resize:vertical;min-height:64px}
     <div class="pending-card">
       <span class="pending-icon">⏳</span>
       <div class="pending-title">Awaiting Approval</div>
-      <p class="pending-sub" id="pending-msg">Your request has been sent to the trip organiser. Once approved you'll have full access.</p>
+      <p class="pending-sub" id="pending-msg">Your request has been sent to the trip organiser.</p>
       <button class="btn btn-ghost" style="margin-top:20px;width:100%" id="b-out2">Sign out</button>
     </div>
   </div>
@@ -257,12 +210,14 @@ textarea{resize:vertical;min-height:64px}
 </div>
 
 <script type="module">
-import { initializeApp }   from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+import { initializeApp }     from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged }
-                           from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+                             from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc, onSnapshot }
+                             from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
 
 // ══════════════════════════════
-//  CONFIG
+//  CONFIG — no token needed!
 // ══════════════════════════════
 const FB = {
   apiKey:            "AIzaSyBHtdnCt4xtSuezt3p5vrTqMPEZRRIX2UQ",
@@ -272,21 +227,20 @@ const FB = {
   messagingSenderId: "585256105192",
   appId:             "1:585256105192:web:ed2d38a97fe81d064c055d"
 };
-const GH_TOKEN = "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";
-const GH_OWNER = "code-manigopal";
-const GH_REPO  = "code-manigopal.github.io";
-const GH_PATH  = "finsplit-data/trips.json";
 const ADMIN    = "manikandangopal97@gmail.com";
+const TRIP_ID  = "tobermory-2026";
 
 const DEF_ACTS = ["Shared (All)","Flowerpot Island","Scuba Diving","Kayaking","Accommodation","Food & Drinks","Transportation"];
 const ICONS    = {"Shared (All)":"🏕️","Flowerpot Island":"🌺","Scuba Diving":"🤿","Kayaking":"🚣","Accommodation":"🏠","Food & Drinks":"🍽️","Transportation":"🚗"};
 
 // ══════════════════════════════
-//  FIREBASE
+//  FIREBASE INIT
 // ══════════════════════════════
-const fbApp    = initializeApp(FB);
-const auth     = getAuth(fbApp);
+const fbApp  = initializeApp(FB);
+const auth   = getAuth(fbApp);
+const db     = getFirestore(fbApp);
 const provider = new GoogleAuthProvider();
+const tripRef  = doc(db, "trips", TRIP_ID);
 
 // ══════════════════════════════
 //  STATE
@@ -296,13 +250,13 @@ let data   = { expenses:[], activities:[...DEF_ACTS], members:[], settled:[] };
 let tab    = "dashboard";
 let actFil = "All";
 let modal  = null;
-let ghSHA  = null;
+let saving = false;
 
 const isAdmin    = () => user?.email === ADMIN;
 const getMe      = () => data.members.find(m => m.email === user?.email);
 const isApproved = () => isAdmin() || getMe()?.status === "approved";
 const isPending  = () => !isAdmin() && getMe()?.status === "pending";
-const myName     = () => isAdmin() ? (user.displayName||user.email) : getMe()?.name || "";
+const myName     = () => isAdmin() ? (user.displayName||user.email) : getMe()?.name||"";
 const approvedNames = () => {
   const names = data.members.filter(m=>m.status==="approved").map(m=>m.name);
   if (isAdmin() && !names.includes(myName())) names.unshift(myName());
@@ -310,38 +264,49 @@ const approvedNames = () => {
 };
 
 // ══════════════════════════════
-//  GITHUB
+//  FIRESTORE
 // ══════════════════════════════
-async function ghLoad() {
-  try {
-    const r = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_PATH}`,
-      { headers:{ Authorization:`token ${GH_TOKEN}` } });
-    if (r.ok) {
-      const j = await r.json(); ghSHA = j.sha;
-      const d2 = JSON.parse(atob(j.content.replace(/\n/g,'')));
-      data = { expenses:[], activities:[...DEF_ACTS], members:[], settled:[], ...d2 };
-    }
-  } catch(e) { console.warn(e); }
+async function fsLoad() {
+  const snap = await getDoc(tripRef);
+  if (snap.exists()) {
+    const d = snap.data();
+    data = { expenses:[], activities:[...DEF_ACTS], members:[], settled:[], ...d };
+  }
+  // Auto-enroll new user
   if (user && !isAdmin()) {
     const exists = data.members.find(m=>m.email===user.email);
     if (!exists) {
       data.members.push({ id:Date.now().toString(), name:user.displayName||user.email, email:user.email, photo:user.photoURL||"", status:"pending", joined:new Date().toISOString() });
-      await ghSave(false);
+      await fsSave(false);
     }
   }
   render();
 }
 
-async function ghSave(msg=true) {
-  const content = btoa(unescape(encodeURIComponent(JSON.stringify(data,null,2))));
-  const body = { message:"FinSplit: update trip data", content };
-  if (ghSHA) body.sha = ghSHA;
+async function fsSave(showMsg=true) {
+  if (saving) return;
+  saving = true;
   try {
-    const r = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_PATH}`,
-      { method:"PUT", headers:{ Authorization:`token ${GH_TOKEN}`, "Content-Type":"application/json" }, body:JSON.stringify(body) });
-    if (r.ok) { const j=await r.json(); ghSHA=j.content.sha; if(msg) toast("Saved","success"); }
-    else if(msg) toast("Save failed","error");
-  } catch(e) { if(msg) toast("Save error","error"); }
+    await setDoc(tripRef, data);
+    if (showMsg) toast("Saved","success");
+  } catch(e) {
+    console.error(e);
+    if (showMsg) toast("Save failed: "+e.message,"error");
+  }
+  saving = false;
+}
+
+// Real-time listener — all users see updates instantly
+let unsubscribe = null;
+function startListener() {
+  if (unsubscribe) unsubscribe();
+  unsubscribe = onSnapshot(tripRef, snap => {
+    if (snap.exists()) {
+      const d = snap.data();
+      data = { expenses:[], activities:[...DEF_ACTS], members:[], settled:[], ...d };
+      if (isApproved()) render();
+    }
+  });
 }
 
 // ══════════════════════════════
@@ -381,7 +346,7 @@ function netBal(name) {
 //  TOAST
 // ══════════════════════════════
 let _tid;
-function toast(msg, type="success") {
+function toast(msg,type="success"){
   const t=document.getElementById("toast");
   clearTimeout(_tid); t.textContent=msg; t.className="show "+type;
   _tid=setTimeout(()=>t.className="",2600);
@@ -390,41 +355,44 @@ function toast(msg, type="success") {
 // ══════════════════════════════
 //  SCREENS
 // ══════════════════════════════
-function showScreen(id) {
+function showScreen(id){
   ["screen-signin","screen-pending","screen-app"].forEach(s=>{
-    document.getElementById(s).classList.toggle("active", s===id);
+    document.getElementById(s).classList.toggle("active",s===id);
   });
 }
 
 // ══════════════════════════════
 //  RENDER
 // ══════════════════════════════
-function render() {
+function render(){
   rAuthBar();
-  document.getElementById("main-nav").style.display = (!user || isPending()) ? "none" : "flex";
-  if (!user)           { showScreen("screen-signin"); bindSignIn(); return; }
-  if (isPending())     { showScreen("screen-pending"); bindPending(); return; }
+  const nav = document.getElementById("main-nav");
+  if(!user||isPending()){ nav.style.display="none"; }
+  else { nav.style.display="flex"; }
+
+  if(!user){ showScreen("screen-signin"); bindSignIn(); return; }
+  if(isPending()){ showScreen("screen-pending"); bindPending(); return; }
+
   showScreen("screen-app");
-  document.getElementById("main-nav").style.display = "flex";
-  document.getElementById("kpi-strip").innerHTML = rKPI();
-  document.getElementById("tab-bar").innerHTML   = rTabs();
+  document.getElementById("kpi-strip").innerHTML   = rKPI();
+  document.getElementById("tab-bar").innerHTML     = rTabs();
   document.getElementById("tab-content").innerHTML =
     tab==="dashboard"   ? rDash()    :
-    tab==="expenses"    ? rExpenses(): 
+    tab==="expenses"    ? rExpenses():
     tab==="settlements" ? rSettle()  :
     tab==="members"     ? rMembers() : "";
-  document.getElementById("modal-area").innerHTML =
+  document.getElementById("modal-area").innerHTML  =
     modal==="expense"  ? rExpModal()  :
     modal==="activity" ? rActModal()  :
     modal==="reset"    ? rResetModal(): "";
   bind();
 }
 
-function rAuthBar() {
-  const bar = document.getElementById("auth-bar");
-  if (!bar) return;
-  bar.style.cssText = "display:flex;align-items:center;gap:8px;flex-shrink:0;";
-  if (user) {
+function rAuthBar(){
+  const bar=document.getElementById("auth-bar");
+  if(!bar) return;
+  bar.style.cssText="display:flex;align-items:center;gap:8px;flex-shrink:0;";
+  if(user){
     bar.innerHTML=`<div class="user-chip"><img class="u-avatar" src="${user.photoURL||''}" onerror="this.style.display='none'"/><span>${(user.displayName||user.email).split(" ")[0]}</span>${isAdmin()?'<span class="admin-pip">Admin</span>':''}</div><button class="btn btn-ghost btn-sm" id="b-signout">Sign out</button>`;
     document.getElementById("b-signout")?.addEventListener("click",()=>signOut(auth));
   } else {
@@ -433,27 +401,23 @@ function rAuthBar() {
   }
 }
 
-function bindSignIn() {
-  document.getElementById("b-gsi")?.addEventListener("click", doSignIn);
-}
-function bindPending() {
+function bindSignIn(){ document.getElementById("b-gsi")?.addEventListener("click",doSignIn); }
+function bindPending(){
   document.getElementById("b-out2")?.addEventListener("click",()=>signOut(auth));
-  const msg = document.getElementById("pending-msg");
-  if (msg) { const me=getMe(); if(me) msg.innerHTML=`Hey <strong>${me.name}</strong>! Your sign-in request is pending approval from the trip organiser. Check back shortly.`; }
+  const me=getMe(), msg=document.getElementById("pending-msg");
+  if(me&&msg) msg.innerHTML=`Hey <strong>${me.name}</strong>! Your request is pending approval from the trip organiser.`;
 }
-function doSignIn() {
-  signInWithPopup(auth, provider).catch(e=>{ console.error(e); toast("Sign-in error: "+e.code,"error"); });
-}
+function doSignIn(){ signInWithPopup(auth,provider).catch(e=>{ console.error(e); toast("Sign-in error: "+e.code,"error"); }); }
 
 // ── KPI ──
-function rKPI() {
-  const total = data.expenses.reduce((s,e)=>s+e.amount,0);
-  const mn    = myName();
-  const myPaid= data.expenses.filter(e=>e.paidBy===mn).reduce((s,e)=>s+e.amount,0);
-  const myBal = netBal(mn);
-  const txns  = settle(data.expenses);
-  const pend  = txns.filter(t=>!(data.settled||[]).includes(t.from+">"+t.to)).length;
-  const approved = data.members.filter(m=>m.status==="approved").length;
+function rKPI(){
+  const total=data.expenses.reduce((s,e)=>s+e.amount,0);
+  const mn=myName();
+  const myPaid=data.expenses.filter(e=>e.paidBy===mn).reduce((s,e)=>s+e.amount,0);
+  const myBal=netBal(mn);
+  const txns=settle(data.expenses);
+  const pend=txns.filter(t=>!(data.settled||[]).includes(t.from+">"+t.to)).length;
+  const approved=data.members.filter(m=>m.status==="approved").length;
   return `<div class="kpi-grid">
     <div class="kpi teal"><div class="kl">Total Spent</div><div class="kv">$${total.toFixed(2)}</div><div class="ks">${data.expenses.length} expenses</div></div>
     <div class="kpi gray"><div class="kl">You Paid</div><div class="kv">$${myPaid.toFixed(2)}</div><div class="ks">your contributions</div></div>
@@ -464,35 +428,26 @@ function rKPI() {
 }
 
 // ── TABS ──
-function rTabs() {
+function rTabs(){
   return [["dashboard","📊 Dashboard"],["expenses","💸 Expenses"],["settlements","🔄 Settle Up"],["members","👥 Members"]]
     .map(([id,l])=>`<button class="tab${tab===id?" active":""}" data-tab="${id}">${l}</button>`).join("");
 }
 
 // ── DASHBOARD ──
-function rDash() {
+function rDash(){
   const byAct={};
   data.activities.forEach(a=>byAct[a]=0);
   data.expenses.forEach(e=>{byAct[e.activity]=(byAct[e.activity]||0)+e.amount;});
   const maxAct=Math.max(...Object.values(byAct),1);
   const actRows=Object.entries(byAct).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1])
-    .map(([n,v])=>`<div class="bal-row">
-      <span class="bal-name">${ICONS[n]||"💰"} ${n}</span>
-      <div class="bar-wrap"><div class="bar-fill" style="width:${(v/maxAct*100).toFixed(1)}%;background:var(--teal)"></div></div>
-      <span class="bal-num" style="color:var(--teal-dark)">$${v.toFixed(2)}</span>
-    </div>`).join("")||`<div class="empty"><div class="empty-icon">📊</div><p>No data yet</p></div>`;
-
+    .map(([n,v])=>`<div class="bal-row"><span class="bal-name">${ICONS[n]||"💰"} ${n}</span><div class="bar-wrap"><div class="bar-fill" style="width:${(v/maxAct*100).toFixed(1)}%;background:var(--teal)"></div></div><span class="bal-num" style="color:var(--teal-dark)">$${v.toFixed(2)}</span></div>`).join("")
+    ||`<div class="empty"><div class="empty-icon">📊</div><p>No data yet</p></div>`;
   const names=approvedNames();
   const maxBal=Math.max(...names.map(n=>Math.abs(netBal(n))),1);
   const memRows=names.map(n=>{
     const b=netBal(n);
-    return `<div class="bal-row">
-      <span class="bal-name">${n}</span>
-      <div class="bar-wrap"><div class="bar-fill" style="width:${(Math.abs(b)/maxBal*100).toFixed(1)}%;background:${b>=0?"#16a34a":"var(--red)"}"></div></div>
-      <span class="bal-num" style="color:${b>=0?"#15803d":"var(--red)"}">${b>=0?"+":""}$${Math.abs(b).toFixed(2)}</span>
-    </div>`;
+    return `<div class="bal-row"><span class="bal-name">${n}</span><div class="bar-wrap"><div class="bar-fill" style="width:${(Math.abs(b)/maxBal*100).toFixed(1)}%;background:${b>=0?"#16a34a":"var(--red)"}"></div></div><span class="bal-num" style="color:${b>=0?"#15803d":"var(--red)"}">${b>=0?"+":""}$${Math.abs(b).toFixed(2)}</span></div>`;
   }).join("")||`<div class="empty" style="padding:12px 0"><p>No approved members yet</p></div>`;
-
   const recent=[...data.expenses].reverse().slice(0,5);
   return `
     <div class="two-col">
@@ -506,8 +461,8 @@ function rDash() {
 }
 
 // ── EXPENSES ──
-function rExpenses() {
-  const fil = actFil==="All" ? data.expenses : data.expenses.filter(e=>e.activity===actFil);
+function rExpenses(){
+  const fil=actFil==="All"?data.expenses:data.expenses.filter(e=>e.activity===actFil);
   return `
     <div class="sec-hd"><div class="sec-title">All Expenses</div><button class="btn btn-primary btn-sm" id="b-addexp">+ Add Expense</button></div>
     <div class="pills">
@@ -515,12 +470,10 @@ function rExpenses() {
       ${data.activities.map(a=>`<div class="pill${actFil===a?" active":""}" data-af="${a}">${ICONS[a]||"💰"} ${a}</div>`).join("")}
       ${isAdmin()?`<div class="pill" style="border-style:dashed" id="b-addact">+ Activity</div>`:""}
     </div>
-    <div class="sc">
-      ${fil.length?[...fil].reverse().map(rExpRow).join(""):`<div class="empty"><div class="empty-icon">💸</div><p>No expenses here yet</p></div>`}
-    </div>`;
+    <div class="sc">${fil.length?[...fil].reverse().map(rExpRow).join(""):`<div class="empty"><div class="empty-icon">💸</div><p>No expenses here yet</p></div>`}</div>`;
 }
 
-function rExpRow(e) {
+function rExpRow(e){
   const pp=e.participants||approvedNames(), sh=(e.amount/pp.length).toFixed(2);
   return `<div class="exp-row">
     <div class="exp-icon">${ICONS[e.activity]||"💰"}</div>
@@ -538,7 +491,7 @@ function rExpRow(e) {
 }
 
 // ── SETTLE ──
-function rSettle() {
+function rSettle(){
   const txns=settle(data.expenses), done=data.settled||[];
   if(!txns.length) return `<div class="sc"><div class="empty"><div class="empty-icon">🎉</div><p>All settled! No transfers needed.</p></div></div>`;
   const pend=txns.filter(t=>!done.includes(t.from+">"+t.to));
@@ -546,37 +499,21 @@ function rSettle() {
   return `
     <div class="sc">
       <div class="sc-title">Pending Transfers <span class="sc-sub">${pend.length} remaining</span></div>
-      ${pend.map(t=>`<div class="settle-row">
-        <span class="settle-from">${t.from}</span>
-        <span class="settle-arrow"> → </span>
-        <span class="settle-to">${t.to}</span>
-        <span class="settle-amt">$${t.amount.toFixed(2)}</span>
-        ${isAdmin()?`<button class="btn btn-green btn-sm" data-settle="${t.from}>${t.to}">✓ Mark Done</button>`:""}
-      </div>`).join("")}
-      ${settld.length?`<div class="divider"></div>
-        <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px">Completed</div>
-        ${settld.map(t=>`<div class="settle-row" style="opacity:.5">
-          <span class="settle-from">${t.from}</span><span class="settle-arrow"> → </span>
-          <span class="settle-to">${t.to}</span>
-          <span class="settle-amt">$${t.amount.toFixed(2)}</span>
-          <span class="badge-done">✓ Done</span>
-        </div>`).join("")}`:""}
+      ${pend.map(t=>`<div class="settle-row"><span class="settle-from">${t.from}</span><span class="settle-arrow"> → </span><span class="settle-to">${t.to}</span><span class="settle-amt">$${t.amount.toFixed(2)}</span>${isAdmin()?`<button class="btn btn-green btn-sm" data-settle="${t.from}>${t.to}">✓ Mark Done</button>`:""}</div>`).join("")}
+      ${settld.length?`<div class="divider"></div><div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px">Completed</div>${settld.map(t=>`<div class="settle-row" style="opacity:.5"><span class="settle-from">${t.from}</span><span class="settle-arrow"> → </span><span class="settle-to">${t.to}</span><span class="settle-amt">$${t.amount.toFixed(2)}</span><span class="badge-done">✓ Done</span></div>`).join("")}`:""}
     </div>
     <div class="sc">
       <div class="sc-title">Breakdown by Activity</div>
       ${data.activities.map(act=>{
         const exps=data.expenses.filter(e=>e.activity===act);
         if(!exps.length) return "";
-        return `<div style="margin-bottom:14px">
-          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px">${ICONS[act]||"💰"} ${act} — $${exps.reduce((s,e)=>s+e.amount,0).toFixed(2)}</div>
-          ${exps.map(e=>`<div style="font-size:12px;color:var(--text2);margin-left:14px;margin-bottom:2px;font-family:'DM Mono',monospace">• ${e.description}: $${(+e.amount).toFixed(2)} (${e.paidBy})</div>`).join("")}
-        </div>`;
+        return `<div style="margin-bottom:14px"><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px">${ICONS[act]||"💰"} ${act} — $${exps.reduce((s,e)=>s+e.amount,0).toFixed(2)}</div>${exps.map(e=>`<div style="font-size:12px;color:var(--text2);margin-left:14px;margin-bottom:2px;font-family:'DM Mono',monospace">• ${e.description}: $${(+e.amount).toFixed(2)} (${e.paidBy})</div>`).join("")}</div>`;
       }).join("")}
     </div>`;
 }
 
 // ── MEMBERS ──
-function rMembers() {
+function rMembers(){
   const approved=data.members.filter(m=>m.status==="approved");
   const pending=data.members.filter(m=>m.status==="pending");
   return `
@@ -585,128 +522,76 @@ function rMembers() {
       ${approved.length?approved.map(m=>{
         const b=netBal(m.name);
         const paid=data.expenses.filter(e=>e.paidBy===m.name).reduce((s,e)=>s+e.amount,0);
-        return `<div class="member-row">
-          <div class="m-left">
-            <div class="m-avatar">${m.photo?`<img src="${m.photo}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentNode.textContent='👤'">`:""}</div>
-            <div>
-              <div class="m-name">${m.name}${m.email===ADMIN?`<span class="badge badge-admin">Admin</span>`:`<span class="badge badge-member">Member</span>`}</div>
-              <div class="m-email">${m.email} · paid $${paid.toFixed(2)}</div>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;gap:8px">
-            <div style="text-align:right">
-              <div style="font-size:14px;font-weight:600;font-family:'DM Mono',monospace;color:${b>=0?"#15803d":"var(--red)"}">${b>=0?"+":""}$${Math.abs(b).toFixed(2)}</div>
-              <div style="font-size:11px;color:var(--text3)">${b>0?"to receive":b<0?"owes":"even"}</div>
-            </div>
-            ${isAdmin()&&m.email!==ADMIN?`<button class="btn btn-danger btn-sm" data-kick="${m.id}">Remove</button>`:""}
-          </div>
-        </div>`;
+        return `<div class="member-row"><div class="m-left"><div class="m-avatar">${m.photo?`<img src="${m.photo}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentNode.textContent='👤'">`:""}</div><div><div class="m-name">${m.name}${m.email===ADMIN?`<span class="badge badge-admin">Admin</span>`:`<span class="badge badge-member">Member</span>`}</div><div class="m-email">${m.email} · paid $${paid.toFixed(2)}</div></div></div><div style="display:flex;align-items:center;gap:8px"><div style="text-align:right"><div style="font-size:14px;font-weight:600;font-family:'DM Mono',monospace;color:${b>=0?"#15803d":"var(--red)"}">${b>=0?"+":""}$${Math.abs(b).toFixed(2)}</div><div style="font-size:11px;color:var(--text3)">${b>0?"to receive":b<0?"owes":"even"}</div></div>${isAdmin()&&m.email!==ADMIN?`<button class="btn btn-danger btn-sm" data-kick="${m.id}">Remove</button>`:""}</div></div>`;
       }).join(""):`<div class="empty" style="padding:14px 0"><p>No approved members yet</p></div>`}
     </div>
     ${isAdmin()&&pending.length?`
     <div class="sc" style="border-color:var(--amber-border)">
       <div class="sc-title" style="color:var(--amber)">Pending Approval <span class="sc-sub">${pending.length} waiting</span></div>
       <div class="info-note" style="background:var(--amber-dim);border-color:var(--amber-border);color:var(--amber)">These people signed in and are waiting for your approval.</div>
-      ${pending.map(m=>`<div class="member-row">
-        <div class="m-left">
-          <div class="m-avatar">${m.photo?`<img src="${m.photo}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentNode.textContent='👤'">`:""}</div>
-          <div>
-            <div class="m-name">${m.name} <span class="badge badge-pending">Pending</span></div>
-            <div class="m-email">${m.email}</div>
-          </div>
-        </div>
-        <div style="display:flex;gap:6px">
-          <button class="btn btn-green btn-sm" data-approve="${m.id}">✓ Approve</button>
-          <button class="btn btn-danger btn-sm" data-kick="${m.id}">✕ Reject</button>
-        </div>
-      </div>`).join("")}
+      ${pending.map(m=>`<div class="member-row"><div class="m-left"><div class="m-avatar">${m.photo?`<img src="${m.photo}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentNode.textContent='👤'">`:""}</div><div><div class="m-name">${m.name} <span class="badge badge-pending">Pending</span></div><div class="m-email">${m.email}</div></div></div><div style="display:flex;gap:6px"><button class="btn btn-green btn-sm" data-approve="${m.id}">✓ Approve</button><button class="btn btn-danger btn-sm" data-kick="${m.id}">✕ Reject</button></div></div>`).join("")}
     </div>`:""}
     ${isAdmin()?`
     <div class="danger-zone">
       <div class="dz-title">⚠ Danger Zone</div>
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
-        <div>
-          <div style="font-size:13px;font-weight:600;color:var(--text)">Reset all trip data</div>
-          <div style="font-size:12px;color:var(--text2);margin-top:3px">Permanently deletes all expenses, members and settlements.</div>
-        </div>
+        <div><div style="font-size:13px;font-weight:600;color:var(--text)">Reset all trip data</div><div style="font-size:12px;color:var(--text2);margin-top:3px">Permanently deletes all expenses, members and settlements.</div></div>
         <button class="btn btn-danger" id="b-reset">🗑 Reset Data</button>
       </div>
     </div>`:""}`;
 }
 
 // ── MODALS ──
-function rExpModal() {
+function rExpModal(){
   const today=new Date().toISOString().split("T")[0];
   const names=approvedNames();
-  return `<div class="overlay" id="ov">
-    <div class="modal">
-      <div class="modal-hd">Add Expense <button class="x-btn" id="b-close">✕</button></div>
-      <div class="form-grid">
-        <div class="fg full"><label>Description *</label><input id="e-desc" placeholder="e.g. Boat ride to Flowerpot Island"/></div>
-        <div class="fg"><label>Amount (CAD) *</label><input id="e-amt" type="number" placeholder="0.00" step="0.01" min="0"/></div>
-        <div class="fg"><label>Date</label><input id="e-date" type="date" value="${today}"/></div>
-        <div class="fg"><label>Paid By *</label>
-          <select id="e-paid">${names.map(n=>`<option value="${n}"${n===myName()?" selected":""}>${n}</option>`).join("")}</select>
-        </div>
-        <div class="fg"><label>Activity</label>
-          <select id="e-act">${data.activities.map(a=>`<option>${a}</option>`).join("")}</select>
-        </div>
-        <div class="fg full"><label>Who's splitting this?</label>
-          <div class="check-group" id="e-pp">
-            ${names.map(n=>`<label class="check-chip on" data-m="${n}"><input type="checkbox" checked value="${n}"/>${n}</label>`).join("")}
-          </div>
-        </div>
-        <div class="fg full"><label>Notes (optional)</label><textarea id="e-notes" placeholder="Any notes…"></textarea></div>
-        <div class="fg full"><button class="btn btn-primary" id="b-saveexp" style="width:100%;padding:10px;justify-content:center">Save Expense</button></div>
-      </div>
+  return `<div class="overlay" id="ov"><div class="modal">
+    <div class="modal-hd">Add Expense <button class="x-btn" id="b-close">✕</button></div>
+    <div class="form-grid">
+      <div class="fg full"><label>Description *</label><input id="e-desc" placeholder="e.g. Boat ride to Flowerpot Island"/></div>
+      <div class="fg"><label>Amount (CAD) *</label><input id="e-amt" type="number" placeholder="0.00" step="0.01" min="0"/></div>
+      <div class="fg"><label>Date</label><input id="e-date" type="date" value="${today}"/></div>
+      <div class="fg"><label>Paid By *</label><select id="e-paid">${names.map(n=>`<option value="${n}"${n===myName()?" selected":""}>${n}</option>`).join("")}</select></div>
+      <div class="fg"><label>Activity</label><select id="e-act">${data.activities.map(a=>`<option>${a}</option>`).join("")}</select></div>
+      <div class="fg full"><label>Who's splitting this?</label><div class="check-group" id="e-pp">${names.map(n=>`<label class="check-chip on" data-m="${n}"><input type="checkbox" checked value="${n}"/>${n}</label>`).join("")}</div></div>
+      <div class="fg full"><label>Notes (optional)</label><textarea id="e-notes" placeholder="Any notes…"></textarea></div>
+      <div class="fg full"><button class="btn btn-primary" id="b-saveexp" style="width:100%;padding:10px;justify-content:center">Save Expense</button></div>
     </div>
-  </div>`;
+  </div></div>`;
 }
 
-function rActModal() {
-  return `<div class="overlay" id="ov">
-    <div class="modal" style="max-width:360px">
-      <div class="modal-hd">New Activity <button class="x-btn" id="b-close">✕</button></div>
-      <div class="fg"><label>Activity Name</label><input id="a-name" placeholder="e.g. Fishing Charter"/></div>
-      <button class="btn btn-primary" id="b-saveact" style="width:100%;margin-top:14px;padding:10px;justify-content:center">Create</button>
-    </div>
-  </div>`;
+function rActModal(){
+  return `<div class="overlay" id="ov"><div class="modal" style="max-width:360px">
+    <div class="modal-hd">New Activity <button class="x-btn" id="b-close">✕</button></div>
+    <div class="fg"><label>Activity Name</label><input id="a-name" placeholder="e.g. Fishing Charter"/></div>
+    <button class="btn btn-primary" id="b-saveact" style="width:100%;margin-top:14px;padding:10px;justify-content:center">Create</button>
+  </div></div>`;
 }
 
-function rResetModal() {
-  return `<div class="overlay" id="ov">
-    <div class="modal" style="max-width:380px">
-      <div class="modal-hd">Reset All Data <button class="x-btn" id="b-close">✕</button></div>
-      <div class="warn-note">⚠ This permanently deletes all expenses, members and settlements. This cannot be undone.</div>
-      <div class="fg" style="margin-bottom:14px"><label>Type RESET to confirm</label>
-        <input id="reset-confirm" placeholder="RESET" style="border-color:var(--red-border)"/>
-      </div>
-      <button class="btn btn-danger" id="b-do-reset" style="width:100%;padding:10px;justify-content:center">Delete Everything</button>
-    </div>
-  </div>`;
+function rResetModal(){
+  return `<div class="overlay" id="ov"><div class="modal" style="max-width:380px">
+    <div class="modal-hd">Reset All Data <button class="x-btn" id="b-close">✕</button></div>
+    <div class="warn-note">⚠ This permanently deletes all expenses, members and settlements. Cannot be undone.</div>
+    <div class="fg" style="margin-bottom:14px"><label>Type RESET to confirm</label><input id="reset-confirm" placeholder="RESET" style="border-color:var(--red-border)"/></div>
+    <button class="btn btn-danger" id="b-do-reset" style="width:100%;padding:10px;justify-content:center">Delete Everything</button>
+  </div></div>`;
 }
 
 // ══════════════════════════════
 //  BIND
 // ══════════════════════════════
-function bind() {
-  // tabs
+function bind(){
   document.querySelectorAll(".tab[data-tab]").forEach(t=>t.addEventListener("click",()=>{ tab=t.dataset.tab; render(); }));
   document.querySelectorAll(".nav-btn[data-tab]").forEach(t=>t.addEventListener("click",()=>{ tab=t.dataset.tab; render(); }));
-  // activity filter
   document.querySelectorAll("[data-af]").forEach(p=>p.addEventListener("click",()=>{ actFil=p.dataset.af; render(); }));
-  // open modals
   document.getElementById("b-addexp")?.addEventListener("click",()=>{ modal="expense"; render(); });
   document.getElementById("b-addact")?.addEventListener("click",()=>{ modal="activity"; render(); });
   document.getElementById("b-reset")?.addEventListener("click",()=>{ modal="reset"; render(); });
-  // close modal
   document.getElementById("b-close")?.addEventListener("click",()=>{ modal=null; render(); });
   document.getElementById("ov")?.addEventListener("click",e=>{ if(e.target.id==="ov"){ modal=null; render(); } });
-  // participant toggle
   document.querySelectorAll(".check-chip[data-m]").forEach(c=>{
     c.addEventListener("click",()=>{ c.classList.toggle("on"); c.querySelector("input").checked=c.classList.contains("on"); });
   });
-  // save expense
   document.getElementById("b-saveexp")?.addEventListener("click",()=>{
     const desc=document.getElementById("e-desc").value.trim();
     const amt=parseFloat(document.getElementById("e-amt").value);
@@ -718,43 +603,36 @@ function bind() {
     if(!desc||isNaN(amt)||amt<=0){ toast("Enter description and amount","error"); return; }
     if(!pp.length){ toast("Select at least one participant","error"); return; }
     data.expenses.push({ id:Date.now().toString(), description:desc, amount:amt, date, paidBy:paid, activity:act, notes, participants:pp });
-    modal=null; ghSave().then(()=>render());
+    modal=null; fsSave().then(()=>render());
   });
-  // save activity
   document.getElementById("b-saveact")?.addEventListener("click",()=>{
     const n=document.getElementById("a-name").value.trim();
     if(!n){ toast("Enter activity name","error"); return; }
     if(!data.activities.includes(n)) data.activities.push(n);
-    modal=null; ghSave().then(()=>render());
+    modal=null; fsSave().then(()=>render());
   });
-  // delete expense
   document.querySelectorAll("[data-del]").forEach(b=>b.addEventListener("click",()=>{
     data.expenses=data.expenses.filter(e=>e.id!==b.dataset.del);
-    ghSave().then(()=>render());
+    fsSave().then(()=>render());
   }));
-  // mark settled
   document.querySelectorAll("[data-settle]").forEach(b=>b.addEventListener("click",()=>{
     if(!data.settled) data.settled=[];
     data.settled.push(b.dataset.settle);
-    ghSave().then(()=>render());
+    fsSave().then(()=>render());
   }));
-  // approve member
   document.querySelectorAll("[data-approve]").forEach(b=>b.addEventListener("click",()=>{
     const m=data.members.find(x=>x.id===b.dataset.approve);
-    if(m){ m.status="approved"; ghSave().then(()=>render()); }
+    if(m){ m.status="approved"; fsSave().then(()=>render()); }
   }));
-  // remove/reject member
   document.querySelectorAll("[data-kick]").forEach(b=>b.addEventListener("click",()=>{
     data.members=data.members.filter(x=>x.id!==b.dataset.kick);
-    ghSave().then(()=>render());
+    fsSave().then(()=>render());
   }));
-  // reset confirm
   document.getElementById("b-do-reset")?.addEventListener("click",()=>{
     const val=document.getElementById("reset-confirm")?.value.trim();
     if(val!=="RESET"){ toast("Type RESET in capitals to confirm","error"); return; }
     data={ expenses:[], activities:[...DEF_ACTS], members:[], settled:[] };
-    ghSHA=null; modal=null;
-    ghSave().then(()=>{ toast("All data reset","info"); render(); });
+    modal=null; fsSave().then(()=>{ toast("All data reset","info"); render(); });
   });
 }
 
@@ -763,13 +641,13 @@ function bind() {
 // ══════════════════════════════
 onAuthStateChanged(auth, u => {
   user = u;
-  if (u) ghLoad();
-  else render();
+  if (u) { fsLoad().then(()=>startListener()); }
+  else { if(unsubscribe) unsubscribe(); render(); }
 });
 </script>
 
-<footer style="text-align:center;padding:16px 28px;font-size:11px;color:var(--text3);font-family:'DM Mono',monospace;border-top:1px solid var(--border);background:var(--surface)">
-  FinSplit · Tobermory Trip 2026 · Data stored in GitHub · No cloud servers
+<footer style="text-align:center;padding:14px 28px;font-size:11px;color:var(--text3);font-family:'DM Mono',monospace;border-top:1px solid var(--border);background:var(--surface)">
+  FinSplit · Tobermory 2026 · Powered by Firebase · No tokens · No secrets in code
 </footer>
 </body>
 </html>
