@@ -217,9 +217,7 @@ textarea{resize:vertical;min-height:64px}
     <button class="nav-btn" data-tab="settlements">🔄 Settle Up</button>
     <button class="nav-btn" data-tab="members">👥 Members</button>
   </nav>
-  <div class="nav-right">
-    <div id="auth-bar"><span style="font-size:12px;color:var(--text3)">Loading…</span></div>
-  </div>
+  <div id="auth-bar" style="display:flex;align-items:center;gap:8px;flex-shrink:0;"><span style="font-size:12px;color:var(--text3)">Loading…</span></div>
 </header>
 
 <!-- SCREENS -->
@@ -425,13 +423,9 @@ function render() {
 function rAuthBar() {
   const bar = document.getElementById("auth-bar");
   if (!bar) return;
+  bar.style.cssText = "display:flex;align-items:center;gap:8px;flex-shrink:0;";
   if (user) {
-    bar.innerHTML=`<div class="user-chip">
-      <img class="u-avatar" src="${user.photoURL||''}" onerror="this.style.display='none'"/>
-      <span>${(user.displayName||user.email).split(" ")[0]}</span>
-      ${isAdmin()?'<span class="admin-pip">Admin</span>':''}
-    </div>
-    <button class="btn btn-ghost btn-sm" id="b-signout" style="margin-left:6px">Sign out</button>`;
+    bar.innerHTML=`<div class="user-chip"><img class="u-avatar" src="${user.photoURL||''}" onerror="this.style.display='none'"/><span>${(user.displayName||user.email).split(" ")[0]}</span>${isAdmin()?'<span class="admin-pip">Admin</span>':''}</div><button class="btn btn-ghost btn-sm" id="b-signout">Sign out</button>`;
     document.getElementById("b-signout")?.addEventListener("click",()=>signOut(auth));
   } else {
     bar.innerHTML=`<button class="btn btn-primary btn-sm" id="b-in-hdr">Sign in</button>`;
