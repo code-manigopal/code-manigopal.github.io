@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tobermory Trip Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal:    #0D9E8A;
+      --teal-lt: #14C4A8;
+      --navy:    #0A1628;
+      --navy2:   #0F1E35;
+      --navy3:   #172844;
+      --card:    #1A2E48;
+      --card2:   #1F3655;
+      --border:  #2A4060;
+      --text:    #E8F0F8;
+      --muted:   #7A9AB8;
+      --danger:  #E85B5B;
+      --amber:   #F5A623;
+      --green:   #4CAF7D;
+      --white:   #FFFFFF;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* === BACKGROUND === */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 20% 10%, rgba(13,158,138,.12) 0%, transparent 60%),
+                  radial-gradient(ellipse 60% 50% at 80% 80%, rgba(10,22,40,.8) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* === LAYOUT === */
+    #app { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 16px 80px; }
+
+    /* === TOP BAR === */
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 0 18px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 28px;
+    }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-icon {
+      width: 40px; height: 40px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--teal), #0a8a78);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .logo h1 { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: -.3px; }
+    .logo h1 span { color: var(--teal-lt); }
+
+    /* === AUTH === */
+    #auth-section {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 2px solid var(--teal);
+      object-fit: cover;
+    }
+    .user-name { font-size: 14px; font-weight: 500; color: var(--text); }
+
+    /* === BUTTONS === */
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 18px; border-radius: 10px; font-family: inherit;
+      font-size: 14px; font-weight: 500; cursor: pointer;
+      border: none; transition: all .18s;
+    }
+    .btn-primary { background: var(--teal); color: #fff; }
+    .btn-primary:hover { background: var(--teal-lt); transform: translateY(-1px); }
+    .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+    .btn-ghost:hover { border-color: var(--teal); color: var(--teal-lt); }
+    .btn-danger { background: rgba(232,91,91,.15); color: var(--danger); border: 1px solid rgba(232,91,91,.3); }
+    .btn-danger:hover { background: rgba(232,91,91,.25); }
+    .btn-sm { padding: 6px 12px; font-size: 13px; }
+
+    /* === TABS === */
+    .tabs { display: flex; gap: 6px; margin-bottom: 26px; flex-wrap: wrap; }
+    .tab {
+      padding: 8px 18px; border-radius: 9px; font-size: 14px; font-weight: 500;
+      cursor: pointer; border: 1px solid var(--border); background: transparent;
+      color: var(--muted); font-family: inherit; transition: all .15s;
+    }
+    .tab.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+    .tab:hover:not(.active) { border-color: var(--teal); color: var(--teal-lt); }
+
+    /* === CARDS === */
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 22px 24px;
+      margin-bottom: 16px;
+    }
+    .card-title {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 15px; margin-bottom: 16px; color: var(--text);
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    /* === SUMMARY STRIP === */
+    .summary-strip {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
+      gap: 14px; margin-bottom: 28px;
+    }
+    .summary-box {
+      background: var(--card2); border: 1px solid var(--border);
+      border-radius: 14px; padding: 18px 20px;
+    }
+    .summary-box .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 6px; }
+    .summary-box .value { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; }
+    .summary-box .value.green { color: var(--green); }
+    .summary-box .value.red { color: var(--danger); }
+    .summary-box .value.teal { color: var(--teal-lt); }
+
+    /* === FORM === */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media(max-width:600px){ .form-grid { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1/-1; }
+    label { font-size: 13px; color: var(--muted); font-weight: 500; }
+    input, select, textarea {
+      background: var(--navy2); border: 1px solid var(--border);
+      border-radius: 9px; padding: 10px 13px;
+      color: var(--text); font-family: inherit; font-size: 14px;
+      transition: border-color .15s; outline: none; width: 100%;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--teal); }
+    textarea { resize: vertical; min-height: 72px; }
+    select option { background: var(--navy2); }
+
+    /* checkbox group */
+    .checkbox-group { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .checkbox-item {
+      display: flex; align-items: center; gap: 6px;
+      padding: 6px 12px; border-radius: 8px;
+      background: var(--navy2); border: 1px solid var(--border);
+      cursor: pointer; font-size: 13px; transition: all .15s;
+    }
+    .checkbox-item:hover { border-color: var(--teal); }
+    .checkbox-item.selected { background: rgba(13,158,138,.18); border-color: var(--teal); color: var(--teal-lt); }
+    .checkbox-item input[type=checkbox] { display: none; }
+
+    /* === EXPENSE LIST === */
+    .expense-item {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      padding: 14px 0; border-bottom: 1px solid var(--border);
+      gap: 12px;
+    }
+    .expense-item:last-child { border-bottom: none; }
+    .exp-left { display: flex; gap: 12px; align-items: flex-start; flex: 1; }
+    .exp-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+      background: rgba(13,158,138,.15);
+    }
+    .exp-name { font-weight: 500; font-size: 15px; margin-bottom: 3px; }
+    .exp-meta { font-size: 12px; color: var(--muted); }
+    .exp-tag {
+      display: inline-block; padding: 2px 8px; border-radius: 5px;
+      font-size: 11px; font-weight: 600; margin-left: 6px;
+      background: rgba(245,166,35,.15); color: var(--amber);
+    }
+    .exp-amount { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; color: var(--teal-lt); white-space: nowrap; }
+    .exp-per { font-size: 11px; color: var(--muted); text-align: right; margin-top: 2px; }
+
+    /* === SETTLEMENTS === */
+    .settle-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px; background: var(--navy2);
+      border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px;
+    }
+    .settle-arrow { font-size: 18px; color: var(--amber); }
+    .settle-from { font-weight: 600; }
+    .settle-to { font-weight: 600; color: var(--teal-lt); }
+    .settle-amt { margin-left: auto; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 18px; color: var(--green); }
+    .badge-done {
+      display: inline-block; padding: 3px 10px; border-radius: 20px;
+      font-size: 11px; background: rgba(76,175,125,.2); color: var(--green);
+    }
+
+    /* === ACTIVITY PILLS === */
+    .activity-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .pill {
+      padding: 5px 14px; border-radius: 20px; font-size: 13px; font-weight: 500;
+      border: 1px solid var(--border); background: var(--navy2); cursor: pointer;
+      transition: all .15s; color: var(--muted);
+    }
+    .pill.active { background: rgba(13,158,138,.2); border-color: var(--teal); color: var(--teal-lt); }
+    .pill:hover:not(.active) { border-color: var(--teal); }
+
+    /* === MEMBER BALANCES === */
+    .balance-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 11px 0; border-bottom: 1px solid var(--border);
+    }
+    .balance-row:last-child { border-bottom: none; }
+    .bal-name { font-weight: 500; }
+    .bal-bar-wrap { flex: 1; margin: 0 16px; height: 6px; background: var(--border); border-radius: 4px; overflow: hidden; }
+    .bal-bar { height: 100%; border-radius: 4px; transition: width .4s; }
+    .bal-pos { color: var(--green); font-family: 'Syne', sans-serif; font-weight: 700; }
+    .bal-neg { color: var(--danger); font-family: 'Syne', sans-serif; font-weight: 700; }
+
+    /* === SIGN IN PAGE === */
+    #signin-page {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 80vh; text-align: center; gap: 28px;
+    }
+    .signin-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 24px; padding: 48px 44px; max-width: 440px; width: 100%;
+    }
+    .signin-icon { font-size: 56px; margin-bottom: 8px; }
+    .signin-title { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; margin-bottom: 8px; }
+    .signin-sub { color: var(--muted); font-size: 15px; margin-bottom: 32px; line-height: 1.6; }
+    .google-btn {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 24px; border-radius: 12px;
+      background: #fff; color: #1a1a1a; border: none;
+      font-family: inherit; font-size: 15px; font-weight: 600;
+      cursor: pointer; width: 100%; justify-content: center;
+      transition: all .18s; box-shadow: 0 2px 12px rgba(0,0,0,.3);
+    }
+    .google-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.35); }
+    .google-logo { width: 22px; height: 22px; }
+
+    /* === MODAL === */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(5,12,24,.7);
+      backdrop-filter: blur(6px); z-index: 100;
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    .modal {
+      background: var(--navy2); border: 1px solid var(--border);
+      border-radius: 20px; padding: 28px; max-width: 560px; width: 100%;
+      max-height: 90vh; overflow-y: auto;
+      animation: slideUp .22s ease;
+    }
+    @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } }
+    .modal-title {
+      font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800;
+      margin-bottom: 22px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .close-btn { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 20px; }
+    .close-btn:hover { color: var(--text); }
+
+    /* === EMPTY STATE === */
+    .empty { text-align: center; padding: 48px 20px; color: var(--muted); }
+    .empty .empty-icon { font-size: 44px; margin-bottom: 12px; }
+    .empty p { font-size: 15px; }
+
+    /* === TOAST === */
+    #toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      background: var(--teal); color: #fff; padding: 12px 24px; border-radius: 12px;
+      font-size: 14px; font-weight: 500; z-index: 999;
+      opacity: 0; transition: opacity .2s; pointer-events: none;
+    }
+    #toast.show { opacity: 1; }
+
+    /* CONFIG WARNING */
+    .config-warn {
+      background: rgba(245,166,35,.12); border: 1px solid rgba(245,166,35,.3);
+      border-radius: 12px; padding: 14px 18px; margin-bottom: 20px;
+      font-size: 13px; color: var(--amber); line-height: 1.6;
+    }
+    .config-warn strong { display: block; margin-bottom: 4px; font-size: 14px; }
+    .config-warn code { background: rgba(245,166,35,.15); padding: 1px 6px; border-radius: 4px; font-size: 12px; }
+
+    .section-header {
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px;
+    }
+    .section-title { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800; }
+
+    hr-line { display: block; height: 1px; background: var(--border); margin: 18px 0; }
+
+    .split-type-selector { display: flex; gap: 8px; }
+    .split-opt {
+      flex: 1; padding: 8px; text-align: center; border-radius: 8px;
+      border: 1px solid var(--border); cursor: pointer; font-size: 13px;
+      background: transparent; color: var(--muted); font-family: inherit;
+      transition: all .15s;
+    }
+    .split-opt.active { background: rgba(13,158,138,.2); border-color: var(--teal); color: var(--teal-lt); }
+  </style>
+</head>
+<body>
+
+<div id="toast"></div>
+
+<!-- CONFIG WARNING (shown when not configured) -->
+<div id="config-warn-bar" class="config-warn" style="margin: 16px; display:none;">
+  <strong>⚙️ Setup Required — Read Before Using</strong>
+  This app uses Firebase for Google Sign-In and GitHub API to store data. 
+  You must set your <code>FIREBASE_CONFIG</code> and <code>GITHUB_TOKEN</code> in the <code>CONFIG</code> section at the top of the JS. 
+  See the README section at the bottom of this page for instructions.
+</div>
+
+<div id="app">
+  <header>
+    <div class="logo">
+      <div class="logo-icon">⛵</div>
+      <h1>Tobermory <span>Splits</span></h1>
+    </div>
+    <div id="auth-section">
+      <div id="auth-loading" style="color:var(--muted);font-size:13px;">Loading…</div>
+    </div>
+  </header>
+
+  <div id="main-content"></div>
+</div>
+
+<!-- Firebase SDK -->
+<script type="module">
+// ============================================================
+// ██████╗  ██████╗ ███╗   ██╗███████╗██╗ ██████╗
+// ██╔════╝██╔═══██╗████╗  ██║██╔════╝██║██╔════╝
+//██║     ██║   ██║██╔██╗ ██║█████╗  ██║██║  ███╗
+// ██║     ██║   ██║██║╚██╗██║██╔══╝  ██║██║   ██║
+// ╚██████╗╚██████╔╝██║ ╚████║██║     ██║╚██████╔╝
+//  ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝     ╚═╝ ╚═════╝
+// ============================================================
+// STEP 1: Replace with your Firebase project config
+// Go to: console.firebase.google.com → Project Settings → Web App
+const FIREBASE_CONFIG = {
+  apiKey:            "AIzaSyBHtdnCt4xtSuezt3p5vrTqMPEZRRIX2UQ",
+  authDomain:        "trip-expense-tracker-4bb2f.firebaseapp.com",
+  projectId:         "trip-expense-tracker-4bb2f",
+  storageBucket:     "trip-expense-tracker-4bb2f.firebasestorage.app",
+  messagingSenderId: "585256105192",
+  appId:             "1:585256105192:web:ed2d38a97fe81d064c055d"
+};
+
+// STEP 2: GitHub Personal Access Token
+// Go to: github.com → Settings → Developer Settings → Personal Access Tokens (Fine-grained)
+// Scope: Contents = Read & Write on repo: code-manigopal/code-manigopal.github.io
+const GITHUB_TOKEN  = "YOUR_GITHUB_PAT_HERE";
+const GITHUB_OWNER  = "code-manigopal";
+const GITHUB_REPO   = "code-manigopal.github.io";
+const GITHUB_PATH   = "tobermory-finance-tracker/trips.json";  // data file stored in your repo
+
+// STEP 3: Trip members — add everyone's name here
+const DEFAULT_MEMBERS = [
+  "Mani", "Spouse", "Friend 1", "Friend 2", "Friend 3"
+];
+
+// STEP 4: Activities (sub-groups for optional participation)
+const DEFAULT_ACTIVITIES = [
+  "Shared (All)",
+  "Flowerpot Island",
+  "Scuba Diving",
+  "Kayaking",
+  "Accommodation",
+  "Food & Drinks",
+  "Transportation"
+];
+
+// ============================================================
+// CATEGORY ICONS
+const CATEGORY_ICONS = {
+  "Shared (All)":    "🏕️",
+  "Flowerpot Island":"🌺",
+  "Scuba Diving":    "🤿",
+  "Kayaking":        "🚣",
+  "Accommodation":   "🏠",
+  "Food & Drinks":   "🍽️",
+  "Transportation":  "🚗",
+  "Other":           "💰",
+};
+
+// ============================================================
+// CHECK CONFIGURATION
+const isConfigured = FIREBASE_CONFIG.apiKey !== "YOUR_API_KEY" && GITHUB_TOKEN !== "YOUR_GITHUB_PAT_HERE";
+if (!isConfigured) {
+  document.getElementById("config-warn-bar").style.display = "block";
+}
+
+// ============================================================
+// FIREBASE INIT
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged }
+  from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+
+const fbApp  = initializeApp(FIREBASE_CONFIG);
+const auth   = getAuth(fbApp);
+const gProvider = new GoogleAuthProvider();
+
+// ============================================================
+// STATE
+let currentUser = null;
+let tripData    = { expenses: [], activities: [...DEFAULT_ACTIVITIES], members: [...DEFAULT_MEMBERS], settled: [] };
+let activeTab   = "dashboard";
+let activeActivity = "All";
+let showAddExpense = false;
+let showAddActivity = false;
+let shaFileSHA  = null;  // for GitHub file update
+
+// ============================================================
+// GITHUB DATA LAYER
+async function loadData() {
+  if (!isConfigured) { renderApp(); return; }
+  try {
+    const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_PATH}`;
+    const res = await fetch(url, { headers: { Authorization: `token ${GITHUB_TOKEN}` } });
+    if (res.ok) {
+      const json = await res.json();
+      shaFileSHA = json.sha;
+      const decoded = JSON.parse(atob(json.content.replace(/\n/g,'')));
+      tripData = { ...tripData, ...decoded };
+      // ensure default activities/members merged
+      decoded.activities?.forEach(a => { if (!tripData.activities.includes(a)) tripData.activities.push(a); });
+    }
+  } catch(e) { console.warn("Could not load data:", e); }
+  renderApp();
+}
+
+async function saveData() {
+  if (!isConfigured) { showToast("Configure GitHub token to save data"); return; }
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify(tripData, null, 2))));
+  const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_PATH}`;
+  const body = { message: "Update Tobermory trip data", content };
+  if (shaFileSHA) body.sha = shaFileSHA;
+  try {
+    const res = await fetch(url, {
+      method: "PUT",
+      headers: { Authorization: `token ${GITHUB_TOKEN}`, "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    });
+    if (res.ok) {
+      const j = await res.json();
+      shaFileSHA = j.content.sha;
+      showToast("Saved ✓");
+    } else { showToast("Save failed — check token"); }
+  } catch(e) { showToast("Save error"); }
+}
+
+// ============================================================
+// SETTLEMENT ALGORITHM (minimize transactions)
+function calcSettlements(expenses) {
+  const balances = {};
+  tripData.members.forEach(m => balances[m] = 0);
+
+  expenses.forEach(exp => {
+    const participants = exp.participants || tripData.members;
+    const share = exp.amount / participants.length;
+    balances[exp.paidBy] = (balances[exp.paidBy] || 0) + exp.amount;
+    participants.forEach(p => { balances[p] = (balances[p] || 0) - share; });
+  });
+
+  // Minimize transactions greedy
+  const creditors = [], debtors = [];
+  Object.entries(balances).forEach(([name, bal]) => {
+    if (bal > 0.01) creditors.push({ name, amount: bal });
+    else if (bal < -0.01) debtors.push({ name, amount: -bal });
+  });
+  creditors.sort((a,b) => b.amount - a.amount);
+  debtors.sort((a,b) => b.amount - a.amount);
+
+  const txns = [];
+  let i = 0, j = 0;
+  while (i < creditors.length && j < debtors.length) {
+    const c = creditors[i], d = debtors[j];
+    const amt = Math.min(c.amount, d.amount);
+    txns.push({ from: d.name, to: c.name, amount: +amt.toFixed(2) });
+    c.amount -= amt; d.amount -= amt;
+    if (c.amount < 0.01) i++;
+    if (d.amount < 0.01) j++;
+  }
+  return txns;
+}
+
+function getNetBalance(member, expenses) {
+  let bal = 0;
+  expenses.forEach(exp => {
+    const participants = exp.participants || tripData.members;
+    if (exp.paidBy === member) bal += exp.amount;
+    if (participants.includes(member)) bal -= exp.amount / participants.length;
+  });
+  return +bal.toFixed(2);
+}
+
+// ============================================================
+// TOAST
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg; t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2400);
+}
+
+// ============================================================
+// RENDER
+function renderApp() {
+  const mc = document.getElementById("main-content");
+  if (!currentUser && isConfigured) { mc.innerHTML = renderSignIn(); return; }
+  mc.innerHTML = `
+    ${renderSummaryStrip()}
+    ${renderTabs()}
+    ${activeTab === "dashboard"   ? renderDashboard()  : ""}
+    ${activeTab === "expenses"    ? renderExpenses()   : ""}
+    ${activeTab === "settlements" ? renderSettlements(): ""}
+    ${activeTab === "members"     ? renderMembers()    : ""}
+    ${showAddExpense   ? renderAddExpenseModal() : ""}
+    ${showAddActivity  ? renderAddActivityModal(): ""}
+  `;
+  attachEvents();
+  renderAuthBar();
+}
+
+function renderSignIn() {
+  return `
+    <div id="signin-page">
+      <div class="signin-card">
+        <div class="signin-icon">⛵</div>
+        <div class="signin-title">Tobermory Splits</div>
+        <div class="signin-sub">Track shared expenses for the trip.<br>Sign in to start splitting costs with your group.</div>
+        <button class="google-btn" id="btn-google-signin">
+          <svg class="google-logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          Sign in with Google
+        </button>
+        ${!isConfigured ? '<p style="margin-top:16px;font-size:12px;color:var(--amber);">⚠️ Firebase not configured yet — see instructions above</p>' : ''}
+      </div>
+    </div>`;
+}
+
+function renderAuthBar() {
+  const bar = document.getElementById("auth-section");
+  if (currentUser) {
+    bar.innerHTML = `
+      <img class="avatar" src="${currentUser.photoURL || ''}" onerror="this.style.display='none'" />
+      <span class="user-name">${currentUser.displayName || currentUser.email}</span>
+      <button class="btn btn-ghost btn-sm" id="btn-signout">Sign out</button>`;
+  } else {
+    bar.innerHTML = `<button class="btn btn-primary btn-sm" id="btn-signin-hdr">Sign in</button>`;
+  }
+}
+
+function renderSummaryStrip() {
+  const total = tripData.expenses.reduce((s,e) => s+e.amount, 0);
+  const myExp = currentUser ? tripData.expenses.filter(e => e.paidBy === (currentUser.displayName || currentUser.email)) : [];
+  const myPaid = myExp.reduce((s,e)=>s+e.amount,0);
+  const myBal = currentUser ? getNetBalance(currentUser.displayName || currentUser.email, tripData.expenses) : 0;
+  const settlements = calcSettlements(tripData.expenses);
+  const pending = settlements.filter(s => !tripData.settled?.includes(s.from+'>'+s.to)).length;
+
+  return `<div class="summary-strip">
+    <div class="summary-box">
+      <div class="label">Total Spent</div>
+      <div class="value teal">$${total.toFixed(2)}</div>
+    </div>
+    <div class="summary-box">
+      <div class="label">You Paid</div>
+      <div class="value">${currentUser ? '$'+myPaid.toFixed(2) : '—'}</div>
+    </div>
+    <div class="summary-box">
+      <div class="label">Your Balance</div>
+      <div class="value ${myBal>=0?'green':'red'}">${currentUser ? (myBal>=0?'+':'')+myBal.toFixed(2) : '—'}</div>
+    </div>
+    <div class="summary-box">
+      <div class="label">Pending Transfers</div>
+      <div class="value ${pending>0?'red':'green'}">${pending}</div>
+    </div>
+    <div class="summary-box">
+      <div class="label">Expenses</div>
+      <div class="value">${tripData.expenses.length}</div>
+    </div>
+  </div>`;
+}
+
+function renderTabs() {
+  const tabs = [
+    {id:"dashboard", label:"📊 Dashboard"},
+    {id:"expenses",  label:"💸 Expenses"},
+    {id:"settlements",label:"🔄 Settle Up"},
+    {id:"members",   label:"👥 Members"},
+  ];
+  return `<div class="tabs">${tabs.map(t=>`<button class="tab${activeTab===t.id?' active':''}" data-tab="${t.id}">${t.label}</button>`).join("")}</div>`;
+}
+
+// ---- DASHBOARD ----
+function renderDashboard() {
+  const byActivity = {};
+  tripData.activities.forEach(a => byActivity[a] = 0);
+  tripData.expenses.forEach(e => { byActivity[e.activity] = (byActivity[e.activity]||0) + e.amount; });
+
+  const actRows = Object.entries(byActivity)
+    .filter(([,v])=>v>0)
+    .sort((a,b)=>b[1]-a[1])
+    .map(([name,val])=>`
+      <div class="balance-row">
+        <span class="bal-name">${CATEGORY_ICONS[name]||'💰'} ${name}</span>
+        <div class="bal-bar-wrap"><div class="bal-bar" style="width:${Math.min(100,(val/Math.max(...Object.values(byActivity))*100))}%;background:var(--teal)"></div></div>
+        <span class="bal-pos">$${val.toFixed(2)}</span>
+      </div>`).join("");
+
+  const recentExp = [...tripData.expenses].reverse().slice(0,5);
+  const recentHTML = recentExp.length ? recentExp.map(e => renderExpRow(e)).join("") : `<div class="empty"><div class="empty-icon">💸</div><p>No expenses yet</p></div>`;
+
+  return `
+    <div class="form-grid" style="margin-bottom:18px">
+      <div class="card">
+        <div class="card-title">📊 Spending by Activity</div>
+        ${actRows || '<div class="empty" style="padding:20px 0"><p>No data yet</p></div>'}
+      </div>
+      <div class="card">
+        <div class="card-title">👥 Member Balances</div>
+        ${tripData.members.map(m=>{
+          const b = getNetBalance(m, tripData.expenses);
+          const max = Math.max(...tripData.members.map(x=>Math.abs(getNetBalance(x,tripData.expenses))),1);
+          return `<div class="balance-row">
+            <span class="bal-name">${m}</span>
+            <div class="bal-bar-wrap"><div class="bal-bar" style="width:${Math.min(100,Math.abs(b)/max*100)}%;background:${b>=0?'var(--green)':'var(--danger)'}"></div></div>
+            <span class="${b>=0?'bal-pos':'bal-neg'}">${b>=0?'+':''}$${Math.abs(b).toFixed(2)}</span>
+          </div>`;
+        }).join("")}
+      </div>
+    </div>
+    <div class="card">
+      <div class="section-header">
+        <div class="section-title">Recent Expenses</div>
+        <button class="btn btn-primary btn-sm" id="btn-open-add">+ Add Expense</button>
+      </div>
+      ${recentHTML}
+    </div>`;
+}
+
+// ---- EXPENSES ----
+function renderExpenses() {
+  const filtered = activeActivity === "All" ? tripData.expenses : tripData.expenses.filter(e=>e.activity===activeActivity);
+  const expHTML = filtered.length
+    ? [...filtered].reverse().map(e=>renderExpRow(e)).join("")
+    : `<div class="empty"><div class="empty-icon">💸</div><p>No expenses for this activity</p></div>`;
+  return `
+    <div class="section-header">
+      <div class="section-title">All Expenses</div>
+      <button class="btn btn-primary btn-sm" id="btn-open-add">+ Add Expense</button>
+    </div>
+    <div class="activity-pills">
+      <div class="pill${activeActivity==='All'?' active':''}" data-activity="All">All</div>
+      ${tripData.activities.map(a=>`<div class="pill${activeActivity===a?' active':''}" data-activity="${a}">${CATEGORY_ICONS[a]||'💰'} ${a}</div>`).join("")}
+      <div class="pill" id="btn-open-add-act" style="border-style:dashed">+ Activity</div>
+    </div>
+    <div class="card">${expHTML}</div>`;
+}
+
+function renderExpRow(e) {
+  const participants = e.participants || tripData.members;
+  const share = (e.amount / participants.length).toFixed(2);
+  return `<div class="expense-item" data-id="${e.id}">
+    <div class="exp-left">
+      <div class="exp-icon">${CATEGORY_ICONS[e.activity]||'💰'}</div>
+      <div>
+        <div class="exp-name">${e.description}<span class="exp-tag">${e.activity}</span></div>
+        <div class="exp-meta">Paid by <strong>${e.paidBy}</strong> · ${e.date}
+          · Split ${participants.length} way${participants.length>1?'s':''}
+        </div>
+        <div class="exp-meta" style="margin-top:2px">👥 ${participants.join(", ")}</div>
+      </div>
+    </div>
+    <div>
+      <div class="exp-amount">$${(+e.amount).toFixed(2)}</div>
+      <div class="exp-per">$${share}/person</div>
+      <button class="btn btn-danger btn-sm" style="margin-top:6px" data-del="${e.id}">✕</button>
+    </div>
+  </div>`;
+}
+
+// ---- SETTLEMENTS ----
+function renderSettlements() {
+  const txns = calcSettlements(tripData.expenses);
+  const settled = tripData.settled || [];
+  if (!txns.length) return `<div class="card"><div class="empty"><div class="empty-icon">🎉</div><p>All settled! No transfers needed.</p></div></div>`;
+  return `
+    <div class="section-header" style="margin-bottom:18px">
+      <div class="section-title">🔄 Who Pays Whom</div>
+      <span style="font-size:13px;color:var(--muted)">${txns.filter(t=>!settled.includes(t.from+'>'+t.to)).length} pending</span>
+    </div>
+    <div class="card">
+      ${txns.map(t => {
+        const key = t.from+'>'+t.to;
+        const done = settled.includes(key);
+        return `<div class="settle-item">
+          <span class="settle-from">${t.from}</span>
+          <span class="settle-arrow">→</span>
+          <span class="settle-to">${t.to}</span>
+          <span class="settle-amt">$${t.amount.toFixed(2)}</span>
+          ${done
+            ? `<span class="badge-done">✓ Done</span>`
+            : `<button class="btn btn-primary btn-sm" data-settle="${key}">Mark Done</button>`}
+        </div>`;
+      }).join("")}
+    </div>
+    <div class="card" style="margin-top:14px">
+      <div class="card-title">📝 Expense Breakdown by Activity</div>
+      ${tripData.activities.map(act => {
+        const exps = tripData.expenses.filter(e=>e.activity===act);
+        if(!exps.length) return '';
+        return `<div style="margin-bottom:12px">
+          <div style="font-weight:600;margin-bottom:6px">${CATEGORY_ICONS[act]||'💰'} ${act} — $${exps.reduce((s,e)=>s+e.amount,0).toFixed(2)}</div>
+          ${exps.map(e=>`<div class="exp-meta" style="margin-left:14px;margin-bottom:3px">• ${e.description}: $${(+e.amount).toFixed(2)} (paid by ${e.paidBy})</div>`).join("")}
+        </div>`;
+      }).join("")}
+    </div>`;
+}
+
+// ---- MEMBERS ----
+function renderMembers() {
+  return `
+    <div class="section-header">
+      <div class="section-title">👥 Trip Members</div>
+    </div>
+    <div class="card">
+      ${tripData.members.map(m => {
+        const bal = getNetBalance(m, tripData.expenses);
+        const paid = tripData.expenses.filter(e=>e.paidBy===m).reduce((s,e)=>s+e.amount,0);
+        return `<div class="balance-row">
+          <div>
+            <div class="bal-name">${m}</div>
+            <div class="exp-meta">Paid: $${paid.toFixed(2)}</div>
+          </div>
+          <div style="text-align:right">
+            <div class="${bal>=0?'bal-pos':'bal-neg'}" style="font-size:16px">${bal>=0?'+':''}$${Math.abs(bal).toFixed(2)}</div>
+            <div class="exp-meta">${bal>0?'to receive':bal<0?'to pay':'settled'}</div>
+          </div>
+        </div>`;
+      }).join("")}
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="card-title">Add Member</div>
+      <div style="display:flex;gap:10px">
+        <input type="text" id="new-member-name" placeholder="Full name" style="flex:1"/>
+        <button class="btn btn-primary" id="btn-add-member">Add</button>
+      </div>
+    </div>`;
+}
+
+// ---- ADD EXPENSE MODAL ----
+function renderAddExpenseModal() {
+  const today = new Date().toISOString().split("T")[0];
+  return `<div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-title">
+        ➕ Add Expense
+        <button class="close-btn" id="btn-close-modal">✕</button>
+      </div>
+      <div class="form-grid">
+        <div class="form-group full">
+          <label>Description *</label>
+          <input type="text" id="exp-desc" placeholder="e.g. Boat ride to Flowerpot Island" />
+        </div>
+        <div class="form-group">
+          <label>Amount (CAD) *</label>
+          <input type="number" id="exp-amount" placeholder="0.00" step="0.01" min="0"/>
+        </div>
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date" id="exp-date" value="${today}"/>
+        </div>
+        <div class="form-group">
+          <label>Paid By *</label>
+          <select id="exp-paidby">
+            ${tripData.members.map(m=>`<option value="${m}" ${currentUser&&(currentUser.displayName||currentUser.email)===m?'selected':''}>${m}</option>`).join("")}
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Activity / Category</label>
+          <select id="exp-activity">
+            ${tripData.activities.map(a=>`<option value="${a}">${a}</option>`).join("")}
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Split Type</label>
+          <div class="split-type-selector">
+            <button class="split-opt active" data-split="equal">⚖️ Equal Split</button>
+            <button class="split-opt" data-split="custom">✏️ Custom</button>
+          </div>
+        </div>
+        <div class="form-group full">
+          <label>Participants (who shares this expense)</label>
+          <div class="checkbox-group" id="participant-checks">
+            ${tripData.members.map(m=>`
+              <label class="checkbox-item selected" data-member="${m}">
+                <input type="checkbox" checked value="${m}"/> ${m}
+              </label>`).join("")}
+          </div>
+        </div>
+        <div class="form-group full">
+          <label>Notes (optional)</label>
+          <textarea id="exp-notes" placeholder="Any notes about this expense…"></textarea>
+        </div>
+        <div class="form-group full" style="margin-top:6px">
+          <button class="btn btn-primary" id="btn-save-expense" style="width:100%;padding:13px;font-size:15px">Save Expense</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ---- ADD ACTIVITY MODAL ----
+function renderAddActivityModal() {
+  return `<div class="modal-overlay" id="modal-overlay">
+    <div class="modal" style="max-width:380px">
+      <div class="modal-title">
+        ➕ New Activity
+        <button class="close-btn" id="btn-close-modal">✕</button>
+      </div>
+      <div class="form-group">
+        <label>Activity Name</label>
+        <input type="text" id="act-name" placeholder="e.g. Fishing Charter" />
+      </div>
+      <button class="btn btn-primary" id="btn-save-activity" style="width:100%;margin-top:16px;padding:12px">Create Activity</button>
+    </div>
+  </div>`;
+}
+
+// ============================================================
+// EVENT HANDLERS
+function attachEvents() {
+  // Tabs
+  document.querySelectorAll(".tab").forEach(t => {
+    t.addEventListener("click", () => { activeTab = t.dataset.tab; renderApp(); });
+  });
+
+  // Activity pills
+  document.querySelectorAll(".pill[data-activity]").forEach(p => {
+    p.addEventListener("click", () => { activeActivity = p.dataset.activity; renderApp(); });
+  });
+
+  // Open add expense
+  document.getElementById("btn-open-add")?.addEventListener("click", () => { showAddExpense = true; renderApp(); });
+  document.getElementById("btn-open-add-act")?.addEventListener("click", () => { showAddActivity = true; renderApp(); });
+
+  // Close modal
+  document.getElementById("btn-close-modal")?.addEventListener("click", () => { showAddExpense = false; showAddActivity = false; renderApp(); });
+  document.getElementById("modal-overlay")?.addEventListener("click", (e) => { if (e.target.id==="modal-overlay") { showAddExpense=false; showAddActivity=false; renderApp(); } });
+
+  // Participant toggle
+  document.querySelectorAll(".checkbox-item[data-member]").forEach(el => {
+    el.addEventListener("click", () => {
+      el.classList.toggle("selected");
+      el.querySelector("input").checked = el.classList.contains("selected");
+    });
+  });
+
+  // Split type
+  document.querySelectorAll(".split-opt").forEach(b => {
+    b.addEventListener("click", () => { document.querySelectorAll(".split-opt").forEach(x=>x.classList.remove("active")); b.classList.add("active"); });
+  });
+
+  // Save expense
+  document.getElementById("btn-save-expense")?.addEventListener("click", () => {
+    const desc   = document.getElementById("exp-desc").value.trim();
+    const amount = parseFloat(document.getElementById("exp-amount").value);
+    const date   = document.getElementById("exp-date").value;
+    const paidBy = document.getElementById("exp-paidby").value;
+    const activity = document.getElementById("exp-activity").value;
+    const notes  = document.getElementById("exp-notes").value.trim();
+    const participants = [...document.querySelectorAll(".checkbox-item.selected")].map(el=>el.dataset.member);
+
+    if (!desc || isNaN(amount) || amount<=0) { showToast("Fill in description & amount"); return; }
+    if (!participants.length) { showToast("Select at least one participant"); return; }
+
+    tripData.expenses.push({ id: Date.now().toString(), desc, description: desc, amount, date, paidBy, activity, notes, participants });
+    showAddExpense = false;
+    saveData().then(() => renderApp());
+  });
+
+  // Save activity
+  document.getElementById("btn-save-activity")?.addEventListener("click", () => {
+    const name = document.getElementById("act-name").value.trim();
+    if (!name) { showToast("Enter activity name"); return; }
+    if (!tripData.activities.includes(name)) { tripData.activities.push(name); saveData(); }
+    showAddActivity = false; renderApp();
+  });
+
+  // Delete expense
+  document.querySelectorAll("[data-del]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      tripData.expenses = tripData.expenses.filter(e => e.id !== btn.dataset.del);
+      saveData().then(() => renderApp());
+    });
+  });
+
+  // Mark settled
+  document.querySelectorAll("[data-settle]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      if (!tripData.settled) tripData.settled = [];
+      tripData.settled.push(btn.dataset.settle);
+      saveData().then(() => renderApp());
+    });
+  });
+
+  // Add member
+  document.getElementById("btn-add-member")?.addEventListener("click", () => {
+    const name = document.getElementById("new-member-name").value.trim();
+    if (!name) return;
+    if (!tripData.members.includes(name)) { tripData.members.push(name); saveData().then(()=>renderApp()); }
+    else showToast("Member already exists");
+  });
+
+  // Auth buttons
+  document.getElementById("btn-google-signin")?.addEventListener("click", () => {
+    signInWithPopup(auth, gProvider).catch(e => showToast("Sign-in failed: " + e.message));
+  });
+  document.getElementById("btn-signin-hdr")?.addEventListener("click", () => {
+    signInWithPopup(auth, gProvider).catch(e => showToast("Sign-in failed: " + e.message));
+  });
+  document.getElementById("btn-signout")?.addEventListener("click", () => signOut(auth));
+}
+
+// ============================================================
+// AUTH STATE
+onAuthStateChanged(auth, user => {
+  currentUser = user;
+  if (user) { loadData(); } else { document.getElementById("auth-loading").remove?.(); renderApp(); }
+});
+
+// Initial render
+renderApp();
+</script>
+
+<!-- README SECTION -->
+<details style="margin:40px 16px 24px;color:var(--muted);font-size:13px;line-height:1.8">
+<summary style="cursor:pointer;font-family:'Syne',sans-serif;font-size:15px;color:#7A9AB8;font-weight:700">📖 Setup Instructions (expand)</summary>
+<div style="margin-top:14px;background:#0F1E35;border:1px solid #2A4060;border-radius:12px;padding:20px">
+<strong style="color:#E8F0F8">Step 1 — Firebase (Google Sign-In)</strong><br>
+1. Go to <a href="https://console.firebase.google.com" style="color:#14C4A8">console.firebase.google.com</a> → Create project<br>
+2. Add a Web App, copy the config object<br>
+3. Go to Authentication → Sign-in method → Enable Google<br>
+4. Add <code>code-manigopal.github.io</code> to Authorized Domains<br>
+5. Paste the config into FIREBASE_CONFIG in this file<br><br>
+
+<strong style="color:#E8F0F8">Step 2 — GitHub Personal Access Token</strong><br>
+1. GitHub → Settings → Developer Settings → Personal Access Tokens → Fine-grained<br>
+2. Repository: <code>code-manigopal.github.io</code> only<br>
+3. Permissions: Contents → Read &amp; Write<br>
+4. Copy the token into GITHUB_TOKEN<br><br>
+
+<strong style="color:#E8F0F8">Step 3 — Deploy</strong><br>
+Push this <code>index.html</code> into your repo as e.g. <code>/tobermory/index.html</code><br>
+Access at: <code>https://code-manigopal.github.io/tobermory/</code><br><br>
+
+<strong style="color:#E8F0F8">Step 4 — Customise members</strong><br>
+Edit the <code>DEFAULT_MEMBERS</code> array at the top of the script with your group's real names.<br><br>
+
+<strong style="color:#F5A623">⚠️ Security note:</strong> The GitHub token is visible in the HTML source. 
+For a private trip group this is fine. For public use, move the token to a Cloudflare Worker or similar backend proxy.
+</div>
+</details>
+
+</body>
+</html>
